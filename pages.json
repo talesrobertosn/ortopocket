@@ -1,0 +1,87 @@
+[
+  {
+    "id": "home",
+    "title": "Início",
+    "section": "Geral",
+    "file": "content/home.md",
+    "tags": [
+      "home",
+      "atalhos",
+      "ortopedia"
+    ]
+  },
+  {
+    "id": "garden",
+    "title": "Classificação de Garden (colo femoral)",
+    "section": "Classificações",
+    "file": "content/classificacoes/garden.md",
+    "tags": [
+      "garden",
+      "colo femoral",
+      "fratura intracapsular"
+    ]
+  },
+  {
+    "id": "gustilo-anderson",
+    "title": "Classificação de Gustilo–Anderson (fratura exposta)",
+    "section": "Classificações",
+    "file": "content/classificacoes/gustilo-anderson.md",
+    "tags": [
+      "gustilo",
+      "anderson",
+      "fratura exposta"
+    ]
+  },
+  {
+    "id": "lauge-hansen",
+    "title": "Lauge–Hansen (tornozelo)",
+    "section": "Classificações",
+    "file": "content/classificacoes/lauge-hansen.md",
+    "tags": [
+      "lauge-hansen",
+      "tornozelo",
+      "mecanismo",
+      "fratura maleolar"
+    ]
+  },
+  {
+    "id": "hallux-valgus",
+    "title": "Hallux valgus (HVA / IMA / DMAA)",
+    "section": "Métricas (RX)",
+    "file": "content/metricas/hallux-valgus.md",
+    "tags": [
+      "hallux valgus",
+      "hva",
+      "ima",
+      "dmaa",
+      "joanete"
+    ],
+    "tool": "hallux-valgus"
+  },
+  {
+    "id": "insall-salvati",
+    "title": "Insall–Salvati (patela alta/baixa)",
+    "section": "Métricas (RX)",
+    "file": "content/metricas/insall-salvati.md",
+    "tags": [
+      "insall",
+      "salvati",
+      "patela alta",
+      "patela baixa"
+    ],
+    "tool": "insall-salvati"
+  },
+  {
+    "id": "tad",
+    "title": "TAD (Tip–Apex Distance)",
+    "section": "Métricas (RX)",
+    "file": "content/metricas/tad.md",
+    "tags": [
+      "tad",
+      "fêmur proximal",
+      "cefalomedular",
+      "cut-out"
+    ],
+    "tool": "tad"
+  }
+]
