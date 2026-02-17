@@ -2,61 +2,360 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0b1220" />
-  <title>OrtoPocket</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Encaminhador 2 mil</title>
+  <style>
+    :root { --c:#1976d2; --c2:#1565c0; --b:#e6e6e6; }
+    body { font-family: Arial, sans-serif; padding: 16px; max-width: 920px; margin: 0 auto; }
+    h2 { margin: 0 0 12px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 12px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    label { font-weight: 700; display:block; margin: 8px 0 6px; }
+    input, textarea, select {
+      width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc; box-sizing: border-box;
+    }
+    textarea { resize: vertical; min-height: 84px; }
+    .row { margin-bottom: 10px; }
+    .btns { display:flex; flex-wrap: wrap; gap:10px; margin-top: 12px; }
+    button {
+      padding: 10px 14px; border: none; border-radius: 8px;
+      background: var(--c); color: #fff; font-size: 15px; cursor: pointer;
+    }
+    button:hover { background: var(--c2); }
+    button.secondary { background: #444; }
+    button.secondary:hover { background: #222; }
+    button.ghost { background: #fff; color: #111; border: 1px solid #bbb; }
+    button.ghost:hover { background: #f2f2f2; }
+    .help { font-size: 12px; color:#555; margin-top: 6px; }
+    .box {
+      margin-top: 14px; padding: 12px; border: 1px solid var(--b); border-radius: 10px;
+      background: #fafafa;
+    }
+    pre { white-space: pre-wrap; word-wrap: break-word; margin: 0; font-family: inherit; }
+    .inline { display:flex; gap:10px; align-items:center; }
+    .inline > div { flex:1; }
+    .hide { display:none; }
 
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="stylesheet" href="assets/style.css" />
-
-  <meta name="description" content="OrtoPocket: classificações e métricas ortopédicas em formato prático." />
+    /* Assinatura discreta no canto inferior direito */
+    .signature {
+      position: fixed;
+      right: 10px;
+      bottom: 8px;
+      font-size: 11px;
+      color: rgba(0,0,0,0.45);
+      user-select: none;
+      pointer-events: none;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="app" id="appRoot">
-    <aside class="sidebar" id="sidebar">
-      <div class="sidebar-top">
-        <div class="brand">
-          <div class="brand-title">OrtoPocket</div>
-          <div class="brand-subtitle">Classificações & Métricas</div>
-        </div>
+  <h2>Encaminhador 2 mil</h2>
 
-        <div class="search">
-          <input id="searchInput" type="search" placeholder="Buscar (ex.: Garden, TAD, patela alta)..." autocomplete="off" />
+  <form id="encaminhamentoForm" autocomplete="off">
+    <div class="grid">
+      <div class="row">
+        <label for="nome">Nome</label>
+        <input id="nome" type="text" placeholder="Nome completo" />
+      </div>
+
+      <div class="row inline">
+        <div>
+          <label for="idade">Idade</label>
+          <input id="idade" type="text" placeholder="Ex.: 45" inputmode="numeric" />
+        </div>
+        <div>
+          <label for="numero">Nº Atendimento</label>
+          <input id="numero" type="text" placeholder="Ex.: 123456" />
         </div>
       </div>
 
-      <nav class="nav" id="nav"></nav>
-
-      <div class="sidebar-footer">
-        <div class="small">
-          Conteúdo em Markdown. Atualização simples via GitHub.<br/>
-          Uso educacional. Sempre correlacionar com clínica e imagem.
+      <div class="row">
+        <label for="convenio">Convênio</label>
+        <select id="convenio">
+          <option value="Unimed">Unimed</option>
+          <option value="Angeli">Angeli</option>
+          <option value="SUS">SUS</option>
+          <option value="Caron">Caron</option>
+          <option value="Amil">Amil</option>
+          <option value="Outro">Outro</option>
+        </select>
+        <div id="wrap_convenio_outro" class="hide" style="margin-top:8px;">
+          <input id="convenio_outro" type="text" placeholder="Qual convênio?" />
         </div>
       </div>
-    </aside>
 
-    <main class="main">
-      <header class="topbar">
-        <button class="icon-btn" id="menuToggle" aria-label="Abrir menu">
-          <span class="icon-lines"></span>
-        </button>
+      <div class="row inline">
+        <div>
+          <label for="data">Data do Atendimento</label>
+          <input id="data" type="date" />
+        </div>
+        <div>
+          <label for="data_trauma">Data do Trauma</label>
+          <input id="data_trauma" type="date" />
+        </div>
+      </div>
 
-        <div class="topbar-title" id="topbarTitle">Início</div>
+      <div class="row">
+        <label for="mecanismo">Mecanismo</label>
+        <input id="mecanismo" type="text" placeholder="Ex.: queda da própria altura / acidente moto" />
+      </div>
 
-        <a class="chip" href="#/p/home" title="Ir para início">Home</a>
-      </header>
+      <div class="row">
+        <label for="diagnostico">Diagnóstico</label>
+        <input id="diagnostico" type="text" placeholder="Ex.: fratura do rádio distal D / luxação patelar" />
+      </div>
 
-      <section class="content-wrap">
-        <article class="content" id="content">
-          <noscript>Este site precisa de JavaScript habilitado para navegação e calculadoras.</noscript>
-        </article>
-      </section>
-    </main>
+      <div class="row">
+        <label for="classificacao">Classificação</label>
+        <input id="classificacao" type="text" placeholder="Ex.: AO/OTA, Gustilo, Garden, Lauge-Hansen..." />
+      </div>
+
+      <div class="row inline">
+        <div>
+          <label for="tipo_fratura">Tipo de Fratura</label>
+          <select id="tipo_fratura">
+            <option value="Fechada">Fechada</option>
+            <option value="Aberta">Aberta</option>
+          </select>
+        </div>
+        <div>
+          <label for="muc">MUC</label>
+          <input id="muc" type="text" placeholder="Medicamentos de uso contínuo" />
+        </div>
+      </div>
+
+      <div class="row">
+        <label for="exame_fisico">Exame físico</label>
+        <textarea id="exame_fisico" placeholder="Descrever achados relevantes (dor, ADM, edema, ferida, estabilidade etc.)"></textarea>
+      </div>
+
+      <div class="row">
+        <label for="neurovascular">Exame neurovascular</label>
+        <input id="neurovascular" type="text" placeholder="Perfusão, pulsos, sensibilidade, motricidade" />
+      </div>
+
+      <div class="row">
+        <label for="lesoes">Lesões associadas</label>
+        <input id="lesoes" type="text" placeholder="Ex.: TCE leve, fratura costela, lesão ligamentar..." />
+      </div>
+
+      <div class="row">
+        <label for="comorbidades">Comorbidades</label>
+        <input id="comorbidades" type="text" placeholder="Ex.: HAS, DM2, DRC, anticoagulado..." />
+      </div>
+
+      <div class="row inline">
+        <div>
+          <label for="tabagismo">Tabagismo</label>
+          <select id="tabagismo">
+            <option value="">(não informado)</option>
+            <option value="Sim">Sim</option>
+            <option value="Nega">Nega</option>
+            <option value="Ex-tabagista">Ex-tabagista</option>
+          </select>
+        </div>
+        <div>
+          <label for="alergia">Alergia</label>
+          <select id="alergia">
+            <option value="">(não informado)</option>
+            <option value="Nega">Nega</option>
+            <option value="Sim">Sim</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row inline">
+        <div>
+          <label for="funcionalidade">Funcionalidade</label>
+          <select id="funcionalidade">
+            <option value="">(não informado)</option>
+            <option value="Baixa">Baixa</option>
+            <option value="Moderada">Moderada</option>
+            <option value="Alta">Alta</option>
+            <option value="Ampla">Ampla</option>
+          </select>
+        </div>
+        <div>
+          <label for="profissao">Profissão</label>
+          <input id="profissao" type="text" placeholder="Ex.: pedreiro, motorista, aposentado..." />
+        </div>
+      </div>
+
+      <div class="row">
+        <label for="lesao_previa">Lesão prévia no membro</label>
+        <select id="lesao_previa">
+          <option value="">(não informado)</option>
+          <option value="Sim">Sim</option>
+          <option value="Não">Não</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label for="conduta">Conduta no plantão</label>
+        <textarea id="conduta" placeholder="Imobilização, analgesia, exames, antibiótico, redução, orientações..."></textarea>
+      </div>
+    </div>
+
+    <div class="btns">
+      <button type="button" id="btnWhats">Abrir WhatsApp</button>
+      <button type="button" class="secondary" id="btnCopy">Copiar texto</button>
+      <button type="button" class="ghost" id="btnPreview">Pré-visualizar</button>
+      <button type="button" class="ghost" id="btnClear">Limpar</button>
+    </div>
+
+    <div class="help">
+      Dica: “Abrir WhatsApp” funciona melhor no celular (abre o app). No desktop, abre o WhatsApp Web em nova aba com a mensagem pronta.
+    </div>
+  </form>
+
+  <div class="box" id="previewBox" style="display:none;">
+    <label style="margin-top:0;">Pré-visualização do texto</label>
+    <pre id="previewText"></pre>
   </div>
 
-  <!-- Markdown renderer (CDN). Se quiser 100% offline, depois podemos “vendorizar” isso. -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="assets/app.js"></script>
+  <div class="signature">feito por Tales</div>
+
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+
+  const ids = [
+    "nome","idade","numero","convenio","convenio_outro","data","data_trauma","mecanismo","diagnostico","classificacao",
+    "tipo_fratura","exame_fisico","comorbidades","tabagismo","muc","alergia","neurovascular","lesoes",
+    "funcionalidade","profissao","lesao_previa","conduta"
+  ];
+
+  function todayISO() {
+    const d = new Date();
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, "0");
+    const dd = String(d.getDate()).padStart(2, "0");
+    return `${yyyy}-${mm}-${dd}`;
+  }
+
+  function humanDate(iso) {
+    if (!iso || !/^\d{4}-\d{2}-\d{2}$/.test(iso)) return iso || "";
+    const [y,m,d] = iso.split("-");
+    return `${d}/${m}/${y}`;
+  }
+
+  function getValue(id) {
+    const el = $(id);
+    return el ? (el.value || "").trim() : "";
+  }
+
+  function convenioFinal() {
+    const c = getValue("convenio");
+    if (c !== "Outro") return c;
+    const outro = getValue("convenio_outro");
+    return outro ? `Outro (${outro})` : "Outro";
+  }
+
+  function line(label, value) {
+    if (!value) return "";
+    return `*${label}:* ${value}\n`;
+  }
+
+  function buildMessage() {
+    const dados = {};
+    ids.forEach(id => dados[id] = getValue(id));
+    dados.convenio = convenioFinal();
+    dados.data = humanDate(dados.data);
+    dados.data_trauma = humanDate(dados.data_trauma);
+
+    let msg = `*Chefes, temos um caso.*\n\n`;
+
+    msg += line("Nome", dados.nome);
+    msg += line("Idade", dados.idade);
+    msg += line("Número de Atendimento", dados.numero);
+    msg += line("Convênio", dados.convenio);
+    msg += line("Data do Atendimento", dados.data);
+    msg += line("Data do Trauma", dados.data_trauma);
+    msg += line("Mecanismo", dados.mecanismo);
+    msg += line("Diagnóstico", dados.diagnostico);
+    msg += line("Classificação", dados.classificacao);
+    msg += line("Tipo de Fratura", dados.tipo_fratura);
+    msg += line("Exame Físico", dados.exame_fisico);
+    msg += line("Exame Neurovascular", dados.neurovascular);
+    msg += line("Lesões Associadas", dados.lesoes);
+    msg += line("Comorbidades", dados.comorbidades);
+    msg += line("Tabagismo", dados.tabagismo);
+    msg += line("MUC", dados.muc);
+    msg += line("Alergia", dados.alergia);
+    msg += line("Funcionalidade", dados.funcionalidade);
+    msg += line("Profissão", dados.profissao);
+    msg += line("Lesão Prévia no Membro", dados.lesao_previa);
+    msg += line("Conduta no Plantão", dados.conduta);
+
+    msg += `\n*Aguardo conduta.*`;
+    return msg.trim();
+  }
+
+  async function copyToClipboard(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+      alert("Texto copiado para a área de transferência.");
+    } catch (e) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      alert("Texto copiado (modo compatibilidade).");
+    }
+  }
+
+  function openWhatsApp(text) {
+    const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+
+  function toggleConvenioOutro() {
+    const wrap = $("wrap_convenio_outro");
+    if (getValue("convenio") === "Outro") wrap.classList.remove("hide");
+    else wrap.classList.add("hide");
+  }
+
+  function preview() {
+    const box = $("previewBox");
+    const pre = $("previewText");
+    pre.textContent = buildMessage();
+    box.style.display = "block";
+    box.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function clearForm() {
+    $("encaminhamentoForm").reset();
+    $("data").value = todayISO();
+    toggleConvenioOutro();
+    $("previewBox").style.display = "none";
+  }
+
+  // Init
+  $("data").value = todayISO();
+  toggleConvenioOutro();
+
+  $("convenio").addEventListener("change", toggleConvenioOutro);
+
+  $("btnWhats").addEventListener("click", () => openWhatsApp(buildMessage()));
+  $("btnCopy").addEventListener("click", async () => await copyToClipboard(buildMessage()));
+  $("btnPreview").addEventListener("click", preview);
+  $("btnClear").addEventListener("click", clearForm);
+
+  // Atalhos: Ctrl+Enter = WhatsApp | Ctrl+Shift+C = copiar
+  document.addEventListener("keydown", async (e) => {
+    if (e.ctrlKey && e.key === "Enter") {
+      e.preventDefault();
+      openWhatsApp(buildMessage());
+    }
+    if (e.ctrlKey && e.shiftKey && (e.key.toLowerCase() === "c")) {
+      e.preventDefault();
+      await copyToClipboard(buildMessage());
+    }
+  });
+})();
+</script>
 </body>
 </html>
