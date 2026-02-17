@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>OrtoPocket</title>
+
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="assets/style.css" />
+
+  <meta name="description" content="OrtoPocket: classificações e métricas ortopédicas em formato prático." />
+</head>
+
+<body>
+  <div class="app" id="appRoot">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <div class="brand">
+          <div class="brand-title">OrtoPocket</div>
+          <div class="brand-subtitle">Classificações & Métricas</div>
+        </div>
+
+        <div class="search">
+          <input id="searchInput" type="search" placeholder="Buscar (ex.: Garden, TAD, patela alta)..." autocomplete="off" />
+        </div>
+      </div>
+
+      <nav class="nav" id="nav"></nav>
+
+      <div class="sidebar-footer">
+        <div class="small">
+          Conteúdo em Markdown. Atualização simples via GitHub.<br/>
+          Uso educacional. Sempre correlacionar com clínica e imagem.
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn" id="menuToggle" aria-label="Abrir menu">
+          <span class="icon-lines"></span>
+        </button>
+
+        <div class="topbar-title" id="topbarTitle">Início</div>
+
+        <a class="chip" href="#/p/home" title="Ir para início">Home</a>
+      </header>
+
+      <section class="content-wrap">
+        <article class="content" id="content">
+          <noscript>Este site precisa de JavaScript habilitado para navegação e calculadoras.</noscript>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <!-- Markdown renderer (CDN). Se quiser 100% offline, depois podemos “vendorizar” isso. -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
