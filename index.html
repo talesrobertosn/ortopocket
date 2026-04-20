@@ -3,221 +3,559 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Encaminhador 2 mil</title>
-
-  <!-- FAVICON (via link externo) -->
+  <title>Encaminhador 2.1 mil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiRtpo5Adts7P8O3FnXyyUvNAE5Wjp1nytUQy8IZ-AcquvHXtE8QXK-JbYS-1lX95drBLZtxDtbpEjWUEMjeAXvJsYSqzlcGDbJ4dbrwLNPnOxo657HkWL3VKNXVnLvRd8jebArZ3DFQQFhOOq0CxtKIt3_T0j5SH7SZS1DJr4-RaKpwBJT6taw828HbJ0/s1600/favicon-32x32.png" />
-  <link rel="shortcut icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiRtpo5Adts7P8O3FnXyyUvNAE5Wjp1nytUQy8IZ-AcquvHXtE8QXK-JbYS-1lX95drBLZtxDtbpEjWUEMjeAXvJsYSqzlcGDbJ4dbrwLNPnOxo657HkWL3VKNXVnLvRd8jebArZ3DFQQFhOOq0CxtKIt3_T0j5SH7SZS1DJr4-RaKpwBJT6taw828HbJ0/s1600/favicon-32x32.png" />
 
   <style>
-    :root { --c:#1976d2; --c2:#1565c0; --b:#e6e6e6; }
-    body { font-family: Arial, sans-serif; padding: 16px; max-width: 920px; margin: 0 auto; }
-    h2 { margin: 0 0 12px; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 12px; }
-    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
-    label { font-weight: 700; display:block; margin: 8px 0 6px; }
+    :root {
+      --blue:       #1a56db;
+      --blue-dark:  #1240a8;
+      --blue-soft:  #e8f0fe;
+      --slate:      #0f172a;
+      --slate-mid:  #334155;
+      --slate-soft: #64748b;
+      --border:     #e2e8f0;
+      --bg:         #f1f5f9;
+      --card:       #ffffff;
+      --accent:     #06b6d4;
+      --radius:     10px;
+      --shadow:     0 1px 3px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--slate);
+      min-height: 100vh;
+    }
+
+    /* ─── HEADER ─────────────────────────────────────── */
+    header {
+      background: var(--slate);
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .header-icon {
+      width: 30px; height: 30px;
+      background: var(--blue);
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .header-icon svg { width: 16px; height: 16px; fill: #fff; }
+
+    header h1 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -.2px;
+      white-space: nowrap;
+    }
+    header h1 span { color: var(--accent); }
+
+    .nav-buttons { display: flex; gap: 7px; flex-shrink: 0; }
+
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 7px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12.5px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: background .18s;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .nav-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    .nav-btn-resumos {
+      background: rgba(255,255,255,.13);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.2);
+    }
+    .nav-btn-resumos:hover { background: rgba(255,255,255,.22); }
+
+    .nav-btn-cirurgias {
+      background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.4);
+      border: 1px solid rgba(255,255,255,.1);
+      cursor: default;
+    }
+
+    .badge-soon {
+      font-size: 9px;
+      font-weight: 700;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 4px;
+      padding: 2px 5px;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 640px) {
+      .nav-btn { padding: 6px 8px; font-size: 11.5px; gap: 4px; }
+      .nav-btn-text { display: none; }
+    }
+
+    /* ─── MAIN ────────────────────────────────────────── */
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 22px 18px 56px;
+    }
+
+    .page-label {
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      color: var(--slate-soft);
+      margin-bottom: 14px;
+    }
+
+    /* ─── TWO-COLUMN CARD ROW ─────────────────────────── */
+    .card-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 720px) {
+      .card-row { grid-template-columns: 1fr; }
+    }
+
+    /* ─── CARD ────────────────────────────────────────── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      box-shadow: var(--shadow);
+      padding: 18px 20px;
+    }
+
+    .card-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .9px;
+      color: var(--blue);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .card-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ─── FIELD GRIDS ─────────────────────────────────── */
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+    .span2 { grid-column: span 2; }
+
+    @media (max-width: 480px) {
+      .g2 { grid-template-columns: 1fr; }
+      .span2 { grid-column: span 1; }
+    }
+
+    /* ─── FORM FIELDS ─────────────────────────────────── */
+    .field { display: flex; flex-direction: column; gap: 4px; }
+
+    label {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--slate-mid);
+      letter-spacing: .1px;
+    }
+
     input, textarea, select {
-      width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc; box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13.5px;
+      color: var(--slate);
+      background: #fafcff;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 11px;
+      width: 100%;
+      transition: border-color .18s, box-shadow .18s, background .18s;
+      outline: none;
     }
-    textarea { resize: vertical; min-height: 84px; }
-    .row { margin-bottom: 10px; }
-    .btns { display:flex; flex-wrap: wrap; gap:10px; margin-top: 12px; }
-    button {
-      padding: 10px 14px; border: none; border-radius: 8px;
-      background: var(--c); color: #fff; font-size: 15px; cursor: pointer;
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--blue);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(26,86,219,.09);
     }
-    button:hover { background: var(--c2); }
-    button.secondary { background: #444; }
-    button.secondary:hover { background: #222; }
-    button.ghost { background: #fff; color: #111; border: 1px solid #bbb; }
-    button.ghost:hover { background: #f2f2f2; }
-    .help { font-size: 12px; color:#555; margin-top: 6px; }
-    .box {
-      margin-top: 14px; padding: 12px; border: 1px solid var(--b); border-radius: 10px;
-      background: #fafafa;
+    input::placeholder, textarea::placeholder {
+      color: #c0ccd8;
+      font-weight: 300;
     }
-    pre { white-space: pre-wrap; word-wrap: break-word; margin: 0; font-family: inherit; }
-    .inline { display:flex; gap:10px; align-items:center; }
-    .inline > div { flex:1; }
-    .hide { display:none; }
-    .signature {
-      position: fixed;
-      right: 10px;
-      bottom: 8px;
-      font-size: 11px;
-      color: rgba(0,0,0,0.45);
-      user-select: none;
-      pointer-events: none;
+    textarea {
+      resize: vertical;
+      min-height: 72px;
+      line-height: 1.5;
+    }
+    select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      padding-right: 28px;
+    }
+
+    .hide { display: none !important; }
+
+    /* ─── ACTIONS ─────────────────────────────────────── */
+    .actions-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      box-shadow: var(--shadow);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 16px;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .18s;
+      white-space: nowrap;
+    }
+    .btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+    .btn-whats  { background: #25D366; color: #fff; }
+    .btn-whats:hover  { background: #1db954; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,211,102,.35); }
+
+    .btn-copy   { background: var(--blue); color: #fff; }
+    .btn-copy:hover   { background: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(26,86,219,.3); }
+
+    .btn-preview {
+      background: var(--blue-soft); color: var(--blue);
+      border: 1.5px solid #c7d9fd;
+    }
+    .btn-preview:hover { background: #d4e4ff; }
+
+    .btn-clear {
+      background: transparent; color: var(--slate-soft);
+      border: 1.5px solid var(--border);
+      margin-left: auto;
+    }
+    .btn-clear:hover { background: #fee2e2; color: #dc2626; border-color: #fca5a5; }
+
+    /* ─── PREVIEW ─────────────────────────────────────── */
+    .preview-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      box-shadow: var(--shadow);
+      padding: 20px 22px;
+      margin-bottom: 14px;
+      display: none;
+      animation: fadeSlide .22s ease;
+    }
+    .preview-card.visible { display: block; }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(7px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .preview-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .preview-label {
+      font-size: 10.5px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .9px;
+      color: var(--slate-soft);
+    }
+    .preview-body {
+      background: #f8fafc; border: 1px solid var(--border);
+      border-radius: 8px; padding: 14px;
+    }
+    pre {
+      white-space: pre-wrap; word-wrap: break-word;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px; line-height: 1.65; color: var(--slate);
+    }
+
+    /* ─── TOAST ───────────────────────────────────────── */
+    .toast {
+      position: fixed; bottom: 22px; left: 50%;
+      transform: translateX(-50%) translateY(16px);
+      background: var(--slate); color: #fff;
+      font-family: 'Outfit', sans-serif; font-size: 13.5px; font-weight: 500;
+      padding: 10px 22px; border-radius: 999px;
+      box-shadow: 0 8px 28px rgba(0,0,0,.22);
+      opacity: 0; pointer-events: none;
+      transition: all .28s cubic-bezier(.34,1.56,.64,1);
+      z-index: 9999; white-space: nowrap;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    .footer-sig {
+      text-align: center; font-size: 11px;
+      color: #94a3b8; margin-top: 28px; letter-spacing: .2px;
     }
   </style>
 </head>
 
 <body>
-  <h2>Encaminhador 2 mil</h2>
 
-  <form id="encaminhamentoForm" autocomplete="off">
-    <div class="grid">
-      <div class="row">
-        <label for="nome">Nome</label>
-        <input id="nome" type="text" placeholder="Nome completo" />
+  <!-- ── HEADER ── -->
+  <header>
+    <div class="header-left">
+      <div class="header-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 13H9V9h2v6zm4 0h-2V9h2v6z"/></svg>
       </div>
+      <h1>Encaminhador <span>2.1 mil</span></h1>
+    </div>
 
-      <div class="row inline">
-        <div>
-          <label for="idade">Idade</label>
-          <input id="idade" type="text" placeholder="Ex.: 45" inputmode="numeric" />
-        </div>
-        <div>
-          <label for="numero">Nº Atendimento</label>
-          <input id="numero" type="text" placeholder="Ex.: 123456" />
-        </div>
-      </div>
+    <nav class="nav-buttons">
+      <a class="nav-btn nav-btn-resumos" href="https://talesrobertosn.github.io/ortopediaresumos/" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        <span class="nav-btn-text">Resumos de Ortopedia</span>
+      </a>
+      <button class="nav-btn nav-btn-cirurgias" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+        <span class="nav-btn-text">Descrições Cirúrgicas</span>
+        <span class="badge-soon">Em breve</span>
+      </button>
+    </nav>
+  </header>
 
-      <div class="row">
-        <label for="convenio">Convênio</label>
-        <select id="convenio">
-          <option value="Unimed">Unimed</option>
-          <option value="Angeli">Angeli</option>
-          <option value="SUS">SUS</option>
-          <option value="Caron">Caron</option>
-          <option value="Amil">Amil</option>
-          <option value="Outro">Outro</option>
-        </select>
-        <div id="wrap_convenio_outro" class="hide" style="margin-top:8px;">
-          <input id="convenio_outro" type="text" placeholder="Qual convênio?" />
-        </div>
-      </div>
+  <!-- ── MAIN ── -->
+  <main>
+    <p class="page-label">Encaminhamento ortopédico</p>
 
-      <div class="row inline">
-        <div>
-          <label for="data">Data do Atendimento</label>
-          <input id="data" type="date" />
-        </div>
-        <div>
-          <label for="data_trauma">Data do Trauma</label>
-          <input id="data_trauma" type="date" />
-        </div>
-      </div>
+    <!-- ROW 1: Identificação | Ocorrência -->
+    <div class="card-row">
 
-      <div class="row">
-        <label for="mecanismo">Mecanismo</label>
-        <input id="mecanismo" type="text" placeholder="Ex.: queda da própria altura / acidente moto" />
-      </div>
-
-      <div class="row">
-        <label for="diagnostico">Diagnóstico</label>
-        <input id="diagnostico" type="text" placeholder="Ex.: fratura do rádio distal D / luxação patelar" />
-      </div>
-
-      <div class="row">
-        <label for="classificacao">Classificação</label>
-        <input id="classificacao" type="text" placeholder="Ex.: AO/OTA, Gustilo, Garden, Lauge-Hansen..." />
-      </div>
-
-      <div class="row inline">
-        <div>
-          <label for="tipo_fratura">Tipo de Fratura</label>
-          <select id="tipo_fratura">
-            <option value="Fechada">Fechada</option>
-            <option value="Aberta">Aberta</option>
-          </select>
-        </div>
-        <div>
-          <label for="muc">MUC</label>
-          <input id="muc" type="text" placeholder="Medicamentos de uso contínuo" />
-        </div>
-      </div>
-
-      <div class="row">
-        <label for="exame_fisico">Exame físico</label>
-        <textarea id="exame_fisico" placeholder="Descrever achados relevantes (dor, ADM, edema, ferida, estabilidade etc.)"></textarea>
-      </div>
-
-      <div class="row">
-        <label for="neurovascular">Exame neurovascular</label>
-        <input id="neurovascular" type="text" placeholder="Perfusão, pulsos, sensibilidade, motricidade" />
-      </div>
-
-      <div class="row">
-        <label for="lesoes">Lesões associadas</label>
-        <input id="lesoes" type="text" placeholder="Ex.: TCE leve, fratura costela, lesão ligamentar..." />
-      </div>
-
-      <div class="row">
-        <label for="comorbidades">Comorbidades</label>
-        <input id="comorbidades" type="text" placeholder="Ex.: HAS, DM2, DRC, anticoagulado..." />
-      </div>
-
-      <div class="row inline">
-        <div>
-          <label for="tabagismo">Tabagismo</label>
-          <select id="tabagismo">
-            <option value="">(não informado)</option>
-            <option value="Sim">Sim</option>
-            <option value="Nega">Nega</option>
-            <option value="Ex-tabagista">Ex-tabagista</option>
-          </select>
-        </div>
-        <div>
-          <label for="alergia">Alergia</label>
-          <select id="alergia">
-            <option value="">(não informado)</option>
-            <option value="Nega">Nega</option>
-            <option value="Sim">Sim</option>
-          </select>
+      <div class="card">
+        <div class="card-title">Identificação</div>
+        <div class="g2">
+          <div class="field span2">
+            <label for="nome">Nome</label>
+            <input id="nome" type="text" placeholder="Nome completo" />
+          </div>
+          <div class="field">
+            <label for="idade">Idade</label>
+            <input id="idade" type="text" placeholder="Ex.: 45" inputmode="numeric" />
+          </div>
+          <div class="field">
+            <label for="numero">Nº Atendimento</label>
+            <input id="numero" type="text" placeholder="Ex.: 123456" />
+          </div>
+          <div class="field">
+            <label for="convenio">Convênio</label>
+            <select id="convenio">
+              <option value="Unimed">Unimed</option>
+              <option value="Angeli">Angeli</option>
+              <option value="SUS">SUS</option>
+              <option value="Caron">Caron</option>
+              <option value="Amil">Amil</option>
+              <option value="Outro">Outro</option>
+            </select>
+            <div id="wrap_convenio_outro" class="hide" style="margin-top:7px;">
+              <input id="convenio_outro" type="text" placeholder="Qual convênio?" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="profissao">Profissão</label>
+            <input id="profissao" type="text" placeholder="Ex.: pedreiro, aposentado..." />
+          </div>
+          <div class="field">
+            <label for="funcionalidade">Funcionalidade</label>
+            <select id="funcionalidade">
+              <option value="">(não informado)</option>
+              <option value="Baixa">Baixa</option>
+              <option value="Moderada">Moderada</option>
+              <option value="Alta">Alta</option>
+              <option value="Ampla">Ampla</option>
+            </select>
+          </div>
         </div>
       </div>
 
-      <div class="row inline">
-        <div>
-          <label for="funcionalidade">Funcionalidade</label>
-          <select id="funcionalidade">
-            <option value="">(não informado)</option>
-            <option value="Baixa">Baixa</option>
-            <option value="Moderada">Moderada</option>
-            <option value="Alta">Alta</option>
-            <option value="Ampla">Ampla</option>
-          </select>
-        </div>
-        <div>
-          <label for="profissao">Profissão</label>
-          <input id="profissao" type="text" placeholder="Ex.: pedreiro, motorista, aposentado..." />
+      <div class="card">
+        <div class="card-title">Ocorrência</div>
+        <div class="g2">
+          <div class="field">
+            <label for="data">Data Atendimento</label>
+            <input id="data" type="date" />
+          </div>
+          <div class="field">
+            <label for="data_trauma">Data do Trauma</label>
+            <input id="data_trauma" type="date" />
+          </div>
+          <div class="field span2">
+            <label for="mecanismo">Mecanismo</label>
+            <input id="mecanismo" type="text" placeholder="Ex.: queda da própria altura / acidente moto" />
+          </div>
+          <div class="field span2">
+            <label for="diagnostico">Diagnóstico</label>
+            <input id="diagnostico" type="text" placeholder="Ex.: fratura do rádio distal D" />
+          </div>
+          <div class="field">
+            <label for="classificacao">Classificação</label>
+            <input id="classificacao" type="text" placeholder="AO/OTA, Gustilo, Garden..." />
+          </div>
+          <div class="field">
+            <label for="tipo_fratura">Tipo de Fratura</label>
+            <select id="tipo_fratura">
+              <option value="Fechada">Fechada</option>
+              <option value="Aberta">Aberta</option>
+            </select>
+          </div>
         </div>
       </div>
 
-      <div class="row">
-        <label for="lesao_previa">Lesão prévia no membro</label>
-        <select id="lesao_previa">
-          <option value="">(não informado)</option>
-          <option value="Sim">Sim</option>
-          <option value="Não">Não</option>
-        </select>
+    </div>
+
+    <!-- ROW 2: Exame Físico | Histórico + Conduta -->
+    <div class="card-row">
+
+      <div class="card">
+        <div class="card-title">Exame Físico</div>
+        <div class="g2">
+          <div class="field span2">
+            <label for="exame_fisico">Achados</label>
+            <textarea id="exame_fisico" placeholder="Dor, ADM, edema, ferida, estabilidade..."></textarea>
+          </div>
+          <div class="field span2">
+            <label for="neurovascular">Exame neurovascular distal</label>
+            <input id="neurovascular" type="text" placeholder="Perfusão, pulsos, sensibilidade, motricidade" />
+          </div>
+          <div class="field span2">
+            <label for="lesoes">Lesões associadas</label>
+            <input id="lesoes" type="text" placeholder="Ex.: TCE leve, fratura costela..." />
+          </div>
+          <div class="field">
+            <label for="lesao_previa">Lesão prévia no membro</label>
+            <select id="lesao_previa">
+              <option value="">(não informado)</option>
+              <option value="Sim">Sim</option>
+              <option value="Não">Não</option>
+            </select>
+          </div>
+        </div>
       </div>
 
-      <div class="row">
-        <label for="conduta">Conduta no plantão</label>
-        <textarea id="conduta" placeholder="Imobilização, analgesia, exames, antibiótico, redução, orientações..."></textarea>
+      <div class="card">
+        <div class="card-title">Histórico Clínico</div>
+        <div class="g2">
+          <div class="field span2">
+            <label for="comorbidades">Comorbidades</label>
+            <input id="comorbidades" type="text" placeholder="Ex.: HAS, DM2, DRC, anticoagulado..." />
+          </div>
+          <div class="field span2">
+            <label for="muc">MUC — Medicamentos de uso contínuo</label>
+            <input id="muc" type="text" placeholder="Listar medicamentos" />
+          </div>
+          <div class="field">
+            <label for="tabagismo">Tabagismo</label>
+            <select id="tabagismo">
+              <option value="">(não informado)</option>
+              <option value="Sim">Sim</option>
+              <option value="Nega">Nega</option>
+              <option value="Ex-tabagista">Ex-tabagista</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="alergia">Alergia</label>
+            <select id="alergia">
+              <option value="">(não informado)</option>
+              <option value="Nega">Nega</option>
+              <option value="Sim">Sim</option>
+            </select>
+          </div>
+          <div class="field span2">
+            <label for="conduta">Conduta no Plantão</label>
+            <textarea id="conduta" placeholder="Imobilização, analgesia, exames, antibiótico, redução..."></textarea>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- AÇÕES -->
+    <div class="actions-card">
+      <button class="btn btn-whats" id="btnWhats">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.561 4.14 1.538 5.878L0 24l6.305-1.511A11.93 11.93 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.017-1.374l-.36-.213-3.737.895.944-3.64-.234-.374A9.775 9.775 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+        Abrir WhatsApp
+      </button>
+
+      <button class="btn btn-copy" id="btnCopy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        Copiar texto
+      </button>
+
+      <button class="btn btn-preview" id="btnPreview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        Pré-visualizar
+      </button>
+
+      <button class="btn btn-clear" id="btnClear">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+        Limpar
+      </button>
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="preview-card" id="previewBox">
+      <div class="preview-header">
+        <span class="preview-label">Pré-visualização</span>
+        <button class="btn btn-preview" id="btnClosePreview" style="padding:5px 12px;font-size:12px;">Fechar</button>
+      </div>
+      <div class="preview-body">
+        <pre id="previewText"></pre>
       </div>
     </div>
 
-    <div class="btns">
-      <button type="button" id="btnWhats">Abrir WhatsApp</button>
-      <button type="button" class="secondary" id="btnCopy">Copiar texto</button>
-      <button type="button" class="ghost" id="btnPreview">Pré-visualizar</button>
-      <button type="button" class="ghost" id="btnClear">Limpar</button>
-    </div>
+    <p class="footer-sig">feito por Tales</p>
+  </main>
 
-    <div class="help">
-      Dica: “Abrir WhatsApp” funciona melhor no celular (abre o app). No desktop, abre o WhatsApp Web em nova aba com a mensagem pronta.
-    </div>
-  </form>
-
-  <div class="box" id="previewBox" style="display:none;">
-    <label style="margin-top:0;">Pré-visualização do texto</label>
-    <pre id="previewText"></pre>
-  </div>
-
-  <div class="signature">feito por Tales</div>
+  <div class="toast" id="toast"></div>
 
 <script>
 (function () {
@@ -231,10 +569,7 @@
 
   function todayISO() {
     const d = new Date();
-    const yyyy = d.getFullYear();
-    const mm = String(d.getMonth() + 1).padStart(2, "0");
-    const dd = String(d.getDate()).padStart(2, "0");
-    return `${yyyy}-${mm}-${dd}`;
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
   }
 
   function humanDate(iso) {
@@ -268,7 +603,6 @@
     dados.data_trauma = humanDate(dados.data_trauma);
 
     let msg = `*Chefes, temos um caso.*\n\n`;
-
     msg += line("Nome", dados.nome);
     msg += line("Idade", dados.idade);
     msg += line("Número de Atendimento", dados.numero);
@@ -290,50 +624,57 @@
     msg += line("Profissão", dados.profissao);
     msg += line("Lesão Prévia no Membro", dados.lesao_previa);
     msg += line("Conduta no Plantão", dados.conduta);
-
     msg += `\n*Aguardo conduta.*`;
     return msg.trim();
+  }
+
+  function showToast(msg) {
+    const t = $("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    setTimeout(() => t.classList.remove("show"), 2200);
   }
 
   async function copyToClipboard(text) {
     try {
       await navigator.clipboard.writeText(text);
-      alert("Texto copiado para a área de transferência.");
+      showToast("✓ Texto copiado!");
     } catch (e) {
       const ta = document.createElement("textarea");
-      ta.value = text;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand("copy");
-      document.body.removeChild(ta);
-      alert("Texto copiado (modo compatibilidade).");
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      document.execCommand("copy"); document.body.removeChild(ta);
+      showToast("✓ Texto copiado (compatibilidade)");
     }
   }
 
   function openWhatsApp(text) {
-    const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
-    window.open(url, "_blank", "noopener,noreferrer");
+    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
   }
 
   function toggleConvenioOutro() {
-    const wrap = $("wrap_convenio_outro");
-    if (getValue("convenio") === "Outro") wrap.classList.remove("hide");
-    else wrap.classList.add("hide");
+    getValue("convenio") === "Outro"
+      ? $("wrap_convenio_outro").classList.remove("hide")
+      : $("wrap_convenio_outro").classList.add("hide");
   }
 
-  function preview() {
+  function togglePreview() {
     const box = $("previewBox");
-    const pre = $("previewText");
-    pre.textContent = buildMessage();
-    box.style.display = "block";
-    box.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (box.classList.contains("visible")) {
+      box.classList.remove("visible");
+    } else {
+      $("previewText").textContent = buildMessage();
+      box.classList.add("visible");
+      setTimeout(() => box.scrollIntoView({ behavior:"smooth", block:"start" }), 50);
+    }
   }
 
   function clearForm() {
-    $("encaminhamentoForm").reset();
+    ids.forEach(id => { const el = $(id); if (el) el.value = ""; });
     $("data").value = todayISO();
+    $("tipo_fratura").value = "Fechada";
     toggleConvenioOutro();
-    $("previewBox").style.display = "none";
+    $("previewBox").classList.remove("visible");
+    showToast("Formulário limpo");
   }
 
   // Init
@@ -341,24 +682,18 @@
   toggleConvenioOutro();
 
   $("convenio").addEventListener("change", toggleConvenioOutro);
-
   $("btnWhats").addEventListener("click", () => openWhatsApp(buildMessage()));
   $("btnCopy").addEventListener("click", async () => await copyToClipboard(buildMessage()));
-  $("btnPreview").addEventListener("click", preview);
+  $("btnPreview").addEventListener("click", togglePreview);
+  $("btnClosePreview").addEventListener("click", () => $("previewBox").classList.remove("visible"));
   $("btnClear").addEventListener("click", clearForm);
 
-  // Atalhos: Ctrl+Enter = WhatsApp | Ctrl+Shift+C = copiar
   document.addEventListener("keydown", async (e) => {
-    if (e.ctrlKey && e.key === "Enter") {
-      e.preventDefault();
-      openWhatsApp(buildMessage());
-    }
-    if (e.ctrlKey && e.shiftKey && (e.key.toLowerCase() === "c")) {
-      e.preventDefault();
-      await copyToClipboard(buildMessage());
-    }
+    if (e.ctrlKey && e.key === "Enter") { e.preventDefault(); openWhatsApp(buildMessage()); }
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "c") { e.preventDefault(); await copyToClipboard(buildMessage()); }
   });
 })();
 </script>
+
 </body>
 </html>
