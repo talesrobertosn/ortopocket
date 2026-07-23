@@ -113,6 +113,9 @@ button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit
 .txt p{margin:0 0 11px;font-size:13.5px;line-height:1.58;color:var(--ink2)}
 .txt .interp{background:var(--gold-bg);border-left:3px solid #d8b45a;padding:9px 12px;border-radius:0 7px 7px 0;margin-bottom:11px}
 .txt .interp p{margin:0;font-size:13.2px}
+.dx{border:1px solid var(--pos-bd);border-left:3px solid var(--pos);border-radius:0 8px 8px 0;padding:9px 12px;margin-bottom:11px;background:#fdf7f6}
+.dx .lbdx{display:block;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--pos);font-weight:800;margin-bottom:6px}
+.dxi{display:inline-block;font-size:11.8px;line-height:1.35;background:#fff;color:#7d1a11;border:1px solid var(--pos-bd);border-radius:20px;padding:3px 10px;margin:2px 4px 2px 0}
 .txt .nota{font-size:12.3px;color:var(--mut);border-left:2px solid var(--line);padding-left:10px}
 body.compacto .bl-tec{display:none}
 .ctr{border-top:1px solid var(--line2);padding:11px 16px;background:#fbfaf7}
@@ -774,6 +777,82 @@ const SECOES = [
  interp:"A injeção intra-articular de contraste e anestésico tem grande utilidade para incluir ou excluir doença intra-articular, com melhor resposta em pacientes com lesões condrais. Ressonância positiva para lesão labral com teste anestésico negativo obriga a investigar outras causas de dor."}
 ]}
 ];
+/* ============ O QUE O TESTE POSITIVO INDICA (apenas apresentação) ============ */
+const DX = {
+/* --- em pé --- */
+locdor:["Inguinal: coxartrose, lesão labral, impacto femoroacetabular","Face lateral: síndrome da dor peritrocantérica","Posterior: coluna lombar, síndrome da dor glútea profunda, síndrome do piriforme"],
+sinalc:["Doença intra-articular","Coxartrose","Lesão labral","Impacto femoroacetabular"],
+inspest:["Coxartrose avançada com desuso","Sequela de doença do quadril na infância","Dismetria de membros","Contratura em adução ou abdução"],
+coluna:["Escoliose estrutural","Dismetria de membros","Síndrome quadril-coluna","Espasmo paravertebral inflamatório"],
+beighton:["Frouxidão articular generalizada","Microinstabilidade do quadril","Doenças do tecido conjuntivo"],
+angpe:["Anteversão femoral exagerada","Retroversão femoral","Alterações torcionais do membro"],
+marcha:["Coxartrose","Insuficiência da musculatura abdutora","Dismetria de membros","Impacto isquiofemoral"],
+trendel:["Insuficiência da musculatura abdutora","Tendinopatia ou lesão dos glúteos médio e mínimo","Displasia do quadril","Coxartrose avançada"],
+ressmarcha:["Coxa saltans interna, do iliopsoas","Coxa saltans externa, do trato iliotibial","Corpos livres intra-articulares"],
+/* --- sentado --- */
+vasc:["Doença arterial obstrutiva periférica","Claudicação vascular como diagnóstico diferencial"],
+insppele:["Insuficiência venosa","Linfedema","Causas não ortopédicas de dor inguinal"],
+neuro:["Radiculopatia lombar","Hérnia de disco lombar","Síndrome quadril-coluna","Neuropatia periférica"],
+rotsent:["Perda de rotação interna: coxartrose e impacto femoroacetabular","Rotação externa aumentada com interna reduzida: retroversão femoral","Rotação interna aumentada: anteversão femoral"],
+abdsent:["Coxartrose","Contratura da musculatura adutora","Rigidez capsular"],
+palpisq:["Tendinopatia proximal dos isquiotibiais","Síndrome da dor glútea profunda","Aprisionamento do nervo pudendo"],
+pirisent:["Síndrome do músculo piriforme","Síndrome da dor glútea profunda","Aprisionamento do nervo isquiático"],
+lasseg:["Hérnia de disco lombar","Radiculopatia lombossacral","Ciatalgia"],
+isquio:["Encurtamento dos isquiotibiais","Tendinopatia proximal dos isquiotibiais"],
+/* --- decúbito dorsal --- */
+comp:["Dismetria verdadeira dos membros","Sequela de fratura ou de artroplastia","Obliquidade pélvica","Contratura em adução ou abdução"],
+adm:["Coxartrose","Impacto femoroacetabular","Rigidez capsular","Artrite ou sinovite"],
+palpabd:["Hérnia inguinal ou fascial","Pubalgia atlética","Causas abdominais de dor inguinal"],
+sinfise:["Osteíte púbica","Fratura de ramo púbico","Pubalgia atlética"],
+tubadd:["Tendinopatia dos adutores","Pubalgia atlética"],
+tinel:["Neuropatia do nervo femoral","Compressão do nervo femoral pelo tendão do psoas"],
+thomas:["Contratura em flexão do quadril","Coxartrose","Contratura do iliopsoas ou do reto femoral","Neuropatia femoral"],
+patrick:["Doença intra-articular do quadril","Impacto femoroacetabular","Coxartrose","Doença da articulação sacroilíaca quando a dor é contralateral"],
+gaenslen:["Doença da articulação sacroilíaca","Sacroileíte"],
+logroll:["Sinovite","Derrame articular","Frouxidão capsular","Doença intra-articular em geral"],
+dial:["Frouxidão capsular","Microinstabilidade do quadril"],
+diri:["Impacto femoroacetabular anterior","Lesão labral anterior","Lesão condral anterossuperior"],
+dire:["Impacto femoroacetabular superior","Lesão labral superior"],
+rebpost:["Impacto do rebordo posterior","Retroversão acetabular","Instabilidade anterior com lesão em contragolpe"],
+fadir:["Impacto femoroacetabular anterior, tipo came ou pinça","Lesão labral anterossuperior","Coxartrose inicial"],
+mccarthy:["Impacto femoroacetabular anterior","Ruptura labral"],
+stinch:["Doença intra-articular","Tendinopatia do iliopsoas","Fratura oculta do colo femoral"],
+lasegue:["Hérnia de disco lombar","Radiculopatia lombossacral","Síndrome do piriforme quando a dor ocorre só com a flexão"],
+percuss:["Fratura oculta do colo femoral","Fratura por estresse","Doença óssea, incluindo lesão tumoral"],
+flexoadd:["Coxartrose","Contratura capsular","Impacto femoroacetabular"],
+fovea:["Doença intra-articular","Lesão condral","Lesão do ligamento redondo"],
+escora:["Incongruência femoroacetabular","Impacto femoroacetabular"],
+apreensaod:["Displasia do quadril","Instabilidade anterior","Microinstabilidade"],
+pace:["Síndrome do músculo piriforme","Síndrome da dor glútea profunda"],
+freiberg:["Síndrome do músculo piriforme"],
+hernia:["Hérnia do esporte","Pubalgia atlética","Enfraquecimento da parede posterior do canal inguinal"],
+/* --- decúbito lateral --- */
+insptroc:["Sequela de doença de Legg-Calvé-Perthes","Coxa vara da infância","Epifisiólise proximal do fêmur"],
+palpfac:["Síndrome da dor peritrocantérica","Tendinopatia dos glúteos médio e mínimo","Bursite trocantérica","Avulsão óssea ou lesão do ventre muscular"],
+palppost:["Doença da articulação sacroilíaca","Tendinopatia proximal dos isquiotibiais","Síndrome do músculo piriforme","Aprisionamento do nervo isquiático"],
+forcaabd:["Lesão ou tendinopatia dos glúteos médio e mínimo","Displasia do quadril","Neuropatia do nervo glúteo superior"],
+addpass:["Contratura do tensor da fáscia lata","Contratura do glúteo médio","Contratura do glúteo máximo"],
+ober:["Contratura do trato iliotibial","Síndrome da dor peritrocantérica","Coxa saltans externa"],
+reblat:["Impacto femoroacetabular do rebordo lateral e superior","Lesão labral superior"],
+apreensaol:["Instabilidade do quadril","Displasia do quadril"],
+cambio:["Deformidade tipo came","Impacto femoroacetabular","Sequela de epifisiólise"],
+piriativo:["Síndrome do músculo piriforme","Síndrome da dor glútea profunda"],
+isqfem:["Impacto isquiofemoral","Edema do músculo quadrado femoral"],
+biciclet:["Fraqueza da musculatura glútea abdutora","Lesão dos abdutores","Displasia do quadril","Coxa saltans externa"],
+/* --- decúbito ventral --- */
+craig:["Anteversão femoral exagerada","Retroversão femoral","Impacto femoroacetabular por alteração torcional"],
+ely:["Contratura do músculo reto femoral"],
+phelps:["Contratura do músculo grácil"],
+hiperext:["Síndrome facetária lombar","Doença da articulação sacroilíaca","Espondilólise"],
+rotvent:["Alterações torcionais do fêmur","Rigidez capsular","Diferenciação entre doença óssea e ligamentar"],
+ranawat:["Cicatrização da cápsula posterior após artroplastia por via posterolateral"],
+sentares:["Hérnia do esporte","Pubalgia atlética"],
+palpvent:["Sacroileíte","Síndrome facetária lombar","Tendinopatia da origem do glúteo máximo"],
+/* --- ressaltos e complementos --- */
+ressint:["Coxa saltans interna","Tendinopatia do iliopsoas","Ressalto do iliopsoas após artroplastia total do quadril"],
+ressext:["Coxa saltans externa","Síndrome da dor peritrocantérica"],
+nantes:["Aprisionamento do nervo pudendo"]
+};
 /* ====================== ESTADO ====================== */
 let LADO = "D";
 let ATIVA = "dorsal";                 /* abre direto no decúbito dorsal */
@@ -858,9 +937,15 @@ function pill(t){
   return {cls:"n", txt:"Normal", card:"st-neg"};
 }
 
+function dxHTML(id){
+  const d = DX[id]; if(!d || !d.length) return "";
+  return '<div class="dx"><span class="lbdx">Resultado positivo indica</span>'
+       + d.map(x => '<span class="dxi">'+x+'</span>').join("") + '</div>';
+}
+
 function cardHTML(t, i){
   const st = pill(t), temFig = !!(t.fig && t.fig.length);
-  return '<article class="card '+st.card+'" id="c_'+t.id+'" data-busca="'+((t.nome+" "+(t.curto||"")+" "+(t.tec||"")+" "+(t.interp||"")).toLowerCase().replace(/["<>]/g,""))+'">'
+  return '<article class="card '+st.card+'" id="c_'+t.id+'" data-busca="'+((t.nome+" "+(t.curto||"")+" "+(t.tec||"")+" "+(t.interp||"")+" "+((DX[t.id]||[]).join(" "))).toLowerCase().replace(/["<>]/g,""))+'">'
    + '<div class="card-h"><span class="idx">'+String(i).padStart(2,"0")+'</span>'
    + '<h4>'+t.nome+'</h4>'
    + '<div class="tags">'+(t.cam||[]).map(c=>'<span class="tag '+TAGCLS[c]+'">'+c+'</span>').join("")+'</div>'
@@ -870,6 +955,7 @@ function cardHTML(t, i){
    + '<div class="txt">'
    + '<div class="bl-tec"><div class="lb">Técnica</div><p>'+t.tec+'</p></div>'
    + (t.interp ? '<div class="lb">Interpretação</div><div class="interp"><p>'+t.interp+'</p></div>' : "")
+   + dxHTML(t.id)
    + (t.nota ? '<div class="nota">'+t.nota+'</div>' : "")
    + '</div></div>'
    + '<div class="ctr">'+ctrHTML(t)+'</div></article>';
