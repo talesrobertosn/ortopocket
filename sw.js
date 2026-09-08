@@ -1,4 +1,4 @@
-const CACHE = "ortopocket-v1";
+const CACHE = "ortopocket-v2";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
