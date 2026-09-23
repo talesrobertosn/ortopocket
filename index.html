@@ -86,28 +86,57 @@ button{font-family:inherit}
 
 /* ── CABEÇALHO ────────────────────────────────────── */
 header{
-  height:56px; padding:0 20px;
-  background:linear-gradient(180deg,#12252D,#0B1A21);
-  border-bottom:1px solid rgba(214,164,78,.3);
+  height:60px; padding:0 20px;
+  background:
+    radial-gradient(520px 110px at 12% 0%, rgba(87,183,205,.16), transparent 70%),
+    radial-gradient(460px 110px at 88% 0%, rgba(214,164,78,.13), transparent 70%),
+    linear-gradient(180deg,#14303A,#0B1A21);
   display:flex; align-items:center; justify-content:space-between; gap:16px;
   position:sticky; top:0; z-index:60;
-  box-shadow:0 8px 24px -18px rgba(0,0,0,.8);
+  box-shadow:0 10px 28px -18px rgba(0,0,0,.85);
 }
-.brand{display:flex;align-items:baseline;gap:7px;min-width:0}
+header::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(214,164,78,.75) 25%,rgba(240,201,120,.9) 50%,rgba(214,164,78,.75) 75%,transparent);
+}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand .bt{display:flex;align-items:baseline;gap:7px;min-width:0}
+.logo{
+  width:34px;height:34px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(145deg,#1E7B8F,#0E4E5E 60%,#0A3A46);border:1px solid rgba(240,201,120,.65);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 6px 14px -6px rgba(0,0,0,.7);
+  font-family:'Instrument Serif',Georgia,serif;font-size:23px;line-height:1;color:#F0C978;padding-top:2px;
+}
 .brand b{font-family:'Instrument Serif',Georgia,serif;font-size:24px;font-weight:400;color:#fff;letter-spacing:.2px;white-space:nowrap}
 .brand i{font-family:'Instrument Serif',Georgia,serif;font-size:19px;color:#D6A44E;white-space:nowrap}
 nav{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .nav-btn{
   display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;
   border-radius:9px;font-size:12.5px;font-weight:500;text-decoration:none;
-  color:#C4D0D6;border:1px solid rgba(255,255,255,.14);background:transparent;
+  color:#C9D5DA;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);
   white-space:nowrap;transition:background .18s,border-color .18s,color .18s,transform .18s;
 }
 .nav-btn svg{width:15px;height:15px;flex-shrink:0}
 .nav-btn:hover{background:rgba(255,255,255,.09);color:#fff;border-color:rgba(255,255,255,.3);transform:translateY(-1px)}
-/* OrtoQuestões em dourado — mesmo tamanho dos outros botões */
-.nav-btn.gold{color:#F0C978;border-color:rgba(214,164,78,.65);background:linear-gradient(180deg,rgba(214,164,78,.18),rgba(214,164,78,.07))}
-.nav-btn.gold:hover{color:#FFE0A0;border-color:#D6A44E;background:linear-gradient(180deg,rgba(214,164,78,.28),rgba(214,164,78,.12))}
+/* OrtoQuestões — dourado premium, mesmo tamanho dos outros botões */
+.nav-btn.gold{
+  position:relative;overflow:hidden;isolation:isolate;
+  color:#2B1B04;font-weight:700;letter-spacing:.01em;border-color:#F6D992;
+  background:linear-gradient(135deg,#FBE7AE 0%,#E9BE63 38%,#C8923A 72%,#E3B45A 100%);
+  box-shadow:0 0 0 1px rgba(214,164,78,.28),0 8px 20px -8px rgba(233,190,99,.85),inset 0 1px 0 rgba(255,255,255,.65),inset 0 -1px 0 rgba(120,78,18,.35);
+  text-shadow:0 1px 0 rgba(255,240,200,.45);
+}
+.nav-btn.gold::after{
+  content:'';position:absolute;top:-10%;left:-70%;width:45%;height:120%;z-index:-1;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);
+  transform:skewX(-20deg);animation:brilho 5s ease-in-out infinite;
+}
+@keyframes brilho{0%,68%{left:-70%}100%{left:135%}}
+.nav-btn.gold:hover{
+  color:#1E1302;border-color:#FFF0C4;transform:translateY(-1px);filter:brightness(1.05) saturate(1.05);
+  background:linear-gradient(135deg,#FBE7AE 0%,#E9BE63 38%,#C8923A 72%,#E3B45A 100%);
+  box-shadow:0 0 0 1px rgba(240,201,120,.45),0 10px 26px -8px rgba(240,201,120,.95),inset 0 1px 0 rgba(255,255,255,.7);
+}
 
 /* Interruptor de tema */
 .theme-switch{
@@ -141,10 +170,11 @@ html[data-theme="dark"] .ts-knob .i-sun{display:none}
 @media(max-width:640px){
   header{padding:0 12px;gap:8px}
   .brand b{font-size:20px}.brand i{font-size:16px}
+  .logo{width:30px;height:30px;font-size:20px}
   .nav-btn span{display:none}.nav-btn{padding:0 9px}
   nav{gap:6px}
 }
-@media(max-width:380px){.brand b{display:none}}
+@media(max-width:420px){.brand .bt{display:none}}
 
 /* ── ESTRUTURA ────────────────────────────────────── */
 .shell{
@@ -238,14 +268,15 @@ optgroup option{color:var(--ink);font-weight:400}
 .quick button[aria-pressed="true"]::before{content:'✓ ';opacity:1}
 
 /* botões de escolha única (tabagismo, alergia) */
-.pick{display:flex;gap:4px;background:var(--surface-2);border:1px solid var(--line-soft);border-radius:10px;padding:3px}
+.pick{display:flex;flex-wrap:wrap;gap:4px;background:var(--surface-2);border:1px solid var(--line-soft);border-radius:10px;padding:3px}
 .pick button{white-space:nowrap;
-  flex:1;height:28px;min-width:0;border:none;border-radius:7px;background:transparent;cursor:pointer;
+  flex:1 1 auto;height:28px;min-width:0;padding:0 8px;border:none;border-radius:7px;background:transparent;cursor:pointer;
   font-size:12.5px;font-weight:500;color:var(--ink-3);transition:background .15s,color .15s,box-shadow .15s;
 }
 .pick button:hover{color:var(--ink);background:var(--field-hover)}
 .pick button[aria-pressed="true"]{background:var(--petrol);color:#fff;font-weight:600;box-shadow:0 1px 2px rgba(11,26,33,.2)}
 html[data-theme="dark"] .pick button[aria-pressed="true"]{color:#0A1418}
+@media(max-width:520px){.pick button{padding:0 3px;font-size:12px}}
 
 /* ── AUTOCOMPLETAR DE CLASSIFICAÇÕES ─────────────── */
 .ac{position:relative}
@@ -434,7 +465,7 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
 <body>
 
 <header>
-  <div class="brand"><b>Encaminhador</b><i>2.3 mil</i></div>
+  <div class="brand"><span class="logo" aria-hidden="true">E</span><span class="bt"><b>Encaminhador</b><i>2.3 mil</i></span></div>
   <nav>
     <a class="nav-btn" href="https://talesrobertosn.github.io/ortopocket/quadriltales.html" target="_blank" rel="noopener noreferrer" title="Exame Físico Ambulatorial do Quadril">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="5" r="2.4"/><path d="M8.5 21l1.6-6.4L12 12.8l1.9 1.8L15.5 21"/><path d="M6.4 9.6C8 8.6 10 8.1 12 8.1s4 .5 5.6 1.5"/></svg>
@@ -447,7 +478,7 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
       <span class="n-short">Resumos</span>
     </a>
     <a class="nav-btn gold" href="http://ortoquestoes.com.br/" target="_blank" rel="noopener noreferrer" title="OrtoQuestões - Banco de questões de ortopedia">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.2a2.5 2.5 0 114.1 2.4c-.9.7-1.7 1.2-1.7 2.3"/><path d="M12 17.2h.01"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.1 5.9L20 10l-5.9 2.1L12 18l-2.1-5.9L4 10l5.9-2.1z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z" opacity=".75"/></svg>
       <span>OrtoQuestões</span>
     </a>
     <button class="theme-switch" id="themeBtn" type="button" role="switch" aria-checked="false" title="Alternar modo claro / escuro">
@@ -491,22 +522,22 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
             <label for="numero">Nº de atendimento</label>
             <input id="numero" type="text" placeholder="123456" autocomplete="off" />
           </div>
-          <div class="field">
-            <label for="convenio">Convênio</label>
-            <select id="convenio">
-              <option value="">Não informado</option>
-              <option value="Unimed">Unimed</option>
-              <option value="Angeli">Angeli</option>
-              <option value="SUS">SUS</option>
-              <option value="Caron">Caron</option>
-              <option value="Amil">Amil</option>
-              <option value="Outro">Outro</option>
-            </select>
+          <div class="field full">
+            <label id="lbl_convenio">Convênio</label>
+            <input id="convenio" type="hidden" />
+            <div class="pick" data-for="convenio" role="group" aria-labelledby="lbl_convenio">
+              <button type="button" data-v="SUS">SUS</button>
+              <button type="button" data-v="Unimed">Unimed</button>
+              <button type="button" data-v="Angeli">Angeli</button>
+              <button type="button" data-v="Caron">Caron</button>
+              <button type="button" data-v="Amil">Amil</button>
+              <button type="button" data-v="Outro">Outro</button>
+            </div>
             <div id="wrap_convenio_outro" class="hide" style="margin-top:6px;">
               <input id="convenio_outro" type="text" placeholder="Qual convênio?" autocomplete="off" />
             </div>
           </div>
-          <div class="field">
+          <div class="field full">
             <label for="profissao">Profissão</label>
             <input id="profissao" type="text" placeholder="Pedreiro, aposentado..." />
           </div>
@@ -551,12 +582,12 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
             <input id="mecanismo" type="text" placeholder="Queda da própria altura..." />
           </div>
           <div class="field">
-            <label for="tipo_fratura">Tipo de fratura</label>
-            <select id="tipo_fratura">
-              <option value="">Não se aplica</option>
-              <option value="Fechada">Fechada</option>
-              <option value="Aberta">Aberta</option>
-            </select>
+            <label id="lbl_tipo_fratura">Tipo de fratura</label>
+            <input id="tipo_fratura" type="hidden" />
+            <div class="pick" data-for="tipo_fratura" role="group" aria-labelledby="lbl_tipo_fratura">
+              <button type="button" data-v="Fechada">Fechada</button>
+              <button type="button" data-v="Exposta">Exposta</button>
+            </div>
           </div>
           <div class="field full">
             <label for="diagnostico">Diagnóstico</label>
@@ -588,6 +619,13 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
           <div class="field full">
             <label for="exame_fisico">Achados</label>
             <textarea id="exame_fisico" placeholder="Dor, amplitude de movimento, edema, ferida, estabilidade..."></textarea>
+            <div class="quick" data-for="exame_fisico">
+              <button type="button" data-t="Dor à palpação">Dor à palpação</button>
+              <button type="button" data-t="edema">Edema</button>
+              <button type="button" data-t="deformidade">Deformidade</button>
+              <button type="button" data-t="crepitação">Crepitação</button>
+              <button type="button" data-t="impotência funcional">Impotência funcional</button>
+            </div>
           </div>
           <div class="field full">
             <label for="neurovascular">Exame neurovascular distal</label>
@@ -606,12 +644,12 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
             </div>
           </div>
           <div class="field full">
-            <label for="lesao_previa">Lesão prévia no membro</label>
-            <select id="lesao_previa">
-              <option value="">Não informado</option>
-              <option value="Sim">Sim</option>
-              <option value="Não">Não</option>
-            </select>
+            <label id="lbl_lesao_previa">Lesão prévia no membro</label>
+            <input id="lesao_previa" type="hidden" />
+            <div class="pick" data-for="lesao_previa" role="group" aria-labelledby="lbl_lesao_previa">
+              <button type="button" data-v="Não">Não</button>
+              <button type="button" data-v="Sim">Sim</button>
+            </div>
           </div>
         </div>
       </section>
@@ -634,6 +672,10 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
             <input id="muc" type="text" placeholder="Listar medicamentos" />
             <div class="quick" data-for="muc">
               <button type="button" data-t="Nega">Nega</button>
+              <button type="button" data-t="losartana">Losartana</button>
+              <button type="button" data-t="hidroclorotiazida">Hidroclorotiazida</button>
+              <button type="button" data-t="metformina">Metformina</button>
+              <button type="button" data-t="AAS">AAS</button>
             </div>
           </div>
           <div class="field">
@@ -1049,7 +1091,7 @@ const CLASSIFICACOES = [
     ["2","Junção metáfise-diáfise (fratura de Jones) — irrigação precária"],
     ["3","Diáfise proximal — fratura por estresse"]
   ]},
-  { n:"Gustilo-Anderson", r:"Fratura exposta", f:"Aberta", k:"gustilo gustillo anderson exposta aberta", g:[
+  { n:"Gustilo-Anderson", r:"Fratura exposta", f:"Exposta", k:"gustilo gustillo anderson exposta aberta", g:[
     ["I","Ferida < 1 cm, limpa, baixa energia"],
     ["II","Ferida 1–10 cm, sem lesão extensa de partes moles"],
     ["IIIA","Lesão extensa de partes moles, cobertura óssea adequada"],
@@ -1413,6 +1455,10 @@ const CLASSIFICACOES = [
       if (!b) return;
       const el = $(p.dataset.for);
       el.value = el.value === b.dataset.v ? "" : b.dataset.v;
+      if (p.dataset.for === "convenio"){
+        toggleConvenio();
+        if (el.value === "Outro") $("convenio_outro").focus();
+      }
       render();
     });
   });
@@ -1568,7 +1614,7 @@ const CLASSIFICACOES = [
     el.addEventListener("input", render);
     el.addEventListener("change", render);
   });
-  $("convenio").addEventListener("change", toggleConvenio);
+
 
   bindSeg("segBold", "bold");
   bindSeg("segCase", "caixa");
