@@ -278,14 +278,18 @@ html[data-theme="dark"] .pick button[aria-pressed="true"]{color:#0A1418}
 
 /* ── AUTOCOMPLETAR DE CLASSIFICAÇÕES ─────────────── */
 .ac{position:relative}
-.ac input{padding-right:40px}
+.ac input{padding-right:84px;cursor:pointer}
+.ac input:focus{cursor:text}
 .ac-btn{
-  position:absolute;right:4px;top:4px;height:calc(100% - 8px);width:30px;border-radius:7px;
-  border:none;background:transparent;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;
-  transition:background .15s,color .15s;
+  position:absolute;right:4px;top:4px;height:calc(100% - 8px);padding:0 8px 0 10px;border-radius:7px;gap:4px;
+  border:1px solid var(--line);background:var(--petrol-tint);color:var(--petrol);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:600;
+  transition:background .15s,color .15s,border-color .15s;
 }
-.ac-btn:hover,.ac-btn[aria-expanded="true"]{background:var(--petrol-tint);color:var(--petrol)}
-.ac-btn svg{width:16px;height:16px}
+.ac-btn:hover,.ac-btn[aria-expanded="true"]{background:var(--petrol);border-color:var(--petrol);color:#fff}
+html[data-theme="dark"] .ac-btn:hover,html[data-theme="dark"] .ac-btn[aria-expanded="true"]{color:#0A1418}
+.ac-btn svg{width:13px;height:13px;transition:transform .15s}
+.ac-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
 .ac-menu{
   position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:40;
   background:var(--menu);border:1px solid var(--line);border-radius:12px;
@@ -575,11 +579,23 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
             <label for="data_trauma">Data do trauma</label>
             <input id="data_trauma" type="date" />
           </div>
-          <div class="field">
+          <div class="field full">
             <label for="mecanismo">Mecanismo</label>
-            <input id="mecanismo" type="text" placeholder="Queda da própria altura..." />
+            <input id="mecanismo" type="text" placeholder="Queda da própria altura, acidente de moto..." />
+            <div class="quick" data-for="mecanismo">
+              <button type="button" data-t="Queda da própria altura">Queda da própria altura</button>
+              <button type="button" data-t="acidente de moto">Acidente de moto</button>
+              <button type="button" data-t="acidente automobilístico">Acidente de carro</button>
+              <button type="button" data-t="queda de altura">Queda de altura</button>
+              <button type="button" data-t="trauma direto">Trauma direto</button>
+              <button type="button" data-t="entorse">Entorse</button>
+            </div>
           </div>
-          <div class="field">
+          <div class="field full">
+            <label for="diagnostico">Diagnóstico</label>
+            <input id="diagnostico" type="text" placeholder="Fratura do rádio distal direito" />
+          </div>
+          <div class="field full">
             <label id="lbl_tipo_fratura">Tipo de fratura</label>
             <input id="tipo_fratura" type="hidden" />
             <div class="pick" data-for="tipo_fratura" role="group" aria-labelledby="lbl_tipo_fratura">
@@ -588,16 +604,12 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
             </div>
           </div>
           <div class="field full">
-            <label for="diagnostico">Diagnóstico</label>
-            <input id="diagnostico" type="text" placeholder="Fratura do rádio distal direito" />
-          </div>
-          <div class="field full">
             <label for="classificacao">Classificação</label>
             <div class="ac" id="ac">
-              <input id="classificacao" type="text" placeholder="Digite: Schatzker, Neer, Garden, Weber..." autocomplete="off"
+              <input id="classificacao" type="text" placeholder="Toque para ver ou digite: Schatzker, Neer..." autocomplete="off"
                      role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="acList" />
               <button class="ac-btn" id="acBtn" type="button" title="Ver todas as classificações" aria-label="Ver todas as classificações" aria-expanded="false">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+                Lista<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
               </button>
               <div class="ac-menu hide" id="acMenu">
                 <div class="ac-head hide" id="acHead"></div>
@@ -623,6 +635,11 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
               <button type="button" data-t="deformidade">Deformidade</button>
               <button type="button" data-t="crepitação">Crepitação</button>
               <button type="button" data-t="impotência funcional">Impotência funcional</button>
+              <button type="button" data-t="equimose">Equimose</button>
+              <button type="button" data-t="limitação da amplitude de movimento">Limitação da ADM</button>
+              <button type="button" data-t="encurtamento e rotação externa do membro">Encurtamento + rot. externa</button>
+              <button type="button" data-t="pele íntegra">Pele íntegra</button>
+              <button type="button" data-t="compartimentos livres">Compartimentos livres</button>
             </div>
           </div>
           <div class="field full">
@@ -704,6 +721,11 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
               <button type="button" data-t="Fixador externo em centro cirúrgico">Fixador externo no CC</button>
               <button type="button" data-t="Aguarda tomografia">Aguarda tomografia</button>
               <button type="button" data-t="Antibioticoterapia conforme protocolo de fratura exposta">ATB protocolo fratura exposta</button>
+              <button type="button" data-t="analgesia">Analgesia</button>
+              <button type="button" data-t="redução incruenta">Redução incruenta</button>
+              <button type="button" data-t="profilaxia antitetânica">Antitetânica</button>
+              <button type="button" data-t="jejum">Jejum</button>
+              <button type="button" data-t="internação para tratamento cirúrgico">Internação p/ cirurgia</button>
             </div>
           </div>
         </div>
@@ -908,12 +930,24 @@ const CLASSIFICACOES = [
     ["II","Terço lateral (~15%) — subclassificar por Neer"],
     ["III","Terço medial (~5%)"]
   ]},
+  { n:"Neer clavícula", r:"Clavícula distal", o:"Neer {c} (clavícula distal)", k:"neer nir clavicula distal lateral", g:[
+    ["I","Lateral aos ligamentos coracoclaviculares — estável"],
+    ["IIA","Medial ao conoide e ao trapezoide — instável"],
+    ["IIB","Entre conoide e trapezoide, conoide roto — instável"],
+    ["III","Intra-articular (acromioclavicular)"],
+    ["IV","Criança: desenluvamento periosteal"],
+    ["V","Cominutiva; ligamentos CC presos a fragmento inferior"]
+  ]},
   { n:"Gartland", r:"Supracondiliana do úmero (criança)", k:"gartlan supracondiliana supracondilar cotovelo crianca pediatrica", g:[
     ["I","Sem desvio (pode haver apenas sinal do coxim gorduroso)"],
     ["IIA","Desviada, cortical posterior íntegra, sem rotação ou translação"],
     ["IIB","Desviada, cortical posterior íntegra, com rotação ou translação"],
     ["III","Desvio completo, sem contato cortical"],
     ["IV","Instabilidade multidirecional (periósteo rompido circunferencialmente)"]
+  ]},
+  { n:"Milch", r:"Côndilo lateral do úmero (criança)", k:"milch condilo lateral umero cotovelo crianca pediatrica", g:[
+    ["I","Traço lateral à tróclea, pelo capítulo — estável"],
+    ["II","Traço estende-se à tróclea — instável"]
   ]},
   { n:"Mason", r:"Cabeça do rádio", k:"meison mason johnston cabeca radio cotovelo", g:[
     ["I","Sem desvio ou desvio < 2 mm; sem bloqueio mecânico"],
@@ -949,6 +983,31 @@ const CLASSIFICACOES = [
     ["VI","Radioulnar distal + estiloide ulnar"],
     ["VII","Radiocárpica e radioulnar distal"],
     ["VIII","Radiocárpica e radioulnar distal + estiloide ulnar"]
+  ]},
+  { n:"Fernández", r:"Rádio distal (mecanismo)", k:"fernandez radio distal punho", g:[
+    ["I","Flexão — metafisária (Colles/Smith)"],
+    ["II","Cisalhamento — articular (Barton, estiloide radial)"],
+    ["III","Compressão — impacção articular (die-punch)"],
+    ["IV","Avulsão — fratura-luxação radiocárpica"],
+    ["V","Alta energia — combinação dos mecanismos"]
+  ]},
+  { n:"Herbert", r:"Escafoide", k:"herbert escafoide punho", g:[
+    ["A1","Aguda estável: tubérculo"],
+    ["A2","Aguda estável: cintura, incompleta"],
+    ["B1","Aguda instável: oblíqua do terço distal"],
+    ["B2","Aguda instável: cintura, completa"],
+    ["B3","Aguda instável: polo proximal"],
+    ["B4","Fratura-luxação transescafoperilunar"],
+    ["B5","Cominutiva"],
+    ["C","Retardo de consolidação"],
+    ["D1","Pseudartrose fibrosa"],
+    ["D2","Pseudartrose esclerótica"]
+  ]},
+  { n:"Mayfield", r:"Instabilidade perilunar", k:"mayfield perilunar semilunar carpo punho luxacao", g:[
+    ["I","Lesão escafolunar"],
+    ["II","+ luxação capitato-semilunar"],
+    ["III","+ lesão lunopiramidal — luxação perilunar"],
+    ["IV","Luxação do semilunar"]
   ]},
   { n:"Anderson-D'Alonzo", r:"Odontoide (C2)", k:"anderson dalonzo alonzo odontoide dente c2 coluna cervical", g:[
     ["I","Avulsão da ponta do dente (inserção dos ligamentos alares)"],
@@ -987,6 +1046,13 @@ const CLASSIFICACOES = [
     ["coluna anterior + hemitransversa posterior","Associada"],
     ["ambas as colunas","Associada — sem segmento articular ligado ao esqueleto axial (sinal do esporão)"]
   ]},
+  { n:"Thompson-Epstein", r:"Luxação posterior do quadril", k:"thompson epstein luxacao quadril posterior", g:[
+    ["I","Com ou sem fratura mínima"],
+    ["II","Fragmento único grande da borda posterior do acetábulo"],
+    ["III","Cominuição da borda posterior"],
+    ["IV","Fratura do assoalho do acetábulo"],
+    ["V","Fratura da cabeça femoral"]
+  ]},
   { n:"Pipkin", r:"Cabeça femoral", k:"pipkin cabeca femur quadril", g:[
     ["I","Abaixo (caudal) da fóvea — fora da área de carga"],
     ["II","Acima (cefálica) da fóvea — área de carga"],
@@ -1022,6 +1088,16 @@ const CLASSIFICACOES = [
     ["31A2","Pertrocantérica multifragmentária — parede lateral incompetente (≤ 20,5 mm)"],
     ["31A3","Intertrocantérica — traço reverso ou transverso"]
   ]},
+  { n:"Seinsheimer", r:"Subtrocantérica", k:"seinsheimer subtrocanterica femur proximal", g:[
+    ["I","Sem desvio (< 2 mm)"],
+    ["IIA","Duas partes — transversa"],
+    ["IIB","Duas partes — espiral, trocanter menor no fragmento proximal"],
+    ["IIC","Duas partes — espiral, trocanter menor no fragmento distal"],
+    ["IIIA","Três partes — trocanter menor como terceiro fragmento"],
+    ["IIIB","Três partes — fragmento em borboleta"],
+    ["IV","Cominutiva (≥ 4 fragmentos)"],
+    ["V","Subtrocantérica com extensão intertrocantérica"]
+  ]},
   { n:"Winquist-Hansen", r:"Diáfise do fêmur", k:"winquist vinquist diafise femur", g:[
     ["0","Sem cominuição"],
     ["I","Cominuição mínima / pequeno fragmento em borboleta"],
@@ -1036,6 +1112,17 @@ const CLASSIFICACOES = [
     ["B2","Ao redor da haste — haste solta, bom estoque ósseo"],
     ["B3","Ao redor da haste — haste solta, estoque ósseo ruim"],
     ["C","Bem distal à ponta da haste"]
+  ]},
+  { n:"Rorabeck", r:"Periprotética do joelho (fêmur)", k:"rorabeck periprotetica protese joelho artroplastia", g:[
+    ["I","Sem desvio, prótese fixa"],
+    ["II","Desviada, prótese fixa"],
+    ["III","Prótese solta, com ou sem desvio"]
+  ]},
+  { n:"Meyers-McKeever", r:"Eminência intercondilar (criança)", k:"meyers mckeever eminencia intercondilar espinha tibial lca joelho crianca", g:[
+    ["I","Sem desvio ou desvio mínimo da margem anterior"],
+    ["II","Elevação anterior, dobradiça posterior íntegra"],
+    ["III","Fragmento completamente desviado"],
+    ["IV","Cominutiva"]
   ]},
   { n:"Schatzker", r:"Platô tibial", k:"shatzker chatzker xatzker schatzker chatzquer plato tibial joelho", g:[
     ["I","Cisalhamento (split) puro do platô lateral"],
@@ -1091,6 +1178,13 @@ const CLASSIFICACOES = [
     ["2","Junção metáfise-diáfise (fratura de Jones) — irrigação precária"],
     ["3","Diáfise proximal — fratura por estresse"]
   ]},
+  { n:"Myerson", r:"Lisfranc (tarsometatársica)", k:"myerson lisfranc tarsometatarsica pe mediope", g:[
+    ["A","Incongruência total (homolateral)"],
+    ["B1","Incongruência parcial — medial"],
+    ["B2","Incongruência parcial — lateral"],
+    ["C1","Divergente — parcial"],
+    ["C2","Divergente — total"]
+  ]},
   { n:"Gustilo-Anderson", r:"Fratura exposta", f:"Exposta", k:"gustilo gustillo anderson exposta aberta", g:[
     ["I","Ferida < 1 cm, limpa, baixa energia"],
     ["II","Ferida 1–10 cm, sem lesão extensa de partes moles"],
@@ -1103,6 +1197,16 @@ const CLASSIFICACOES = [
     ["C1","Abrasão ou contusão superficial"],
     ["C2","Abrasão profunda contaminada, contusão muscular — risco de síndrome compartimental"],
     ["C3","Contusão extensa, esmagamento, desenluvamento, lesão vascular ou síndrome compartimental"]
+  ]},
+  { n:"AO/OTA diáfise", r:"Qualquer osso longo — diáfise", o:"AO/OTA tipo {c}", k:"ao ota diafise osso longo", g:[
+    ["A","Simples (espiral, oblíqua ou transversa)"],
+    ["B","Em cunha"],
+    ["C","Multifragmentária / segmentar"]
+  ]},
+  { n:"AO/OTA articular", r:"Qualquer osso longo — extremidade", o:"AO/OTA tipo {c}", k:"ao ota articular metafise epifise", g:[
+    ["A","Extra-articular"],
+    ["B","Articular parcial"],
+    ["C","Articular completa"]
   ]},
   { n:"Salter-Harris", r:"Fise (criança)", k:"salter harris fise fisaria crianca pediatrica", g:[
     ["I","Através da fise"],
@@ -1499,8 +1603,12 @@ const CLASSIFICACOES = [
   }
   function classeDigitada(q){
     // "schatzker ii" → modo de subtipos da Schatzker
-    const c = CL.find(c => q === c.nn || q.startsWith(c.nn + " "));
-    return c ? { c, resto: q.slice(c.nn.length).trim() } : null;
+    const cands = CL.filter(c => q === c.nn || q.startsWith(c.nn + " ")).sort((a, b) => b.nn.length - a.nn.length);
+    const c = cands[0];
+    if (!c) return null;
+    // "neer" sozinho: há "Neer" e "Neer clavícula" → mostra a lista para escolher
+    if (q === c.nn && CL.some(o => o !== c && o.nn.startsWith(q + " "))) return null;
+    return { c, resto: q.slice(c.nn.length).trim() };
   }
 
   function marca(txt, q){
@@ -1561,7 +1669,9 @@ const CLASSIFICACOES = [
     }
   }
 
-  inp.addEventListener("input", () => { if (segmento().q) abrirMenu(); else fecharMenu(); });
+  inp.addEventListener("input", abrirMenu);
+  inp.addEventListener("focus", () => { if (!acAberto) abrirMenu(); });
+  inp.addEventListener("click", () => { if (!acAberto) abrirMenu(); });
   inp.addEventListener("keydown", (e) => {
     if (!acAberto){
       if (e.key === "ArrowDown"){ e.preventDefault(); abrirMenu(); }
