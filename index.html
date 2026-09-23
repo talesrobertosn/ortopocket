@@ -237,6 +237,16 @@ optgroup option{color:var(--ink);font-weight:400}
 .quick button[aria-pressed="true"]{color:var(--petrol);border-style:solid;border-color:var(--petrol);background:var(--petrol-tint);font-weight:600}
 .quick button[aria-pressed="true"]::before{content:'✓ ';opacity:1}
 
+/* botões de escolha única (tabagismo, alergia) */
+.pick{display:flex;gap:4px;background:var(--surface-2);border:1px solid var(--line-soft);border-radius:10px;padding:3px}
+.pick button{white-space:nowrap;
+  flex:1;height:28px;min-width:0;border:none;border-radius:7px;background:transparent;cursor:pointer;
+  font-size:12.5px;font-weight:500;color:var(--ink-3);transition:background .15s,color .15s,box-shadow .15s;
+}
+.pick button:hover{color:var(--ink);background:var(--field-hover)}
+.pick button[aria-pressed="true"]{background:var(--petrol);color:#fff;font-weight:600;box-shadow:0 1px 2px rgba(11,26,33,.2)}
+html[data-theme="dark"] .pick button[aria-pressed="true"]{color:#0A1418}
+
 /* ── AUTOCOMPLETAR DE CLASSIFICAÇÕES ─────────────── */
 .ac{position:relative}
 .ac input{padding-right:40px}
@@ -583,7 +593,7 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
             <label for="neurovascular">Exame neurovascular distal</label>
             <input id="neurovascular" type="text" placeholder="Perfusão, pulsos, sensibilidade, motricidade" />
             <div class="quick" data-for="neurovascular">
-              <button type="button" data-t="Sem déficits neurovasculares distais">Sem déficits</button>
+              <button type="button" data-t="Neurovascular preservado">Neurovascular preservado</button>
               <button type="button" data-t="perfusão periférica preservada">Perfusão preservada</button>
               <button type="button" data-t="pulsos palpáveis">Pulsos palpáveis</button>
             </div>
@@ -627,33 +637,31 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
             </div>
           </div>
           <div class="field">
-            <label for="tabagismo">Tabagismo</label>
-            <select id="tabagismo">
-              <option value="">Não informado</option>
-              <option value="Sim">Sim</option>
-              <option value="Nega">Nega</option>
-              <option value="Ex-tabagista">Ex-tabagista</option>
-            </select>
+            <label id="lbl_tabagismo">Tabagismo</label>
+            <input id="tabagismo" type="hidden" />
+            <div class="pick" data-for="tabagismo" role="group" aria-labelledby="lbl_tabagismo">
+              <button type="button" data-v="Nega">Nega</button>
+              <button type="button" data-v="Sim">Sim</button>
+              <button type="button" data-v="Ex-tabagista" title="Ex-tabagista">Ex</button>
+            </div>
           </div>
           <div class="field">
-            <label for="alergia">Alergia</label>
-            <select id="alergia">
-              <option value="">Não informada</option>
-              <option value="Nega">Nega</option>
-              <option value="Sim">Sim</option>
-            </select>
+            <label id="lbl_alergia">Alergia</label>
+            <input id="alergia" type="hidden" />
+            <div class="pick" data-for="alergia" role="group" aria-labelledby="lbl_alergia">
+              <button type="button" data-v="Nega">Nega</button>
+              <button type="button" data-v="Sim">Sim</button>
+            </div>
           </div>
           <div class="field full">
             <label for="conduta">Conduta no plantão</label>
             <textarea id="conduta" placeholder="Imobilização, analgesia, exames, antibiótico, redução..."></textarea>
             <div class="quick" data-for="conduta">
-              <button type="button" data-t="imobilização provisória">Imobilização</button>
-              <button type="button" data-t="analgesia">Analgesia</button>
-              <button type="button" data-t="redução incruenta">Redução</button>
-              <button type="button" data-t="antibioticoprofilaxia">Antibiótico</button>
-              <button type="button" data-t="profilaxia antitetânica">Antitetânica</button>
-              <button type="button" data-t="jejum">Jejum</button>
-              <button type="button" data-t="paciente orientado">Orientado</button>
+              <button type="button" data-t="Imobilizado com tala gessada">Tala gessada</button>
+              <button type="button" data-t="Imobilizado com tipoia">Tipoia</button>
+              <button type="button" data-t="Fixador externo em centro cirúrgico">Fixador externo no CC</button>
+              <button type="button" data-t="Aguarda tomografia">Aguarda tomografia</button>
+              <button type="button" data-t="Antibioticoterapia conforme protocolo de fratura exposta">ATB protocolo fratura exposta</button>
             </div>
           </div>
         </div>
@@ -1266,6 +1274,10 @@ const CLASSIFICACOES = [
     $("sauAutoLbl").textContent = `· ${saudacaoAuto().toLowerCase()}`;
 
     atualizaQuick();
+    document.querySelectorAll(".pick").forEach(p => {
+      const v = val(p.dataset.for);
+      p.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === v)));
+    });
   }
 
   /* ── Toast ────────────────────────────────────── */
@@ -1390,6 +1402,17 @@ const CLASSIFICACOES = [
       if (i >= 0) ps.splice(i, 1); else ps.push(b.dataset.t);
       ps = ps.map((p, j) => j === 0 ? cap(p) : lowFirst(p));
       el.value = ps.join("; ");
+      render();
+    });
+  });
+
+  /* botões de escolha única: clicar de novo desmarca */
+  document.querySelectorAll(".pick").forEach(p => {
+    p.addEventListener("click", (e) => {
+      const b = e.target.closest("button");
+      if (!b) return;
+      const el = $(p.dataset.for);
+      el.value = el.value === b.dataset.v ? "" : b.dataset.v;
       render();
     });
   });
