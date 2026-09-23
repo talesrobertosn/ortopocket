@@ -87,37 +87,34 @@ button{font-family:inherit}
 /* ── CABEÇALHO ────────────────────────────────────── */
 header{
   height:60px; padding:0 20px;
-  background:
-    radial-gradient(520px 110px at 12% 0%, rgba(87,183,205,.16), transparent 70%),
-    radial-gradient(460px 110px at 88% 0%, rgba(214,164,78,.13), transparent 70%),
-    linear-gradient(180deg,#14303A,#0B1A21);
+  background:rgba(8,20,25,.94);
+  backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);
+  border-bottom:1px solid rgba(255,255,255,.07);
   display:flex; align-items:center; justify-content:space-between; gap:16px;
   position:sticky; top:0; z-index:60;
-  box-shadow:0 10px 28px -18px rgba(0,0,0,.85);
-}
-header::after{
-  content:'';position:absolute;left:0;right:0;bottom:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(214,164,78,.75) 25%,rgba(240,201,120,.9) 50%,rgba(214,164,78,.75) 75%,transparent);
 }
 .brand{display:flex;align-items:center;gap:10px;min-width:0}
-.brand .bt{display:flex;align-items:baseline;gap:7px;min-width:0}
+.brand .bt{display:flex;align-items:center;gap:8px;min-width:0}
 .logo{
-  width:34px;height:34px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(145deg,#1E7B8F,#0E4E5E 60%,#0A3A46);border:1px solid rgba(240,201,120,.65);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 6px 14px -6px rgba(0,0,0,.7);
-  font-family:'Instrument Serif',Georgia,serif;font-size:23px;line-height:1;color:#F0C978;padding-top:2px;
+  width:32px;height:32px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#3BB3CB 0%,#1A7489 55%,#0E4E5E 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 6px 16px -6px rgba(59,179,203,.55);
 }
-.brand b{font-family:'Instrument Serif',Georgia,serif;font-size:24px;font-weight:400;color:#fff;letter-spacing:.2px;white-space:nowrap}
-.brand i{font-family:'Instrument Serif',Georgia,serif;font-size:19px;color:#D6A44E;white-space:nowrap}
+.logo svg{width:18px;height:18px}
+.brand b{font-size:16.5px;font-weight:600;color:#F3F7F8;letter-spacing:-.015em;white-space:nowrap}
+.brand i{
+  font-style:normal;font-size:10.5px;font-weight:600;letter-spacing:.04em;color:#F0C978;white-space:nowrap;
+  padding:2px 8px;border-radius:99px;background:rgba(214,164,78,.12);border:1px solid rgba(214,164,78,.32);
+}
 nav{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .nav-btn{
   display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;
   border-radius:9px;font-size:12.5px;font-weight:500;text-decoration:none;
-  color:#C9D5DA;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);
+  color:#B7C5CB;border:1px solid transparent;background:transparent;
   white-space:nowrap;transition:background .18s,border-color .18s,color .18s,transform .18s;
 }
 .nav-btn svg{width:15px;height:15px;flex-shrink:0}
-.nav-btn:hover{background:rgba(255,255,255,.09);color:#fff;border-color:rgba(255,255,255,.3);transform:translateY(-1px)}
+.nav-btn:hover{background:rgba(255,255,255,.07);color:#fff;border-color:rgba(255,255,255,.08)}
 /* OrtoQuestões — dourado premium, mesmo tamanho dos outros botões */
 .nav-btn.gold{
   position:relative;overflow:hidden;isolation:isolate;
@@ -142,10 +139,10 @@ nav{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .theme-switch{
   display:inline-flex;align-items:center;gap:9px;height:34px;padding:0 11px 0 6px;
   border-radius:99px;cursor:pointer;background:rgba(255,255,255,.06);
-  border:1px solid rgba(214,164,78,.55);color:#E9EEF0;font-size:12.5px;font-weight:600;
+  border:1px solid rgba(255,255,255,.12);color:#E9EEF0;font-size:12.5px;font-weight:600;margin-left:4px;
   transition:background .18s,border-color .18s,transform .18s;flex-shrink:0;
 }
-.theme-switch:hover{background:rgba(255,255,255,.12);border-color:#D6A44E;transform:translateY(-1px)}
+.theme-switch:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22)}
 .ts-track{
   position:relative;width:44px;height:24px;border-radius:99px;flex-shrink:0;
   background:linear-gradient(90deg,#8FD3F0,#F5D48A);box-shadow:inset 0 1px 3px rgba(0,0,0,.35);
@@ -169,12 +166,13 @@ html[data-theme="dark"] .ts-knob .i-sun{display:none}
 @media(max-width:760px){.ts-label{display:none}.theme-switch{padding:0 5px}}
 @media(max-width:640px){
   header{padding:0 12px;gap:8px}
-  .brand b{font-size:20px}.brand i{font-size:16px}
-  .logo{width:30px;height:30px;font-size:20px}
+  .brand b{font-size:15.5px}
+  .logo{width:30px;height:30px}
   .nav-btn span{display:none}.nav-btn{padding:0 9px}
   nav{gap:6px}
 }
-@media(max-width:420px){.brand .bt{display:none}}
+@media(max-width:440px){.brand i{display:none}}
+@media(max-width:350px){.brand .bt{display:none}}
 
 /* ── ESTRUTURA ────────────────────────────────────── */
 .shell{
@@ -465,7 +463,7 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
 <body>
 
 <header>
-  <div class="brand"><span class="logo" aria-hidden="true">E</span><span class="bt"><b>Encaminhador</b><i>2.3 mil</i></span></div>
+  <div class="brand"><span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h13"/><path d="M12 6l6 6-6 6"/><path d="M20.5 5v14" opacity=".55"/></svg></span><span class="bt"><b>Encaminhador</b><i>2.3 mil</i></span></div>
   <nav>
     <a class="nav-btn" href="https://talesrobertosn.github.io/ortopocket/quadriltales.html" target="_blank" rel="noopener noreferrer" title="Exame Físico Ambulatorial do Quadril">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="5" r="2.4"/><path d="M8.5 21l1.6-6.4L12 12.8l1.9 1.8L15.5 21"/><path d="M6.4 9.6C8 8.6 10 8.1 12 8.1s4 .5 5.6 1.5"/></svg>
@@ -641,6 +639,8 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
             <input id="lesoes" type="text" placeholder="Traumatismo cranioencefálico leve, fratura de costela..." />
             <div class="quick" data-for="lesoes">
               <button type="button" data-t="Nega">Nega</button>
+              <button type="button" data-t="traumatismo cranioencefálico">TCE</button>
+              <button type="button" data-t="fratura de arco costal">Fratura de arco costal</button>
             </div>
           </div>
           <div class="field full">
