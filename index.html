@@ -711,6 +711,9 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
               <button type="button" data-v="Nega">Nega</button>
               <button type="button" data-v="Sim">Sim</button>
             </div>
+            <div id="wrap_alergia_qual" class="hide" style="margin-top:6px;">
+              <input id="alergia_qual" type="text" placeholder="Qual? Ex.: dipirona" autocomplete="off" />
+            </div>
           </div>
           <div class="field full">
             <label for="conduta">Conduta no plantão</label>
@@ -1221,11 +1224,11 @@ const CLASSIFICACOES = [
   const $ = (id) => document.getElementById(id);
 
   const ids = [
-    "nome","idade","numero","convenio","convenio_outro","data","data_trauma","mecanismo","diagnostico","classificacao",
+    "nome","idade","numero","convenio","convenio_outro","alergia_qual","data","data_trauma","mecanismo","diagnostico","classificacao",
     "tipo_fratura","exame_fisico","comorbidades","tabagismo","muc","alergia","neurovascular","lesoes",
     "funcionalidade","profissao","lesao_previa","conduta"
   ];
-  const contaveis = ids.filter(id => id !== "convenio_outro");
+  const contaveis = ids.filter(id => id !== "convenio_outro" && id !== "alergia_qual");
 
   const blocos = {
     1: ["nome","idade","numero","convenio","profissao","funcionalidade"],
@@ -1277,6 +1280,11 @@ const CLASSIFICACOES = [
     const o = val("convenio_outro");
     return o || "Outro";
   }
+  function alergiaFinal(){
+    const a = val("alergia");
+    if (a !== "Sim") return a;
+    return val("alergia_qual") || "Sim";
+  }
   function idadeTxt(i){ return /^\d{1,3}$/.test(i) ? `${i} anos` : i; }
 
   function topico(label){
@@ -1318,6 +1326,7 @@ const CLASSIFICACOES = [
     const d = {};
     ids.forEach(id => d[id] = val(id));
     d.convenio = convenioFinal();
+    d.alergia = alergiaFinal();
     d.idade = idadeTxt(d.idade);
     d.data = humanDate(d.data);
     d.data_trauma = humanDate(d.data_trauma);
@@ -1365,7 +1374,7 @@ const CLASSIFICACOES = [
       d.comorbidades,
       d.muc ? `MUC: ${d.muc}` : "",
       d.tabagismo ? `tabagismo: ${d.tabagismo.toLowerCase()}` : "",
-      d.alergia ? `alergia: ${d.alergia.toLowerCase()}` : ""
+      d.alergia ? `alergia: ${lowFirst(d.alergia)}` : ""
     ]);
     let s = "";
     s += linha("Paciente", paciente);
@@ -1471,6 +1480,7 @@ const CLASSIFICACOES = [
 
   function toggleConvenio(){
     $("wrap_convenio_outro").classList.toggle("hide", val("convenio") !== "Outro");
+    $("wrap_alergia_qual").classList.toggle("hide", val("alergia") !== "Sim");
   }
 
   function limpar(){
@@ -1562,6 +1572,10 @@ const CLASSIFICACOES = [
       if (p.dataset.for === "convenio"){
         toggleConvenio();
         if (el.value === "Outro") $("convenio_outro").focus();
+      }
+      if (p.dataset.for === "alergia"){
+        toggleConvenio();
+        if (el.value === "Sim") $("alergia_qual").focus();
       }
       render();
     });
