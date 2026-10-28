@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="theme-color" content="#0B1A21" />
+<meta name="theme-color" content="#0B161B" />
 <title>Encaminhador 2.3 mil</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" sizes="32x32" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiRtpo5Adts7P8O3FnXyyUvNAE5Wjp1nytUQy8IZ-AcquvHXtE8QXK-JbYS-1lX95drBLZtxDtbpEjWUEMjeAXvJsYSqzlcGDbJ4dbrwLNPnOxo657HkWL3VKNXVnLvRd8jebArZ3DFQQFhOOq0CxtKIt3_T0j5SH7SZS1DJr4-RaKpwBJT6taw828HbJ0/s1600/favicon-32x32.png" />
 
 <script>
@@ -21,495 +21,443 @@
 </script>
 <style>
 :root{
-  --ink:#0B1A21; --ink-2:#1E2F38; --ink-3:#51626B; --muted:#7E919A;
-  --paper:#EBEFF0; --card:#FFFFFF; --line:#DDE4E7; --line-soft:#EEF2F4;
-  --petrol:#0E4E5E; --petrol-2:#0A3A46; --petrol-tint:#EEF5F7;
-  --brass:#B0782B; --brass-2:#8E5F1E; --brass-tint:#FAF3E6;
-  --whats:#1FA855; --danger:#B4342C;
-  --ring:rgba(14,78,94,.14);
-  --shadow:0 1px 2px rgba(11,26,33,.05), 0 12px 30px -20px rgba(11,26,33,.5);
-  --shadow-lift:0 2px 4px rgba(11,26,33,.05), 0 18px 38px -24px rgba(11,26,33,.6);
-  --glow-1:rgba(14,78,94,.08); --glow-2:rgba(176,120,43,.08);
-  --field:#FCFDFD; --field-hover:#FFFFFF; --field-border-hover:#C3D0D6;
-  --placeholder:#AEBCC3; --filled-bg:#F6FBFB; --filled-border:#C2D8DD;
-  --surface-2:#EFF3F5; --surface-3:#F2F5F6; --seg-on:#FFFFFF;
-  --hint-bg:rgba(255,255,255,.72); --bar-bg:rgba(255,255,255,.92);
-  --card-focus:#C9DBDF; --quiet-bg:#FFFFFF; --quiet-hover:#F8FAFB; --quiet-border-hover:#BFCCD3;
-  --phone-bg:linear-gradient(180deg,#F6F9FA,#FFF);
-  --wall:#E9E2DA; --wall-dot:rgba(11,26,33,.05);
-  --bubble:#D9FDD3; --bubble-ink:#0E1B20; --bubble-meta:#5C7364;
-  --danger-tint:#FCEEEC;
-  --menu:#FFFFFF; --menu-hover:#F1F6F7;
+  --ink:#0E1A20; --ink-2:#26363E; --ink-3:#596A73; --muted:#8696A0;
+  --bg:#EDF1F2; --card:#FFFFFF; --line:#E1E7EA; --line-soft:#EDF1F3;
+  --surface:#F4F7F8; --surface-2:#EAEFF1;
+  --accent:#0F6B78; --accent-2:#0B5561; --accent-tint:#E5F1F3; --accent-ink:#FFFFFF;
+  --gold:#C08A33; --gold-tint:#FBF3E4; --gold-ink:#7A5517;
+  --danger:#C2412D; --danger-tint:#FCECE8;
+  --whats:#1DA851;
+  --field:#FFFFFF; --field-line:#DCE3E7; --field-hover:#C3D0D6; --ph:#A7B4BB; --filled:#F2F8F9;
+  --ring:rgba(15,107,120,.16);
+  --shadow:0 1px 2px rgba(14,26,32,.04),0 14px 34px -22px rgba(14,26,32,.4);
+  --wall:#ECE5DD; --wall-dot:rgba(14,26,32,.05); --bubble:#D9FDD3; --bubble-ink:#111B21; --bubble-meta:#667781;
+  --bar:rgba(255,255,255,.93);
 }
 html[data-theme="dark"]{
-  --ink:#E7EEF1; --ink-2:#CBD8DE; --ink-3:#9AAEB7; --muted:#7C8F99;
-  --paper:#0A1418; --card:#111F26; --line:#25373F; --line-soft:#1C2C33;
-  --petrol:#57B7CD; --petrol-2:#7ACADD; --petrol-tint:#15303A;
-  --brass:#D6A44E; --brass-2:#E2B96E; --brass-tint:#2A2214;
-  --whats:#1FA855; --danger:#E4736A;
-  --ring:rgba(87,183,205,.22);
-  --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 30px -20px rgba(0,0,0,.9);
-  --shadow-lift:0 2px 4px rgba(0,0,0,.45), 0 18px 38px -24px rgba(0,0,0,.95);
-  --glow-1:rgba(87,183,205,.09); --glow-2:rgba(214,164,78,.07);
-  --field:#0E1B21; --field-hover:#132229; --field-border-hover:#38505A;
-  --placeholder:#5E727C; --filled-bg:#122A30; --filled-border:#2E5560;
-  --surface-2:#16262D; --surface-3:#1B2B32; --seg-on:#233A43;
-  --hint-bg:rgba(255,255,255,.04); --bar-bg:rgba(12,23,28,.92);
-  --card-focus:#2F4C56; --quiet-bg:#16262D; --quiet-hover:#1C333B; --quiet-border-hover:#3A525C;
-  --phone-bg:linear-gradient(180deg,#0E1B21,#111F26);
-  --wall:#13201C; --wall-dot:rgba(255,255,255,.045);
-  --bubble:#12503C; --bubble-ink:#E4F3EC; --bubble-meta:#8FB6A3;
-  --danger-tint:#3A1D1B;
-  --menu:#14252C; --menu-hover:#1B323B;
+  --ink:#E6EDF0; --ink-2:#C6D3D9; --ink-3:#93A6AF; --muted:#6F848E;
+  --bg:#091216; --card:#0F1B21; --line:#1F3039; --line-soft:#17262E;
+  --surface:#13222A; --surface-2:#182A33;
+  --accent:#4FB8C7; --accent-2:#7ACDD9; --accent-tint:#11303A; --accent-ink:#05181D;
+  --gold:#D9A851; --gold-tint:#2A2113; --gold-ink:#E9C27A;
+  --danger:#EE7B67; --danger-tint:#3A1D18;
+  --field:#0C171C; --field-line:#253942; --field-hover:#36505B; --ph:#566C76; --filled:#10262E;
+  --ring:rgba(79,184,199,.22);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px -22px rgba(0,0,0,.95);
+  --wall:#0D1916; --wall-dot:rgba(255,255,255,.04); --bubble:#144D37; --bubble-ink:#E7F3EC; --bubble-meta:#8FB3A2;
+  --bar:rgba(12,22,27,.93);
 }
-html{color-scheme:light}
+html{color-scheme:light;-webkit-text-size-adjust:100%;scroll-padding-top:110px}
 html[data-theme="dark"]{color-scheme:dark}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%}
 body{
-  font-family:'Inter',system-ui,sans-serif;
-  color:var(--ink);
-  background:var(--paper);
-  background-image:
-    radial-gradient(900px 420px at 12% -8%, var(--glow-1), transparent 62%),
-    radial-gradient(760px 380px at 96% 4%, var(--glow-2), transparent 60%);
-  background-attachment:fixed;
-  font-size:14px; line-height:1.5; min-height:100vh;
+  font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color:var(--ink);background:var(--bg);font-size:14px;line-height:1.5;min-height:100vh;
   -webkit-font-smoothing:antialiased;
-  transition:background-color .25s,color .25s;
 }
-::selection{background:var(--petrol);color:#fff}
-a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
-  outline:2px solid var(--brass); outline-offset:2px;
-}
-button{font-family:inherit}
+::selection{background:var(--accent);color:var(--accent-ink)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+button{font-family:inherit;color:inherit}
+.hide{display:none !important}
 
-/* ── CABEÇALHO ────────────────────────────────────── */
-header{
-  height:60px; padding:0 20px;
-  background:rgba(8,20,25,.94);
-  backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);
-  border-bottom:1px solid rgba(255,255,255,.07);
-  display:flex; align-items:center; justify-content:space-between; gap:16px;
-  position:sticky; top:0; z-index:60;
+/* ── TOPO ─────────────────────────────────────────── */
+.top{
+  position:sticky;top:0;z-index:60;height:58px;padding:0 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:rgba(9,19,23,.95);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);
+  border-bottom:1px solid rgba(255,255,255,.06);
 }
-.brand{display:flex;align-items:center;gap:10px;min-width:0}
-.brand .bt{display:flex;align-items:center;gap:8px;min-width:0}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
 .logo{
-  width:32px;height:32px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,#3BB3CB 0%,#1A7489 55%,#0E4E5E 100%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 6px 16px -6px rgba(59,179,203,.55);
+  width:32px;height:32px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(140deg,#4CC3D6 0%,#14808F 55%,#0B5561 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 6px 16px -6px rgba(76,195,214,.6);
 }
 .logo svg{width:18px;height:18px}
-.brand b{font-size:16.5px;font-weight:600;color:#F3F7F8;letter-spacing:-.015em;white-space:nowrap}
+.brand b{font-size:17px;font-weight:800;letter-spacing:-.02em;color:#F2F7F8;white-space:nowrap}
 .brand i{
-  font-style:normal;font-size:10.5px;font-weight:600;letter-spacing:.04em;color:#F0C978;white-space:nowrap;
-  padding:2px 8px;border-radius:99px;background:rgba(214,164,78,.12);border:1px solid rgba(214,164,78,.32);
+  font-style:normal;font-size:10.5px;font-weight:700;color:#9FC4CB;white-space:nowrap;
+  padding:2px 7px;border-radius:6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
 }
-nav{display:flex;align-items:center;gap:8px;flex-shrink:0}
-.nav-btn{
-  display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;
-  border-radius:9px;font-size:12.5px;font-weight:500;text-decoration:none;
-  color:#B7C5CB;border:1px solid transparent;background:transparent;
-  white-space:nowrap;transition:background .18s,border-color .18s,color .18s,transform .18s;
-}
-.nav-btn svg{width:15px;height:15px;flex-shrink:0}
-.nav-btn:hover{background:rgba(255,255,255,.07);color:#fff;border-color:rgba(255,255,255,.08)}
-/* OrtoQuestões — dourado premium, mesmo tamanho dos outros botões */
-.nav-btn.gold{
+.top-r{display:flex;align-items:center;gap:8px;flex-shrink:0}
+
+/* OrtoQuestões */
+.oq{
   position:relative;overflow:hidden;isolation:isolate;
-  color:#2B1B04;font-weight:700;letter-spacing:.01em;border-color:#F6D992;
-  background:linear-gradient(135deg,#FBE7AE 0%,#E9BE63 38%,#C8923A 72%,#E3B45A 100%);
-  box-shadow:0 0 0 1px rgba(214,164,78,.28),0 8px 20px -8px rgba(233,190,99,.85),inset 0 1px 0 rgba(255,255,255,.65),inset 0 -1px 0 rgba(120,78,18,.35);
-  text-shadow:0 1px 0 rgba(255,240,200,.45);
+  display:flex;align-items:center;gap:10px;height:42px;padding:0 12px 0 5px;border-radius:13px;text-decoration:none;
+  border:1px solid transparent;
+  background:linear-gradient(180deg,#1A2A2F,#121F24) padding-box,
+             linear-gradient(135deg,#F8E2A6,#C8923A 45%,#7A5517 70%,#F0CF85) border-box;
+  box-shadow:0 8px 22px -12px rgba(232,186,96,.65);
+  transition:transform .18s,box-shadow .18s;
 }
-.nav-btn.gold::after{
-  content:'';position:absolute;top:-10%;left:-70%;width:45%;height:120%;z-index:-1;
-  background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);
-  transform:skewX(-20deg);animation:brilho 5s ease-in-out infinite;
+.oq::after{
+  content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;z-index:-1;
+  background:linear-gradient(100deg,transparent,rgba(255,236,190,.22),transparent);transform:skewX(-20deg);
+  transition:left .7s ease;
 }
-@keyframes brilho{0%,68%{left:-70%}100%{left:135%}}
-.nav-btn.gold:hover{
-  color:#1E1302;border-color:#FFF0C4;transform:translateY(-1px);filter:brightness(1.05) saturate(1.05);
-  background:linear-gradient(135deg,#FBE7AE 0%,#E9BE63 38%,#C8923A 72%,#E3B45A 100%);
-  box-shadow:0 0 0 1px rgba(240,201,120,.45),0 10px 26px -8px rgba(240,201,120,.95),inset 0 1px 0 rgba(255,255,255,.7);
+.oq:hover{transform:translateY(-1px);box-shadow:0 12px 26px -10px rgba(232,186,96,.85)}
+.oq:hover::after{left:130%}
+.oq-ic{
+  width:31px;height:31px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#3A2606;
+  background:linear-gradient(135deg,#FCEBB8 0%,#E8BC60 50%,#C08A33 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -1px 0 rgba(122,85,23,.4);
 }
+.oq-ic svg{width:17px;height:17px}
+.oq-t{display:flex;flex-direction:column;line-height:1.1}
+.oq-t b{font-size:13.5px;font-weight:800;letter-spacing:-.01em;
+  background:linear-gradient(90deg,#FFF1CC,#F0C978);-webkit-background-clip:text;background-clip:text;color:transparent}
+.oq-t small{font-size:10px;font-weight:500;color:#B9A47A;letter-spacing:.01em}
+.oq-go{width:14px;height:14px;color:#D9B66C;opacity:.8;margin-left:2px}
 
-/* Interruptor de tema */
-.theme-switch{
-  display:inline-flex;align-items:center;gap:9px;height:34px;padding:0 11px 0 6px;
-  border-radius:99px;cursor:pointer;background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.12);color:#E9EEF0;font-size:12.5px;font-weight:600;margin-left:4px;
-  transition:background .18s,border-color .18s,transform .18s;flex-shrink:0;
+.icon-btn{
+  width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;cursor:pointer;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#D8E3E7;transition:background .18s;
 }
-.theme-switch:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22)}
-.ts-track{
-  position:relative;width:44px;height:24px;border-radius:99px;flex-shrink:0;
-  background:linear-gradient(90deg,#8FD3F0,#F5D48A);box-shadow:inset 0 1px 3px rgba(0,0,0,.35);
-  transition:background .25s;
+.icon-btn:hover{background:rgba(255,255,255,.1)}
+.icon-btn svg{width:17px;height:17px}
+.icon-btn .i-moon{display:none}
+html[data-theme="dark"] .icon-btn .i-moon{display:block}
+html[data-theme="dark"] .icon-btn .i-sun{display:none}
+@media(max-width:560px){
+  .top{padding:0 12px}
+  .brand i{display:none}
+  .oq-t small,.oq-go{display:none}
+  .oq{height:38px;padding-right:11px}
 }
-html[data-theme="dark"] .ts-track{background:linear-gradient(90deg,#1B2F4A,#33456B)}
-.ts-knob{
-  position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;
-  background:#FFF6DC;color:#B0782B;display:flex;align-items:center;justify-content:center;
-  box-shadow:0 1px 3px rgba(0,0,0,.4);transition:transform .25s cubic-bezier(.34,1.3,.64,1),background .25s,color .25s;
-}
-html[data-theme="dark"] .ts-knob{transform:translateX(20px);background:#DDE6F5;color:#33456B}
-.ts-knob svg{width:13px;height:13px}
-.ts-knob .i-moon{display:none}
-html[data-theme="dark"] .ts-knob .i-moon{display:block}
-html[data-theme="dark"] .ts-knob .i-sun{display:none}
-.ts-label{min-width:44px;text-align:left}
+@media(max-width:360px){.brand b{display:none}}
 
-.n-long{display:inline}.n-short{display:none}
-@media(max-width:1240px){.n-long{display:none}.n-short{display:inline}}
-@media(max-width:760px){.ts-label{display:none}.theme-switch{padding:0 5px}}
-@media(max-width:640px){
-  header{padding:0 12px;gap:8px}
-  .brand b{font-size:15.5px}
-  .logo{width:30px;height:30px}
-  .nav-btn span{display:none}.nav-btn{padding:0 9px}
-  nav{gap:6px}
+/* navegação das seções (celular) */
+.secnav{
+  display:none;position:sticky;top:58px;z-index:55;gap:6px;padding:8px 12px;overflow-x:auto;scrollbar-width:none;
+  background:var(--bar);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
 }
-@media(max-width:440px){.brand i{display:none}}
-@media(max-width:350px){.brand .bt{display:none}}
+.secnav::-webkit-scrollbar{display:none}
+.secnav a{
+  flex-shrink:0;height:30px;padding:0 12px;border-radius:99px;display:flex;align-items:center;gap:6px;
+  font-size:12.5px;font-weight:600;color:var(--ink-3);text-decoration:none;background:var(--surface);border:1px solid var(--line-soft);
+}
+.secnav a i{font-style:normal;font-size:10.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.secnav a.ok i{color:var(--accent)}
+@media(max-width:1180px){.secnav{display:flex}}
 
 /* ── ESTRUTURA ────────────────────────────────────── */
 .shell{
-  max-width:1400px;margin:0 auto;padding:14px 20px 20px;
-  display:grid;grid-template-columns:minmax(0,1fr) 384px;gap:20px;align-items:start;
+  max-width:1440px;margin:0 auto;padding:16px 20px 20px;
+  display:grid;grid-template-columns:minmax(0,1fr) 384px;gap:16px;align-items:start;
 }
-@media(max-width:1340px){.shell{grid-template-columns:minmax(0,1fr) 350px;gap:16px}}
-@media(max-width:1180px){.shell{grid-template-columns:minmax(0,1fr);gap:16px;padding-bottom:92px}}
-@media(max-width:520px){.shell{padding:14px 12px 92px}}
+@media(max-width:1340px){.shell{grid-template-columns:minmax(0,1fr) 352px}}
+@media(max-width:1180px){.shell{grid-template-columns:minmax(0,1fr);padding-bottom:92px}}
+@media(max-width:560px){.shell{padding:10px 10px 92px}}
 
-.page-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px;flex-wrap:wrap}
-.page-head h1{font-family:'Instrument Serif',Georgia,serif;font-size:26px;font-weight:400;line-height:1;letter-spacing:.2px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
-.page-head h1 em{font-style:italic;color:var(--petrol)}
-.page-head p{font-family:'Inter',system-ui,sans-serif;font-size:12px;color:var(--ink-3);letter-spacing:0}
-.page-head p{white-space:nowrap}
-@media(max-width:520px){.page-head{display:none}}
+/* folha única, duas colunas */
+.sheet{
+  background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);
+  display:grid;grid-template-columns:1fr 1fr;
+}
+.col{min-width:0}
+.col + .col{border-left:1px solid var(--line-soft)}
+/* uma coluna: volta à ordem clínica 1→5 */
+@media(max-width:860px){
+  .sheet{display:flex;flex-direction:column}
+  .col{display:contents}
+  #s1{order:1}#s2{order:2}#s3{order:3}#s4{order:4}#s5{order:5}
+  .sec + .sec,.sec{border-top:1px solid var(--line-soft)}
+  #s1{border-top:none}
+}
+.sec{padding:15px 18px 16px}
+.sec + .sec{border-top:1px solid var(--line-soft)}
+@media(max-width:560px){.sec{padding:14px 13px 16px}}
 
-.hint{
-  display:inline-flex;align-items:center;gap:9px;height:32px;padding:0 12px;
-  background:var(--hint-bg);border:1px solid var(--line);border-radius:99px;
-  font-size:11.5px;color:var(--ink-3);white-space:nowrap;
+.sec-h{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.sec-h .n{
+  width:26px;height:26px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:12.5px;font-weight:800;color:var(--accent-ink);background:var(--accent);
 }
-.hint kbd{
-  font-family:'Inter',system-ui,sans-serif;font-size:10px;font-weight:600;color:var(--ink-2);
-  background:var(--surface-3);border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:2px 5px;
+.sec-h h2{font-size:16px;font-weight:800;letter-spacing:-.02em}
+.sec-h .mini{margin-left:6px}
+.sec-h .prog{margin-left:auto;font-size:11px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.sec-h .prog.ok{color:var(--accent)}
+.sub-h{display:flex;align-items:center;gap:10px;margin:16px 0 10px}
+.sub-h span{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sub-h::after{content:'';flex:1;height:1px;background:var(--line-soft);order:1}
+.sub-h .mini{order:2}
+.mini{
+  height:28px;padding:0 11px;border-radius:99px;cursor:pointer;flex-shrink:0;
+  font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-tint);border:1px solid transparent;
+  transition:background .15s,color .15s;
 }
-.hint b{width:3px;height:3px;border-radius:50%;background:var(--brass)}
-@media(max-width:900px){.hint{display:none}}
+.mini:hover{border-color:var(--accent)}
+.mini[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.mini[aria-pressed="true"]::before{content:'✓ '}
 
-/* ── CARTÕES ──────────────────────────────────────── */
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.grid + .grid{margin-top:12px}
-@media(max-width:800px){.grid{grid-template-columns:1fr}}
-
-.card{
-  background:var(--card);border:1px solid var(--line);border-radius:16px;
-  box-shadow:var(--shadow);padding:13px 16px 15px;
-  transition:box-shadow .22s,border-color .22s;
-}
-.card:focus-within{box-shadow:var(--shadow-lift);border-color:var(--card-focus)}
-.card-head{display:flex;align-items:center;gap:9px;margin-bottom:10px}
-.card-head .num{
-  width:22px;height:22px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
-  font-size:11px;font-weight:700;color:var(--petrol);background:var(--petrol-tint);border:1px solid var(--line);
-}
-.card-head h2{font-size:10.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--petrol);white-space:nowrap}
-.card-head::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent);order:2}
-.card-head .tally{
-  order:3;font-size:10px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums;
-  background:var(--petrol-tint);border:1px solid var(--line-soft);border-radius:99px;padding:2px 8px;flex-shrink:0;
-  transition:color .2s,background .2s,border-color .2s;
-}
-.card-head .tally.done{color:var(--brass-2);background:var(--brass-tint);border-color:rgba(176,120,43,.35)}
-
-.fields{display:grid;grid-template-columns:1fr 1fr;gap:9px 12px}
-.full{grid-column:span 2}
-/* nome + idade + nº numa linha só */
-.trio{display:grid;grid-template-columns:minmax(0,1fr) 66px 124px;gap:9px 12px;grid-column:span 2}
-/* celular: uma coluna, mas campos curtos (.half) continuam lado a lado */
-@media(max-width:520px){
-  .fields > .field:not(.half){grid-column:span 2}
-  .card{padding:13px 13px 14px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:11px 12px}
+.full{grid-column:1 / -1}
+.trio{display:grid;grid-template-columns:minmax(0,1fr) 64px 118px;gap:12px;grid-column:1 / -1}
+.tri{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;grid-column:1 / -1}
+.duo-sx{display:grid;grid-template-columns:86px minmax(0,1fr);gap:12px;grid-column:1 / -1}
+@media(max-width:560px){
+  .fields > .field:not(.half){grid-column:1 / -1}
   .trio{grid-template-columns:1fr 1fr}
-  .trio > .field:first-child{grid-column:span 2}
+  .trio > .field:first-child{grid-column:1 / -1}
+  .duo-sx{grid-template-columns:1fr}
+  .duo-sx .field:first-child .pick{max-width:50%}
+  /* tabagismo / etilismo / alergia: rótulo à esquerda, botões à direita */
+  .tri{grid-template-columns:1fr;gap:8px}
+  .tri .field{flex-direction:row;align-items:center;gap:10px}
+  .tri .field .lbl{width:74px;flex-shrink:0}
+  .tri .field .pick{flex:1}
 }
 
-.field{display:flex;flex-direction:column;gap:4px;min-width:0}
-label{font-size:9.5px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3)}
-
-input,textarea,select{
-  font-family:'Inter',system-ui,sans-serif;font-size:13.5px;color:var(--ink);
-  background:var(--field);border:1px solid var(--line);border-radius:9px;padding:6px 10px;width:100%;
-  transition:border-color .16s,box-shadow .16s,background .16s;outline:none;
+.field{display:flex;flex-direction:column;gap:5px;min-width:0}
+label,.lbl{font-size:12px;font-weight:600;color:var(--ink-2);letter-spacing:-.005em}
+input,textarea{
+  font-family:inherit;font-size:14px;color:var(--ink);width:100%;
+  background:var(--field);border:1px solid var(--field-line);border-radius:10px;padding:7px 11px;outline:none;
+  transition:border-color .15s,box-shadow .15s,background .15s;
 }
-input:hover,textarea:hover,select:hover{border-color:var(--field-border-hover);background:var(--field-hover)}
-input:focus,textarea:focus,select:focus{background:var(--field-hover);border-color:var(--petrol);box-shadow:0 0 0 3px var(--ring)}
-input::placeholder,textarea::placeholder{color:var(--placeholder)}
-textarea{resize:vertical;min-height:50px;line-height:1.5;overflow:hidden}
-input[type="date"]{min-height:33px}
-@media(max-width:520px){input,textarea,select{font-size:16px}}
-select{
-  cursor:pointer;appearance:none;-webkit-appearance:none;padding-right:28px;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238497A0' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 10px center;
-}
-select.empty{color:var(--muted)}
-optgroup{font-size:11px;font-weight:600;color:var(--petrol);background:var(--card)}
-optgroup option{color:var(--ink);font-weight:400}
-.filled{background-color:var(--filled-bg);border-color:var(--filled-border);box-shadow:inset 2px 0 0 var(--petrol)}
-.hide{display:none !important}
+input:hover,textarea:hover{border-color:var(--field-hover)}
+input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--ring)}
+input::placeholder,textarea::placeholder{color:var(--ph)}
+textarea{resize:vertical;min-height:40px;line-height:1.5;overflow:hidden}
+input[type="date"]{min-height:36px}
+.filled{background:var(--filled);border-color:color-mix(in srgb,var(--accent) 35%,var(--field-line))}
+@media(max-width:560px){input,textarea{font-size:16px}}
 
-/* chips de preenchimento rápido */
-.quick{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
+/* chips de múltipla escolha */
+.quick{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.quick .ql{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);min-width:76px}
 .quick button{
-  height:23px;padding:0 9px;border-radius:7px;cursor:pointer;
-  font-size:11px;font-weight:500;color:var(--ink-3);background:var(--surface-3);
-  border:1px solid var(--line-soft);transition:background .15s,color .15s,border-color .15s;
+  height:26px;padding:0 10px;border-radius:99px;cursor:pointer;
+  font-size:12px;font-weight:500;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);
+  transition:background .14s,color .14s,border-color .14s;white-space:nowrap;
 }
-.quick button:hover{color:var(--petrol);border-color:var(--petrol);background:var(--petrol-tint)}
-.quick button[aria-pressed="true"]{color:var(--petrol);border-color:var(--petrol);background:var(--petrol-tint);font-weight:600}
+.quick button:hover{border-color:var(--accent);color:var(--accent)}
+.quick button[aria-pressed="true"]{background:var(--accent-tint);border-color:var(--accent);color:var(--accent);font-weight:700}
 .quick button[aria-pressed="true"]::before{content:'✓ '}
-@media(max-width:520px){.quick button{height:28px;font-size:12px;padding:0 10px}}
-
-/* botões de escolha única (tabagismo, alergia) */
-.pick{display:flex;flex-wrap:wrap;gap:4px;background:var(--surface-2);border:1px solid var(--line-soft);border-radius:10px;padding:3px}
-.pick button{white-space:nowrap;
-  flex:1 1 auto;height:27px;min-width:0;padding:0 8px;border:none;border-radius:7px;background:transparent;cursor:pointer;
-  font-size:12.5px;font-weight:500;color:var(--ink-3);transition:background .15s,color .15s,box-shadow .15s;
+.quick button.warn[aria-pressed="true"]{background:var(--danger-tint);border-color:var(--danger);color:var(--danger)}
+.quick button.sug{border-color:var(--gold);color:var(--gold-ink);background:var(--gold-tint)}
+.quick button.sug[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);background:var(--accent-tint)}
+.groups{display:flex;flex-direction:column;gap:6px}
+@media(max-width:560px){
+  .quick button{height:31px;font-size:13px;padding:0 11px}
+  .quick .ql{min-width:0;width:100%}
 }
-.pick button:hover{color:var(--ink);background:var(--field-hover)}
-.pick button[aria-pressed="true"]{background:var(--petrol);color:#fff;font-weight:600;box-shadow:0 1px 2px rgba(11,26,33,.2)}
-html[data-theme="dark"] .pick button[aria-pressed="true"]{color:#0A1418}
-@media(max-width:520px){.pick button{padding:0 3px;font-size:12.5px;height:32px}}
+
+/* sub-opções: aparecem só quando fazem sentido */
+.sub{
+  position:relative;margin-left:8px;padding:8px 0 2px 12px;border-left:2px solid var(--accent-tint);
+  display:flex;flex-direction:column;gap:6px;
+}
+.sub .quick button,.sub.quick button{background:var(--card)}
+.sub.quick{flex-direction:row;flex-wrap:wrap;align-items:center;gap:5px}
+.sub.quick .hint{margin-right:2px}
+.sub .hint{font-size:11px;font-weight:600;color:var(--muted)}
+
+/* escolha única (segmentado) */
+.pick{display:flex;flex-wrap:wrap;gap:3px;background:var(--surface-2);border-radius:11px;padding:3px}
+.pick button{
+  flex:1 1 auto;min-width:0;height:30px;padding:0 6px;border:none;border-radius:8px;background:transparent;cursor:pointer;white-space:nowrap;
+  font-size:12.5px;font-weight:600;color:var(--ink-3);transition:background .14s,color .14s,box-shadow .14s;
+}
+.pick button:hover{color:var(--ink);background:var(--card)}
+.pick button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);box-shadow:0 1px 3px rgba(14,26,32,.2)}
+.pick.solta button{flex:0 1 auto;padding:0 10px}
+.pick.una{flex-wrap:nowrap}
+.pick.una button{padding:0 3px;overflow:hidden;text-overflow:ellipsis}
+.pick.danger button[data-v="Exposta"][aria-pressed="true"]{background:var(--danger);color:#fff}
+@media(max-width:560px){.pick button{height:34px;font-size:13px;padding:0 6px}}
+
+.lrow{display:flex;align-items:center;justify-content:space-between;gap:6px;min-height:18px}
+.quick.mini-q{gap:3px}
+.quick.mini-q button{height:20px;padding:0 7px;font-size:11px}
+@media(max-width:560px){.quick.mini-q button{height:24px;font-size:12px}}
 
 /* ── AUTOCOMPLETAR DE CLASSIFICAÇÕES ─────────────── */
 .ac{position:relative}
-.ac input{padding-right:84px;cursor:pointer}
-.ac input:focus{cursor:text}
+.ac input{padding-right:84px}
 .ac-btn{
-  position:absolute;right:4px;top:4px;height:calc(100% - 8px);padding:0 8px 0 10px;border-radius:7px;gap:4px;
-  border:1px solid var(--line);background:var(--petrol-tint);color:var(--petrol);cursor:pointer;
-  display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:600;
-  transition:background .15s,color .15s,border-color .15s;
+  position:absolute;right:4px;top:4px;height:calc(100% - 8px);padding:0 9px;border-radius:7px;gap:4px;
+  border:none;background:var(--accent-tint);color:var(--accent);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;
 }
-.ac-btn:hover,.ac-btn[aria-expanded="true"]{background:var(--petrol);border-color:var(--petrol);color:#fff}
-html[data-theme="dark"] .ac-btn:hover,html[data-theme="dark"] .ac-btn[aria-expanded="true"]{color:#0A1418}
+.ac-btn:hover,.ac-btn[aria-expanded="true"]{background:var(--accent);color:var(--accent-ink)}
 .ac-btn svg{width:13px;height:13px;transition:transform .15s}
 .ac-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
 .ac-menu{
   position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:40;
-  background:var(--menu);border:1px solid var(--line);border-radius:12px;
-  box-shadow:0 22px 48px -18px rgba(11,26,33,.55);overflow:hidden;
+  background:var(--card);border:1px solid var(--line);border-radius:13px;
+  box-shadow:0 24px 50px -18px rgba(14,26,32,.55);overflow:hidden;
 }
-.ac-head{
-  display:flex;align-items:center;gap:8px;padding:9px 10px;border-bottom:1px solid var(--line-soft);
-  font-size:11px;color:var(--ink-3);background:var(--surface-2);
-}
-.ac-head b{color:var(--ink);font-size:12.5px;font-weight:600}
-.ac-head .back{
-  border:1px solid var(--line);background:var(--card);color:var(--ink-2);border-radius:7px;
-  height:24px;padding:0 8px;cursor:pointer;font-size:11px;font-weight:600;
-}
-.ac-head .back:hover{border-color:var(--petrol);color:var(--petrol)}
+.ac-head{display:flex;align-items:center;gap:8px;padding:9px 10px;border-bottom:1px solid var(--line-soft);font-size:11.5px;color:var(--ink-3);background:var(--surface)}
+.ac-head b{color:var(--ink);font-size:13px;font-weight:700}
+.ac-head .back{border:1px solid var(--line);background:var(--card);border-radius:7px;height:25px;padding:0 9px;cursor:pointer;font-size:11.5px;font-weight:700}
+.ac-head .back:hover{border-color:var(--accent);color:var(--accent)}
 .ac-list{max-height:min(340px,46vh);overflow-y:auto;overscroll-behavior:contain;padding:4px}
-.ac-item{
-  display:flex;gap:10px;align-items:flex-start;padding:8px 9px;border-radius:8px;cursor:pointer;
-}
-.ac-item.on{background:var(--menu-hover)}
+.ac-item{display:flex;gap:10px;align-items:flex-start;padding:8px 9px;border-radius:9px;cursor:pointer}
+.ac-item.on{background:var(--surface-2)}
 .ac-item .code{
   flex-shrink:0;min-width:42px;max-width:46%;padding:2px 7px;border-radius:6px;text-align:center;
-  font-size:11.5px;font-weight:700;color:var(--petrol);background:var(--petrol-tint);border:1px solid var(--line);
-  line-height:1.45;
+  font-size:11.5px;font-weight:800;color:var(--accent);background:var(--accent-tint);line-height:1.45;
 }
 .ac-item .txt{min-width:0;font-size:12.5px;line-height:1.4;color:var(--ink-2)}
-.ac-item .txt b{display:block;color:var(--ink);font-weight:600;font-size:13px}
+.ac-item .txt b{display:block;color:var(--ink);font-weight:700;font-size:13px}
 .ac-item .txt small{color:var(--muted);font-size:11px}
-.ac-item mark{background:transparent;color:var(--brass);font-weight:700}
+.ac-item .txt em{font-style:normal;font-size:10px;font-weight:700;color:var(--gold-ink);background:var(--gold-tint);border-radius:5px;padding:1px 6px;margin-left:6px}
+.ac-item mark{background:transparent;color:var(--gold);font-weight:800}
 .ac-empty{padding:12px;font-size:12px;color:var(--muted)}
 .ac-foot{padding:6px 10px;border-top:1px solid var(--line-soft);font-size:10.5px;color:var(--muted)}
-.ac-foot kbd{font-family:inherit;font-size:10px;border:1px solid var(--line);border-radius:4px;padding:0 4px;background:var(--surface-3)}
-@media(max-width:520px){.ac-foot{display:none}}
+.ac-foot kbd{font-family:inherit;font-size:10px;border:1px solid var(--line);border-radius:4px;padding:0 4px;background:var(--surface)}
+@media(max-width:560px){.ac-foot{display:none}}
+
+footer{text-align:center;font-size:12px;color:var(--muted);padding:14px 0 0}
+footer b{font-weight:700;color:var(--ink-3)}
 
 /* ── PAINEL DA MENSAGEM ───────────────────────────── */
-.rail{position:sticky;top:74px;align-self:start;display:flex;flex-direction:column;gap:10px}
+.rail{position:sticky;top:74px;align-self:start}
 @media(max-width:1180px){.rail{position:static}}
-
-.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-lift);overflow:hidden}
-.panel-head{display:flex;align-items:center;gap:9px;padding:13px 14px 10px}
-.panel-head h2{font-size:10.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3)}
-.panel-head .meta{margin-left:auto;display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
-.meter{width:48px;height:4px;border-radius:99px;background:var(--line);overflow:hidden}
-.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--petrol),var(--brass));border-radius:99px;transition:width .3s ease}
-
-.tabs{display:flex;gap:2px;margin:0 14px;padding:3px;background:var(--surface-2);border:1px solid var(--line-soft);border-radius:10px}
-.tabs button{
-  flex:1;height:30px;border:none;border-radius:8px;background:transparent;cursor:pointer;
-  font-size:12px;font-weight:500;color:var(--ink-3);transition:background .15s,color .15s;
-  display:flex;align-items:center;justify-content:center;gap:6px;
+.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
+.panel-head{display:flex;align-items:center;gap:9px;padding:13px 14px 4px}
+.panel-head h2{font-size:16px;font-weight:800;letter-spacing:-.02em}
+.meter{width:42px;height:4px;border-radius:99px;background:var(--line);overflow:hidden;flex-shrink:0}
+.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--gold));border-radius:99px;transition:width .3s ease}
+.panel-head .meta{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.panel-head .sp{flex:1}
+.urg{
+  height:28px;padding:0 10px;border-radius:99px;cursor:pointer;display:flex;align-items:center;gap:5px;
+  font-size:11.5px;font-weight:800;letter-spacing:.02em;color:var(--danger);background:transparent;border:1px solid color-mix(in srgb,var(--danger) 45%,transparent);
 }
-.tabs button:hover{color:var(--ink)}
-.tabs button[aria-selected="true"]{background:var(--seg-on);color:var(--petrol);font-weight:600;box-shadow:0 1px 2px rgba(11,26,33,.14)}
-.tabs button svg{width:14px;height:14px}
-.tabs.recolhido{margin-bottom:0}
+.urg::before{content:'';width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.55}
+.urg[aria-pressed="true"]{background:var(--danger);color:#fff;border-color:var(--danger)}
+.urg[aria-pressed="true"]::before{opacity:1;box-shadow:0 0 0 3px rgba(255,255,255,.3)}
+.gear{
+  width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;cursor:pointer;
+  background:var(--surface);border:1px solid var(--line);color:var(--ink-3);
+}
+.gear svg{width:15px;height:15px}
+.gear[aria-expanded="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 
-.tabpane{padding:11px 14px 0;display:flex;flex-direction:column;gap:8px}
-.opt-row{display:grid;grid-template-columns:62px minmax(0,1fr);gap:8px;align-items:start}
-.opt-row .k{font-size:9.5px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);padding-top:7px}
-.opt-row .ctl{flex:1;display:flex;align-items:center;gap:6px;min-width:0;flex-wrap:wrap}
-
+.mopts{padding:8px 14px 0;display:flex;flex-direction:column;gap:8px}
+.orow{display:grid;grid-template-columns:52px minmax(0,1fr);gap:8px;align-items:start}
+.orow > .k{font-size:11px;font-weight:700;color:var(--muted);padding-top:5px}
 .chips{display:flex;flex-wrap:wrap;gap:4px}
 .chip{
-  height:26px;padding:0 9px;border-radius:99px;cursor:pointer;
-  font-size:11.5px;font-weight:500;color:var(--ink-2);background:var(--quiet-bg);
-  border:1px solid var(--line);transition:background .15s,color .15s,border-color .15s;white-space:nowrap;
+  height:26px;padding:0 9px;border-radius:99px;cursor:pointer;white-space:nowrap;
+  font-size:12px;font-weight:600;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);
+  transition:background .14s,color .14s,border-color .14s;
 }
-.chip:hover{border-color:var(--quiet-border-hover);background:var(--quiet-hover)}
-.chip[aria-pressed="true"]{background:var(--petrol);border-color:var(--petrol);color:#fff;font-weight:600}
-html[data-theme="dark"] .chip[aria-pressed="true"]{color:#0A1418}
-.chip.ghost{color:var(--muted);border-style:dashed}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.chip.ghost{color:var(--muted);background:transparent;border-style:dashed}
 .chip small{font-weight:500;opacity:.75;margin-left:3px}
+.sel-sm{font-size:13px;padding:6px 10px;border-radius:9px;margin-top:5px}
 
-.seg{display:inline-flex;background:var(--surface-2);border:1px solid var(--line-soft);border-radius:9px;padding:2px;gap:2px}
-.seg button{
-  height:26px;padding:0 10px;border:none;border-radius:7px;background:transparent;cursor:pointer;
-  font-size:11.5px;font-weight:500;color:var(--ink-3);
-  letter-spacing:.02em;transition:background .15s,color .15s;
+.txt-toggle{
+  display:flex;align-items:center;gap:8px;width:100%;padding:8px 10px;border-radius:11px;cursor:pointer;text-align:left;
+  background:var(--surface);border:1px solid var(--line-soft);
 }
-.seg button:hover{color:var(--ink)}
-.seg button[aria-pressed="true"]{background:var(--seg-on);color:var(--petrol);font-weight:600;box-shadow:0 1px 2px rgba(11,26,33,.14)}
+.txt-toggle span{font-size:12px;font-weight:700;flex-shrink:0}
+.txt-toggle small{flex:1;min-width:0;font-size:11.5px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.txt-toggle svg{width:14px;height:14px;color:var(--muted);flex-shrink:0;transition:transform .15s}
+.txt-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+.txt-pane{display:flex;flex-direction:column;gap:8px;padding:2px 0 2px}
 
-.sel-sm{font-size:12.5px;padding:6px 10px;border-radius:8px;width:100%}
-.preview-line{
-  font-size:12px;color:var(--ink-3);background:var(--surface-3);border:1px solid var(--line-soft);
-  border-radius:9px;padding:7px 10px;line-height:1.45;
-}
-.preview-line b{color:var(--ink);font-weight:600}
-.preview-line .none{color:var(--muted);font-style:italic}
+.cfg{margin:8px 14px 0;padding:10px;border-radius:13px;background:var(--surface);border:1px solid var(--line-soft);display:flex;flex-direction:column;gap:8px}
+.cfg .orow{grid-template-columns:72px minmax(0,1fr)}
+.seg{display:inline-flex;background:var(--surface-2);border-radius:9px;padding:2px;gap:2px}
+.seg button{height:26px;padding:0 10px;border:none;border-radius:7px;background:transparent;cursor:pointer;font-size:12px;font-weight:600;color:var(--ink-3)}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--accent);box-shadow:0 1px 2px rgba(14,26,32,.15)}
 
-/* ── CAPS LOCK ────────────────────────────────────── */
+/* CAPS LOCK */
 .capsbar{
-  display:flex;align-items:center;gap:10px;margin:10px 14px 0;padding:8px 10px 8px 11px;
-  border:1px solid var(--line);border-radius:11px;background:var(--surface-3);
-  transition:background .2s,border-color .2s;
+  display:flex;align-items:center;gap:10px;margin:10px 14px 0;padding:8px 10px;
+  border:1px solid var(--line);border-radius:12px;background:var(--surface);transition:background .2s,border-color .2s;
 }
-.capsbar.on-caps{background:var(--brass-tint);border-color:rgba(176,120,43,.4)}
+.capsbar.on-caps{background:var(--gold-tint);border-color:color-mix(in srgb,var(--gold) 50%,transparent)}
 .capsbar .ico{
-  width:26px;height:26px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
-  font-size:13px;font-weight:700;color:var(--petrol);background:var(--card);border:1px solid var(--line);
+  width:28px;height:28px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:12.5px;font-weight:800;color:var(--accent);background:var(--card);border:1px solid var(--line);
 }
-.capsbar.on-caps .ico{color:var(--brass-2);border-color:rgba(176,120,43,.4)}
+.capsbar.on-caps .ico{color:var(--gold-ink)}
 .capsbar .txt{min-width:0;flex:1;line-height:1.25}
-.capsbar .txt b{display:block;font-size:12px;font-weight:600;color:var(--ink)}
-.capsbar .txt small{display:block;font-size:10.5px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.capsbar .txt b{display:block;font-size:12.5px;font-weight:700}
+.capsbar .txt small{display:block;font-size:11px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .capsbar .fix{
-  height:26px;padding:0 9px;border-radius:7px;cursor:pointer;flex-shrink:0;
-  font-size:11px;font-weight:600;color:var(--brass-2);background:var(--card);border:1px solid rgba(176,120,43,.45);
+  height:28px;padding:0 10px;border-radius:8px;cursor:pointer;flex-shrink:0;
+  font-size:11.5px;font-weight:700;color:var(--gold-ink);background:var(--card);border:1px solid color-mix(in srgb,var(--gold) 60%,transparent);
 }
-.capsbar .fix:hover{background:var(--brass);border-color:var(--brass);color:#fff}
-.sw{
-  position:relative;width:38px;height:22px;border-radius:99px;flex-shrink:0;cursor:pointer;
-  background:var(--line);border:none;transition:background .2s;
-}
-.sw::after{
-  content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;
-  background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:transform .2s cubic-bezier(.34,1.3,.64,1);
-}
-.sw[aria-checked="true"]{background:var(--petrol)}
-.sw[aria-checked="true"]::after{transform:translateX(16px)}
-html[data-theme="dark"] .sw[aria-checked="true"]::after{background:#0A1418}
-/* aviso de Caps Lock junto ao campo */
+.capsbar .fix:hover{background:var(--gold);border-color:var(--gold);color:#fff}
+.sw{position:relative;width:40px;height:23px;border-radius:99px;flex-shrink:0;cursor:pointer;background:var(--line);border:none;transition:background .2s}
+.sw::after{content:'';position:absolute;top:3px;left:3px;width:17px;height:17px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:transform .2s cubic-bezier(.34,1.3,.64,1)}
+.sw[aria-checked="true"]{background:var(--accent)}
+.sw[aria-checked="true"]::after{transform:translateX(17px)}
 .caps-pill{
-  position:fixed;z-index:80;pointer-events:none;
-  font-size:10.5px;font-weight:700;letter-spacing:.04em;color:#2B1B04;
-  background:linear-gradient(135deg,#FBE7AE,#E3B45A);border-radius:6px;padding:2px 7px;
-  box-shadow:0 4px 12px -4px rgba(176,120,43,.7);
+  position:fixed;z-index:80;pointer-events:none;font-size:10.5px;font-weight:800;letter-spacing:.04em;color:#3A2606;
+  background:linear-gradient(135deg,#FCEBB8,#E3B45A);border-radius:6px;padding:2px 7px;box-shadow:0 4px 12px -4px rgba(176,120,43,.7);
 }
 
-/* ── TELEFONE / CONVERSA ──────────────────────────── */
-.phone{padding:12px 14px 14px;background:var(--phone-bg)}
-.chat{border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 10px 26px -20px rgba(11,26,33,.75)}
-.chat-bar{display:flex;align-items:center;gap:9px;background:linear-gradient(180deg,#134A3E,#0F3F35);padding:8px 11px}
+/* conversa */
+.phone{padding:10px 14px 12px}
+.chat{border:1px solid var(--line);border-radius:15px;overflow:hidden}
+.chat-bar{display:flex;align-items:center;gap:9px;background:#0F3B33;padding:8px 11px}
 .avatar{
-  width:28px;height:28px;border-radius:50%;background:#D6A44E;color:#0F3F35;
-  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;
+  width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#F2D08A,#C08A33);color:#2B1B04;
+  display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:800;flex-shrink:0;
 }
-.chat-bar b{font-size:12.5px;font-weight:600;color:#fff;line-height:1.15;display:block}
-.chat-bar small{font-size:10px;color:#9FC7B9}
+.chat-bar b{font-size:13px;font-weight:700;color:#fff;line-height:1.15;display:block}
+.chat-bar small{font-size:10.5px;color:#9FC7B9}
 .wall{
-  background:var(--wall);background-image:radial-gradient(var(--wall-dot) 1px,transparent 1px);
-  background-size:15px 15px;padding:14px 12px;display:block;
-  max-height:max(190px,calc(100vh - 560px));overflow-y:auto;overscroll-behavior:contain;
-  -webkit-overflow-scrolling:touch;
+  background:var(--wall);background-image:radial-gradient(var(--wall-dot) 1px,transparent 1px);background-size:15px 15px;
+  padding:12px 11px;max-height:max(190px,calc(100vh - 610px));overflow-y:auto;overscroll-behavior:contain;
 }
 @media(max-width:1180px){.wall{max-height:none;overflow:visible}}
 .bubble{
-  position:relative;width:fit-content;max-width:94%;margin-left:auto;
-  background:var(--bubble);border-radius:10px 3px 10px 10px;
-  padding:9px 11px 5px;box-shadow:0 1px 1px rgba(11,26,33,.13);
-  font-size:13px;line-height:1.6;color:var(--bubble-ink);white-space:pre-wrap;word-wrap:break-word;overflow-wrap:anywhere;
-  transition:box-shadow .2s,transform .2s;
+  position:relative;width:fit-content;max-width:95%;margin-left:auto;
+  background:var(--bubble);border-radius:10px 3px 10px 10px;padding:8px 10px 5px;box-shadow:0 1px 1px rgba(11,26,33,.13);
+  font-size:13px;line-height:1.55;color:var(--bubble-ink);white-space:pre-wrap;overflow-wrap:anywhere;transition:box-shadow .2s;
 }
-.bubble.flash{box-shadow:0 0 0 3px rgba(31,168,85,.35);transform:translateY(-1px)}
+.bubble.flash{box-shadow:0 0 0 3px rgba(29,168,81,.4)}
 .bubble::after{content:'';position:absolute;top:0;right:-7px;border-width:0 0 9px 8px;border-style:solid;border-color:transparent transparent transparent var(--bubble)}
-.bubble strong{font-weight:600}
+.bubble strong{font-weight:700}
+.bubble .urg-l{color:#D93A27}
+html[data-theme="dark"] .bubble .urg-l{color:#FF9A88}
 .bubble .stamp{display:block;text-align:right;font-size:10px;color:var(--bubble-meta);margin-top:2px}
 .bubble .empty{color:var(--bubble-meta);font-style:italic}
 
-.panel-foot{display:flex;align-items:center;gap:7px;padding:0 14px 14px;flex-wrap:wrap}
-
+.actions{display:flex;gap:7px;padding:0 14px 14px}
 .btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:7px;height:40px;padding:0 14px;
-  border:1px solid transparent;border-radius:11px;cursor:pointer;white-space:nowrap;
-  font-size:13.5px;font-weight:500;
-  transition:background .16s,border-color .16s,color .16s,transform .12s,box-shadow .16s;
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;height:42px;padding:0 14px;
+  border:1px solid transparent;border-radius:12px;cursor:pointer;white-space:nowrap;font-size:14px;font-weight:700;
+  transition:background .15s,border-color .15s,color .15s,transform .1s;
 }
-.btn svg{width:16px;height:16px;flex-shrink:0}
+.btn svg{width:17px;height:17px;flex-shrink:0}
 .btn:active{transform:translateY(1px)}
-.btn-whats{background:var(--whats);color:#fff;font-weight:600;flex:1;box-shadow:0 8px 18px -12px rgba(31,168,85,.9)}
-.btn-whats:hover{background:#178C46}
-.btn-primary{background:var(--petrol);color:#fff}
-html[data-theme="dark"] .btn-primary{color:#0A1418}
-.btn-primary:hover{background:var(--petrol-2)}
-.btn-quiet{background:var(--quiet-bg);color:var(--ink-2);border-color:var(--line)}
-.btn-quiet:hover{border-color:var(--quiet-border-hover);background:var(--quiet-hover)}
-.btn-icon{width:40px;padding:0}
+.btn-whats{background:var(--whats);color:#fff;flex:1;box-shadow:0 8px 18px -12px rgba(29,168,81,.9)}
+.btn-whats:hover{background:#178C44}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{background:var(--accent-2)}
+.btn-quiet{background:var(--card);color:var(--ink-2);border-color:var(--line)}
+.btn-icon{width:42px;padding:0}
 .btn-clear{background:transparent;color:var(--muted);border-color:var(--line)}
 .btn-clear:hover{color:var(--danger);background:var(--danger-tint);border-color:transparent}
 
-@media(max-width:460px){
-  .panel-foot .btn-whats{flex:1 1 100%}
-  .panel-foot .btn-primary{flex:1}
-  .bubble{max-width:100%;font-size:12.5px}
-  .panel-head .meta{font-size:10px;gap:5px}
-}
-
 .mobilebar{
-  display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:70;gap:7px;
-  background:var(--bar-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  border:1px solid var(--line);border-radius:15px;padding:9px 10px;
-  box-shadow:0 16px 34px -20px rgba(11,26,33,.8);
+  display:none;position:fixed;left:10px;right:10px;bottom:10px;z-index:70;gap:7px;
+  background:var(--bar);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid var(--line);border-radius:16px;padding:8px;box-shadow:0 16px 34px -18px rgba(14,26,32,.8);
 }
 @media(max-width:1180px){.mobilebar{display:flex}}
 
-footer{text-align:center;font-size:11.5px;color:var(--muted);padding:16px 0 2px}
-footer span{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:14px;color:var(--ink-3)}
-
 .toast{
-  position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(14px);
-  display:flex;align-items:center;gap:12px;
-  background:var(--ink);color:var(--paper);font-size:13px;font-weight:500;padding:10px 18px;border-radius:99px;
+  position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(14px);display:flex;align-items:center;gap:12px;
+  background:var(--ink);color:var(--bg);font-size:13px;font-weight:600;padding:10px 18px;border-radius:99px;
   box-shadow:0 14px 34px -12px rgba(11,26,33,.75);opacity:0;pointer-events:none;
   transition:opacity .22s ease,transform .22s cubic-bezier(.34,1.4,.64,1);z-index:9999;white-space:nowrap;
 }
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast.show.has-act{pointer-events:auto}
-.toast button{border:none;background:transparent;color:#D6A44E;font-weight:700;font-size:13px;cursor:pointer;padding:0}
-html[data-theme="dark"] .toast button{color:#8E5F1E}
+.toast button{border:none;background:transparent;color:#E9C27A;font-weight:800;font-size:13px;cursor:pointer;padding:0}
+html[data-theme="dark"] .toast button{color:#7A5517}
 @media(max-width:1180px){.toast{bottom:80px}}
 @media(prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
 </style>
@@ -517,48 +465,42 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
 
 <body>
 
-<header>
-  <div class="brand"><span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h13"/><path d="M12 6l6 6-6 6"/><path d="M20.5 5v14" opacity=".55"/></svg></span><span class="bt"><b>Encaminhador</b><i>2.3 mil</i></span></div>
-  <nav>
-    <a class="nav-btn" href="https://talesrobertosn.github.io/ortopocket/quadriltales.html" target="_blank" rel="noopener noreferrer" title="Exame Físico Ambulatorial do Quadril">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="5" r="2.4"/><path d="M8.5 21l1.6-6.4L12 12.8l1.9 1.8L15.5 21"/><path d="M6.4 9.6C8 8.6 10 8.1 12 8.1s4 .5 5.6 1.5"/></svg>
-      <span class="n-long">Exame Físico do Quadril</span>
-      <span class="n-short">Quadril</span>
+<header class="top">
+  <a class="brand" href="./" aria-label="Encaminhador">
+    <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h13"/><path d="M12 6l6 6-6 6"/><path d="M20.5 5v14" opacity=".55"/></svg></span>
+    <b>Encaminhador</b><i>2.3 mil</i>
+  </a>
+  <div class="top-r">
+    <a class="oq" href="http://ortoquestoes.com.br/" target="_blank" rel="noopener noreferrer" title="OrtoQuestões: banco de questões de ortopedia">
+      <span class="oq-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.1 5.9L20 10l-5.9 2.1L12 18l-2.1-5.9L4 10l5.9-2.1z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z" opacity=".7"/></svg></span>
+      <span class="oq-t"><b>OrtoQuestões</b><small>Banco de questões</small></span>
+      <svg class="oq-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
     </a>
-    <a class="nav-btn" href="https://talesrobertosn.github.io/ortopediaresumos/" target="_blank" rel="noopener noreferrer" title="Resumos de Ortopedia">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-      <span class="n-long">Resumos de Ortopedia</span>
-      <span class="n-short">Resumos</span>
-    </a>
-    <a class="nav-btn gold" href="http://ortoquestoes.com.br/" target="_blank" rel="noopener noreferrer" title="OrtoQuestões - Banco de questões de ortopedia">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.1 5.9L20 10l-5.9 2.1L12 18l-2.1-5.9L4 10l5.9-2.1z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z" opacity=".75"/></svg>
-      <span>OrtoQuestões</span>
-    </a>
-    <button class="theme-switch" id="themeBtn" type="button" role="switch" aria-checked="false" title="Alternar modo claro / escuro">
-      <span class="ts-track"><span class="ts-knob">
-        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-        <svg class="i-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
-      </span></span>
-      <span class="ts-label" id="themeLabel">Claro</span>
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="Alternar modo claro / escuro">
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
     </button>
-  </nav>
+  </div>
 </header>
 
+<nav class="secnav" aria-label="Seções">
+  <a href="#s1" data-nav="1">Paciente <i></i></a>
+  <a href="#s2" data-nav="2">Trauma <i></i></a>
+  <a href="#s3" data-nav="3">Exame <i></i></a>
+  <a href="#s4" data-nav="4">Antecedentes <i></i></a>
+  <a href="#s5" data-nav="5">Conduta <i></i></a>
+  <a href="#rail">Mensagem</a>
+</nav>
+
 <div class="shell">
+<main>
+  <div class="sheet">
 
-  <div>
-    <div class="page-head">
-      <h1><span>Encaminhamento <em>ortopédico</em></span><p>Campo em branco não entra na mensagem.</p></h1>
-      <div class="hint">
-        <kbd>Ctrl</kbd><kbd>Enter</kbd> enviar
-        <b></b>
-        <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>C</kbd> copiar
-      </div>
-    </div>
+    <!-- ───────── COLUNA 1 ───────── -->
+    <div class="col">
 
-    <div class="grid">
-      <section class="card">
-        <div class="card-head"><span class="num">1</span><h2>Paciente</h2><span class="tally" data-tally="1">0/6</span></div>
+      <section class="sec" id="s1">
+        <div class="sec-h"><span class="n">1</span><h2>Paciente</h2><span class="prog" data-tally="1"></span></div>
         <div class="fields">
           <div class="trio">
             <div class="field">
@@ -574,116 +516,89 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
               <input id="numero" type="text" placeholder="123456" autocomplete="off" />
             </div>
           </div>
+          <div class="duo-sx">
+            <div class="field">
+              <span class="lbl" id="lbl_sexo">Sexo</span>
+              <input id="sexo" type="hidden" />
+              <div class="pick" data-for="sexo" role="group" aria-labelledby="lbl_sexo">
+                <button type="button" data-v="Masculino">M</button>
+                <button type="button" data-v="Feminino">F</button>
+              </div>
+            </div>
+            <div class="field">
+              <span class="lbl" id="lbl_convenio">Convênio</span>
+              <input id="convenio" type="hidden" />
+              <div class="pick una" data-for="convenio" role="group" aria-labelledby="lbl_convenio">
+                <button type="button" data-v="SUS">SUS</button>
+                <button type="button" data-v="Unimed">Unimed</button>
+                <button type="button" data-v="Angeli">Angeli</button>
+                <button type="button" data-v="Caron">Caron</button>
+                <button type="button" data-v="Amil">Amil</button>
+                <button type="button" data-v="Outro">Outro</button>
+              </div>
+            </div>
+          </div>
+          <div class="field full hide" data-show="convenio=Outro">
+            <input id="convenio_outro" type="text" placeholder="Qual convênio?" autocomplete="off" aria-label="Qual convênio" />
+          </div>
           <div class="field full">
-            <label id="lbl_convenio">Convênio</label>
-            <input id="convenio" type="hidden" />
-            <div class="pick" data-for="convenio" role="group" aria-labelledby="lbl_convenio">
-              <button type="button" data-v="SUS">SUS</button>
-              <button type="button" data-v="Unimed">Unimed</button>
-              <button type="button" data-v="Angeli">Angeli</button>
-              <button type="button" data-v="Caron">Caron</button>
-              <button type="button" data-v="Amil">Amil</button>
-              <button type="button" data-v="Outro">Outro</button>
-            </div>
-            <div id="wrap_convenio_outro" class="hide" style="margin-top:6px;">
-              <input id="convenio_outro" type="text" placeholder="Qual convênio?" autocomplete="off" />
-            </div>
-          </div>
-          <div class="field">
             <label for="profissao">Profissão</label>
-            <input id="profissao" type="text" placeholder="Pedreiro, aposentado..." />
-          </div>
-          <div class="field">
-            <label for="funcionalidade">Funcionalidade prévia</label>
-            <select id="funcionalidade">
-              <option value="">Não informada</option>
-              <optgroup label="Independente">
-                <option value="Independente">Independente</option>
-                <option value="Independente e ativo, pratica atividade física">Independente e ativo (atividade física)</option>
-                <option value="Independente, com limitação prévia por dor">Independente, com limitação por dor</option>
-              </optgroup>
-              <optgroup label="Deambula com auxílio">
-                <option value="Deambula com bengala">Bengala</option>
-                <option value="Deambula com muleta(s)">Muleta(s)</option>
-                <option value="Deambula com andador">Andador</option>
-                <option value="Deambula com auxílio de terceiros">Auxílio de terceiros</option>
-                <option value="Deambula apenas dentro de casa">Apenas dentro de casa</option>
-              </optgroup>
-              <optgroup label="Não deambula">
-                <option value="Cadeirante">Cadeirante</option>
-                <option value="Restrito ao leito">Restrito ao leito</option>
-              </optgroup>
-            </select>
-          </div>
-          <div class="field">
-            <label for="comorbidades">Comorbidades</label>
-            <input id="comorbidades" type="text" placeholder="HAS, DM, DRC, anticoagulação..." />
-            <div class="quick" data-for="comorbidades">
-              <button type="button" data-t="Nega">Nega</button>
-              <button type="button" data-t="HAS">HAS</button>
-              <button type="button" data-t="DM2">DM2</button>
-              <button type="button" data-t="anticoagulado">Anticoagulado</button>
+            <input id="profissao" type="text" placeholder="Pedreiro, motorista..." />
+            <div class="quick" data-for="profissao">
+              <button type="button" data-t="Aposentado" data-x>Aposentado</button>
+              <button type="button" data-t="Do lar" data-x>Do lar</button>
+              <button type="button" data-t="Estudante" data-x>Estudante</button>
             </div>
           </div>
-          <div class="field">
-            <label for="muc">Medicamentos de uso contínuo</label>
-            <input id="muc" type="text" placeholder="Listar medicamentos" />
-            <div class="quick" data-for="muc">
-              <button type="button" data-t="Nega">Nega</button>
-              <button type="button" data-t="losartana">Losartana</button>
-              <button type="button" data-t="metformina">Metformina</button>
-              <button type="button" data-t="AAS">AAS</button>
-            </div>
-          </div>
-          <div class="field half">
-            <label id="lbl_tabagismo">Tabagismo</label>
-            <input id="tabagismo" type="hidden" />
-            <div class="pick" data-for="tabagismo" role="group" aria-labelledby="lbl_tabagismo">
-              <button type="button" data-v="Nega">Nega</button>
-              <button type="button" data-v="Sim">Sim</button>
-              <button type="button" data-v="Ex-tabagista" title="Ex-tabagista">Ex</button>
-            </div>
-          </div>
-          <div class="field half">
-            <label id="lbl_alergia">Alergia</label>
-            <input id="alergia" type="hidden" />
-            <div class="pick" data-for="alergia" role="group" aria-labelledby="lbl_alergia">
-              <button type="button" data-v="Nega">Nega</button>
-              <button type="button" data-v="Sim">Sim</button>
-            </div>
-            <div id="wrap_alergia_qual" class="hide" style="margin-top:6px;">
-              <input id="alergia_qual" type="text" placeholder="Qual? Ex.: dipirona" autocomplete="off" />
+          <div class="field full">
+            <span class="lbl" id="lbl_func">Funcionalidade prévia</span>
+            <input id="funcionalidade" type="hidden" />
+            <div class="pick solta" data-for="funcionalidade" role="group" aria-labelledby="lbl_func">
+              <button type="button" data-v="Independente">Independente</button>
+              <button type="button" data-v="Ativo, pratica atividade física">Ativo</button>
+              <button type="button" data-v="Deambula com bengala">Bengala</button>
+              <button type="button" data-v="Deambula com muletas">Muleta</button>
+              <button type="button" data-v="Deambula com andador">Andador</button>
+              <button type="button" data-v="Cadeirante">Cadeirante</button>
+              <button type="button" data-v="Acamado">Acamado</button>
             </div>
           </div>
         </div>
+
       </section>
 
-      <section class="card">
-        <div class="card-head"><span class="num">2</span><h2>Ocorrência</h2><span class="tally" data-tally="2">0/7</span></div>
+      <section class="sec" id="s2">
+        <div class="sec-h"><span class="n">2</span><h2>Trauma</h2><span class="prog" data-tally="2"></span></div>
         <div class="fields">
           <div class="field half">
-            <label for="data">Data do atendimento</label>
+            <label for="data">Atendimento</label>
             <input id="data" type="date" />
           </div>
           <div class="field half">
-            <label for="data_trauma">Data do trauma</label>
-            <input id="data_trauma" type="date" />
-            <div class="quick" id="quickTrauma">
-              <button type="button" data-dias="0">Hoje</button>
-              <button type="button" data-dias="1">Ontem</button>
+            <div class="lrow">
+              <label for="data_trauma">Trauma</label>
+              <div class="quick mini-q" id="quickTrauma">
+                <button type="button" data-dias="0">Hoje</button>
+                <button type="button" data-dias="1">Ontem</button>
+              </div>
             </div>
+            <input id="data_trauma" type="date" />
           </div>
           <div class="field full">
             <label for="mecanismo">Mecanismo</label>
-            <input id="mecanismo" type="text" placeholder="Queda da própria altura, acidente de moto..." />
+            <input id="mecanismo" type="text" placeholder="Como foi?" />
             <div class="quick" data-for="mecanismo">
               <button type="button" data-t="Queda da própria altura">Queda da própria altura</button>
-              <button type="button" data-t="acidente de moto">Acidente de moto</button>
-              <button type="button" data-t="acidente automobilístico">Acidente de carro</button>
-              <button type="button" data-t="atropelamento">Atropelamento</button>
               <button type="button" data-t="queda de altura">Queda de altura</button>
+              <button type="button" data-t="acidente de moto">Moto</button>
+              <button type="button" data-t="acidente automobilístico">Carro</button>
+              <button type="button" data-t="atropelamento">Atropelamento</button>
               <button type="button" data-t="trauma direto">Trauma direto</button>
               <button type="button" data-t="entorse">Entorse</button>
+              <button type="button" data-t="trauma esportivo">Esporte</button>
+              <button type="button" data-t="agressão">Agressão</button>
+              <button type="button" data-t="acidente de trabalho">Acidente de trabalho</button>
+              <button type="button" data-t="ferimento por arma de fogo">FAF</button>
             </div>
           </div>
           <div class="field full">
@@ -693,8 +608,10 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
               <option value="Fratura do rádio distal"></option>
               <option value="Fratura transtrocantérica do fêmur"></option>
               <option value="Fratura do colo do fêmur"></option>
+              <option value="Fratura subtrocantérica do fêmur"></option>
               <option value="Fratura diafisária do fêmur"></option>
               <option value="Fratura supracondiliana do úmero"></option>
+              <option value="Fratura do côndilo lateral do úmero"></option>
               <option value="Fratura do úmero proximal"></option>
               <option value="Fratura diafisária do úmero"></option>
               <option value="Fratura da clavícula"></option>
@@ -716,6 +633,7 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
               <option value="Fratura da cabeça do rádio"></option>
               <option value="Fratura do olécrano"></option>
               <option value="Fratura periprotética"></option>
+              <option value="Fratura vertebral"></option>
               <option value="Luxação glenoumeral"></option>
               <option value="Luxação acromioclavicular"></option>
               <option value="Luxação do cotovelo"></option>
@@ -733,20 +651,31 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
             </datalist>
           </div>
           <div class="field half">
-            <label id="lbl_lado">Lado</label>
+            <span class="lbl" id="lbl_lado">Lado</span>
             <input id="lado" type="hidden" />
             <div class="pick" data-for="lado" role="group" aria-labelledby="lbl_lado">
-              <button type="button" data-v="Direito">Dir.</button>
-              <button type="button" data-v="Esquerdo">Esq.</button>
-              <button type="button" data-v="Bilateral">Bilat.</button>
+              <button type="button" data-v="Direito">D</button>
+              <button type="button" data-v="Esquerdo">E</button>
+              <button type="button" data-v="Bilateral">Bilateral</button>
             </div>
           </div>
           <div class="field half">
-            <label id="lbl_tipo_fratura">Tipo de fratura</label>
+            <span class="lbl" id="lbl_tipo_fratura">Fratura</span>
             <input id="tipo_fratura" type="hidden" />
-            <div class="pick" data-for="tipo_fratura" role="group" aria-labelledby="lbl_tipo_fratura">
+            <div class="pick danger" data-for="tipo_fratura" role="group" aria-labelledby="lbl_tipo_fratura">
               <button type="button" data-v="Fechada">Fechada</button>
               <button type="button" data-v="Exposta">Exposta</button>
+            </div>
+          </div>
+          <div class="sub full hide" data-show="tipo_fratura=Exposta">
+            <span class="hint">Gustilo-Anderson</span>
+            <input id="gustilo" type="hidden" />
+            <div class="pick" data-for="gustilo" role="group" aria-label="Gustilo-Anderson">
+              <button type="button" data-v="I" title="Ferida < 1 cm, limpa">I</button>
+              <button type="button" data-v="II" title="Ferida 1–10 cm">II</button>
+              <button type="button" data-v="IIIA" title="Lesão extensa, cobertura adequada">IIIA</button>
+              <button type="button" data-v="IIIB" title="Perda de partes moles, precisa de retalho">IIIB</button>
+              <button type="button" data-v="IIIC" title="Lesão arterial que precisa de reparo">IIIC</button>
             </div>
           </div>
           <div class="field full">
@@ -754,8 +683,8 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
             <div class="ac" id="ac">
               <input id="classificacao" type="text" placeholder="Toque para ver ou digite: Schatzker, Neer..." autocomplete="off"
                      role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="acList" />
-              <button class="ac-btn" id="acBtn" type="button" title="Ver todas as classificações" aria-label="Ver todas as classificações" aria-expanded="false">
-                Lista<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              <button class="ac-btn" id="acBtn" type="button" aria-label="Ver todas as classificações" aria-expanded="false">
+                Lista<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>
               </button>
               <div class="ac-menu hide" id="acMenu">
                 <div class="ac-head hide" id="acHead"></div>
@@ -766,252 +695,425 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
           </div>
         </div>
       </section>
+
+      <section class="sec" id="s5">
+        <div class="sec-h"><span class="n">5</span><h2>Conduta no plantão</h2><span class="prog" data-tally="5"></span></div>
+        <div class="fields">
+          <div class="field full">
+            <textarea id="conduta" rows="1" placeholder="O que foi feito e o que está proposto" aria-label="Conduta no plantão"></textarea>
+            <div class="groups">
+              <div class="quick" data-for="conduta">
+                <span class="ql">Imobilização</span>
+                <button type="button" data-t="tala gessada">Tala gessada</button>
+                <button type="button" data-t="gesso">Gesso</button>
+                <button type="button" data-t="tipoia">Tipoia</button>
+                <button type="button" data-t="imobilizador de joelho">Imobilizador de joelho</button>
+                <button type="button" data-t="bota imobilizadora">Bota</button>
+              </div>
+              <div class="quick" data-for="conduta">
+                <span class="ql">Procedimento</span>
+                <button type="button" data-t="redução incruenta">Redução incruenta</button>
+                <button type="button" data-t="sutura">Sutura</button>
+                <button type="button" data-t="lavagem e desbridamento">Lavagem + desbridamento</button>
+                <button type="button" data-t="fixador externo">Fixador externo</button>
+                <button type="button" data-t="tração esquelética">Tração esquelética</button>
+              </div>
+              <div class="quick" data-for="conduta">
+                <span class="ql">Medicação</span>
+                <button type="button" data-t="analgesia">Analgesia</button>
+                <button type="button" data-t="antibioticoterapia" data-sug="exposta">ATB</button>
+                <button type="button" data-t="profilaxia antitetânica" data-sug="exposta">Antitetânica</button>
+                <button type="button" data-t="profilaxia de TEV">Profilaxia de TEV</button>
+              </div>
+              <div class="quick" data-for="conduta">
+                <span class="ql">Destino</span>
+                <button type="button" data-t="alta com retorno ambulatorial">Alta + ambulatório</button>
+                <button type="button" data-t="internação para tratamento cirúrgico">Internação p/ cirurgia</button>
+                <button type="button" data-t="jejum">Jejum</button>
+                <button type="button" data-t="aguarda tomografia">Aguarda TC</button>
+                <button type="button" data-t="aguarda avaliação da especialidade">Aguarda avaliação</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
 
-    <div class="grid">
-      <section class="card">
-        <div class="card-head"><span class="num">3</span><h2>Exame</h2><span class="tally" data-tally="3">0/4</span></div>
+    <!-- ───────── COLUNA 2 ───────── -->
+    <div class="col">
+
+      <section class="sec" id="s3">
+        <div class="sec-h"><span class="n">3</span><h2>Exame</h2><span class="prog" data-tally="3"></span></div>
         <div class="fields">
           <div class="field full">
             <label for="exame_fisico">Exame físico</label>
-            <textarea id="exame_fisico" rows="2" placeholder="Dor, amplitude de movimento, edema, ferida, estabilidade..."></textarea>
-            <div class="quick" data-for="exame_fisico">
-              <button type="button" data-t="Dor à palpação">Dor à palpação</button>
-              <button type="button" data-t="edema">Edema</button>
-              <button type="button" data-t="deformidade">Deformidade</button>
-              <button type="button" data-t="crepitação">Crepitação</button>
-              <button type="button" data-t="impotência funcional">Impotência funcional</button>
-              <button type="button" data-t="equimose">Equimose</button>
-              <button type="button" data-t="limitação da amplitude de movimento">Limitação da ADM</button>
-              <button type="button" data-t="encurtamento e rotação externa do membro">Encurt. + rot. externa</button>
-              <button type="button" data-t="pele íntegra">Pele íntegra</button>
-              <button type="button" data-t="compartimentos livres">Compartimentos livres</button>
+            <textarea id="exame_fisico" rows="1" placeholder="Descreva ou use os atalhos abaixo"></textarea>
+            <div class="groups">
+              <div class="quick" data-for="exame_fisico">
+                <span class="ql">Inspeção</span>
+                <button type="button" data-t="edema">Edema</button>
+                <button type="button" data-t="deformidade">Deformidade</button>
+                <button type="button" data-t="equimose">Equimose</button>
+                <button type="button" data-t="dor à palpação">Dor à palpação</button>
+                <button type="button" data-t="encurtamento e rotação externa do membro">Encurt. + rot. externa</button>
+              </div>
+              <div class="quick" data-for="exame_fisico">
+                <span class="ql">Pele</span>
+                <button type="button" data-t="pele íntegra">Íntegra</button>
+                <button type="button" data-t="escoriações">Escoriação</button>
+                <button type="button" data-t="flictenas">Flictenas</button>
+                <button type="button" data-t="ferida" class="warn">Ferida</button>
+              </div>
+              <div class="sub quick hide" data-for="exame_fisico" data-parent="ferida">
+                <span class="hint">Ferida:</span>
+                <button type="button" data-t="&lt; 1 cm">&lt; 1 cm</button>
+                <button type="button" data-t="1 a 10 cm">1 a 10 cm</button>
+                <button type="button" data-t="&gt; 10 cm">&gt; 10 cm</button>
+                <button type="button" data-t="contaminada">Contaminada</button>
+                <button type="button" data-t="sangramento ativo">Sangramento ativo</button>
+              </div>
+              <div class="quick" data-for="exame_fisico">
+                <span class="ql">Função</span>
+                <button type="button" data-t="limitação da amplitude de movimento">Limitação da ADM</button>
+                <button type="button" data-t="instabilidade">Instabilidade</button>
+                <button type="button" data-t="compartimentos livres">Compartimentos livres</button>
+                <button type="button" data-t="compartimento tenso" class="warn">Compartimento tenso</button>
+              </div>
             </div>
           </div>
           <div class="field full">
-            <label for="neurovascular">Exame neurovascular distal</label>
+            <label for="neurovascular">Neurovascular distal</label>
             <input id="neurovascular" type="text" placeholder="Perfusão, pulsos, sensibilidade, motricidade" />
             <div class="quick" data-for="neurovascular">
-              <button type="button" data-t="Neurovascular preservado">Neurovascular preservado</button>
-              <button type="button" data-t="perfusão periférica preservada">Perfusão preservada</button>
-              <button type="button" data-t="pulsos palpáveis">Pulsos palpáveis</button>
+              <button type="button" data-t="Neurovascular preservado" data-x>Preservado</button>
+              <button type="button" data-t="déficit sensitivo" class="warn">Déficit sensitivo</button>
+              <button type="button" data-t="déficit motor" class="warn">Déficit motor</button>
+              <button type="button" data-t="pulso diminuído" class="warn">Pulso diminuído</button>
+              <button type="button" data-t="pulso ausente" class="warn">Pulso ausente</button>
+              <button type="button" data-t="enchimento capilar lentificado" class="warn">Enchimento capilar lento</button>
+            </div>
+            <div class="sub quick hide" data-for="neurovascular" data-parent="deficit">
+              <span class="hint">Território:</span>
+              <button type="button" data-t="radial">Radial</button>
+              <button type="button" data-t="mediano">Mediano</button>
+              <button type="button" data-t="ulnar">Ulnar</button>
+              <button type="button" data-t="axilar">Axilar</button>
+              <button type="button" data-t="fibular">Fibular</button>
+              <button type="button" data-t="tibial">Tibial</button>
             </div>
           </div>
-          <div class="field">
+          <div class="field full">
             <label for="lesoes">Lesões associadas</label>
-            <input id="lesoes" type="text" placeholder="TCE leve, fratura de costela..." />
+            <input id="lesoes" type="text" placeholder="Outras lesões" />
             <div class="quick" data-for="lesoes">
-              <button type="button" data-t="Nega">Nega</button>
-              <button type="button" data-t="traumatismo cranioencefálico">TCE</button>
-              <button type="button" data-t="fratura de arco costal">Arco costal</button>
+              <button type="button" data-t="Nega" data-x>Nega</button>
+              <button type="button" data-t="TCE">TCE</button>
+              <button type="button" data-t="trauma torácico">Tórax</button>
+              <button type="button" data-t="trauma abdominal">Abdome</button>
+              <button type="button" data-t="trauma de coluna">Coluna</button>
+              <button type="button" data-t="outra fratura">Outra fratura</button>
+              <button type="button" data-t="politrauma" class="warn">Politrauma</button>
             </div>
           </div>
-          <div class="field">
-            <label id="lbl_lesao_previa">Lesão prévia no membro</label>
+          <div class="field full">
+            <span class="lbl" id="lbl_lesao_previa">Lesão prévia no membro</span>
             <input id="lesao_previa" type="hidden" />
             <div class="pick" data-for="lesao_previa" role="group" aria-labelledby="lbl_lesao_previa">
               <button type="button" data-v="Não">Não</button>
               <button type="button" data-v="Sim">Sim</button>
             </div>
+            <div class="sub hide" data-show="lesao_previa=Sim">
+              <input id="lesao_previa_qual" type="hidden" />
+              <div class="quick" data-for="lesao_previa_qual">
+                <span class="hint">Qual?</span>
+                <button type="button" data-t="fratura prévia">Fratura prévia</button>
+                <button type="button" data-t="material de síntese">Material de síntese</button>
+                <button type="button" data-t="prótese">Prótese</button>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
-
-      <section class="card">
-        <div class="card-head"><span class="num">4</span><h2>Imagem e conduta</h2><span class="tally" data-tally="4">0/2</span></div>
-        <div class="fields">
           <div class="field full">
             <label for="exames">Exames de imagem</label>
-            <input id="exames" type="text" placeholder="RX punho AP e perfil, TC..." />
+            <input id="exames" type="text" placeholder="RX punho AP e perfil..." />
             <div class="quick" data-for="exames">
               <button type="button" data-t="RX realizado">RX realizado</button>
-              <button type="button" data-t="TC realizada">TC realizada</button>
+              <button type="button" data-t="RX pós-redução satisfatório">RX pós-redução ok</button>
               <button type="button" data-t="TC solicitada">TC solicitada</button>
-            </div>
-          </div>
-          <div class="field full">
-            <label for="conduta">Conduta no plantão</label>
-            <textarea id="conduta" rows="3" placeholder="Imobilização, analgesia, exames, antibiótico, redução..."></textarea>
-            <div class="quick" data-for="conduta">
-              <button type="button" data-t="Imobilizado com tala gessada">Tala gessada</button>
-              <button type="button" data-t="Imobilizado com gesso">Gesso</button>
-              <button type="button" data-t="Imobilizado com tipoia">Tipoia</button>
-              <button type="button" data-t="analgesia">Analgesia</button>
-              <button type="button" data-t="redução incruenta">Redução incruenta</button>
-              <button type="button" data-t="Encaminhado ao ambulatório">Ambulatório</button>
-              <button type="button" data-t="Aguarda tomografia">Aguarda TC</button>
-              <button type="button" data-t="internação para tratamento cirúrgico">Internação p/ cirurgia</button>
-              <button type="button" data-t="jejum">Jejum</button>
-              <button type="button" data-t="Fixador externo em centro cirúrgico">Fixador externo no CC</button>
-              <button type="button" data-t="tração esquelética">Tração esquelética</button>
-              <button type="button" data-t="Antibioticoterapia conforme protocolo de fratura exposta">ATB fratura exposta</button>
-              <button type="button" data-t="profilaxia antitetânica">Antitetânica</button>
+              <button type="button" data-t="TC realizada">TC realizada</button>
             </div>
           </div>
         </div>
       </section>
-    </div>
 
-    <footer>feito por <span>Tales</span></footer>
-  </div>
-
-  <aside class="rail" id="rail">
-    <div class="panel">
-
-      <div class="panel-head">
-        <h2>Mensagem</h2>
-        <div class="meta">
-          <span class="meter"><i id="meterFill"></i></span>
-          <span><b id="countFilled">0</b>/<span id="countTotal">21</span> campos</span>
-          <span>·</span>
-          <span><b id="countChars">0</b> car.</span>
-        </div>
-      </div>
-
-      <div class="tabs" role="tablist" id="tabs">
-        <button type="button" role="tab" data-tab="abertura" aria-selected="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Abertura
-        </button>
-        <button type="button" role="tab" data-tab="fecho" aria-selected="false">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>Fecho
-        </button>
-        <button type="button" role="tab" data-tab="estilo" aria-selected="false">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>Estilo
-        </button>
-      </div>
-
-      <!-- ABERTURA -->
-      <div class="tabpane" data-pane="abertura">
-        <div class="opt-row">
-          <span class="k">Saudação</span>
-          <div class="ctl chips" id="chSau">
-            <button type="button" class="chip" data-v="auto" title="Escolhe bom dia / boa tarde / boa noite pelo horário">Auto <small id="sauAutoLbl"></small></button>
-            <button type="button" class="chip" data-v="Bom dia">Bom dia</button>
-            <button type="button" class="chip" data-v="Boa tarde">Boa tarde</button>
-            <button type="button" class="chip" data-v="Boa noite">Boa noite</button>
-            <button type="button" class="chip ghost" data-v="">Nenhuma</button>
+      <section class="sec" id="s4">
+        <div class="sec-h"><span class="n">4</span><h2>Antecedentes</h2><span class="prog" data-tally="4"></span><button type="button" class="mini" id="negaTudo" aria-pressed="false" title="Marca Nega em comorbidades, medicamentos, tabagismo, etilismo e alergia">Nega tudo</button></div>
+        <div class="fields">
+          <div class="field full">
+            <label for="comorbidades">Comorbidades</label>
+            <input id="comorbidades" type="text" placeholder="Outras: hepatopatia, HIV..." />
+            <div class="quick" data-for="comorbidades">
+              <button type="button" data-t="Nega" data-x>Nega</button>
+              <button type="button" data-t="HAS">HAS</button>
+              <button type="button" data-t="DM">DM</button>
+              <button type="button" data-t="cardiopatia">Cardiopatia</button>
+              <button type="button" data-t="DRC">DRC</button>
+              <button type="button" data-t="DPOC">DPOC</button>
+              <button type="button" data-t="osteoporose">Osteoporose</button>
+              <button type="button" data-t="demência">Demência</button>
+              <button type="button" data-t="obesidade">Obesidade</button>
+            </div>
+          </div>
+          <div class="field full">
+            <label for="muc">Medicamentos de uso contínuo</label>
+            <input id="muc" type="text" placeholder="Nome ou classe do medicamento" />
+            <div class="quick" data-for="muc">
+              <button type="button" data-t="Nega" data-x>Nega</button>
+              <button type="button" data-t="anti-hipertensivo">Anti-hipertensivo</button>
+              <button type="button" data-t="antidiabético oral">Antidiabético oral</button>
+              <button type="button" data-t="insulina">Insulina</button>
+              <button type="button" data-t="AAS">AAS</button>
+              <button type="button" data-t="clopidogrel">Clopidogrel</button>
+              <button type="button" data-t="anticoagulante" class="warn">Anticoagulante</button>
+              <button type="button" data-t="corticoide">Corticoide</button>
+            </div>
+            <div class="sub quick hide" data-for="muc" data-parent="anticoagulante">
+              <span class="hint">Qual anticoagulante?</span>
+              <button type="button" data-t="varfarina">Varfarina</button>
+              <button type="button" data-t="rivaroxabana">Rivaroxabana</button>
+              <button type="button" data-t="apixabana">Apixabana</button>
+              <button type="button" data-t="dabigatrana">Dabigatrana</button>
+              <button type="button" data-t="enoxaparina">Enoxaparina</button>
+            </div>
+          </div>
+          <div class="tri">
+            <div class="field">
+              <span class="lbl" id="lbl_tabagismo">Tabagismo</span>
+              <input id="tabagismo" type="hidden" />
+              <div class="pick una" data-for="tabagismo" role="group" aria-labelledby="lbl_tabagismo">
+                <button type="button" data-v="Nega">Nega</button>
+                <button type="button" data-v="Sim">Sim</button>
+                <button type="button" data-v="Ex-tabagista" title="Ex-tabagista">Ex</button>
+              </div>
+            </div>
+            <div class="field">
+              <span class="lbl" id="lbl_etilismo">Etilismo</span>
+              <input id="etilismo" type="hidden" />
+              <div class="pick una" data-for="etilismo" role="group" aria-labelledby="lbl_etilismo">
+                <button type="button" data-v="Nega">Nega</button>
+                <button type="button" data-v="Social">Social</button>
+                <button type="button" data-v="Sim">Sim</button>
+              </div>
+            </div>
+            <div class="field">
+              <span class="lbl" id="lbl_alergia">Alergia</span>
+              <input id="alergia" type="hidden" />
+              <div class="pick una" data-for="alergia" role="group" aria-labelledby="lbl_alergia">
+                <button type="button" data-v="Nega">Nega</button>
+                <button type="button" data-v="Sim">Sim</button>
+              </div>
+            </div>
+          </div>
+          <div class="sub full hide" data-show="tabagismo=Sim">
+            <span class="hint">Quantos cigarros por dia?</span>
+            <input id="tabagismo_qtd" type="hidden" />
+            <div class="pick" data-for="tabagismo_qtd" role="group" aria-label="Cigarros por dia">
+              <button type="button" data-v="5 cigarros/dia">5</button>
+              <button type="button" data-v="10 cigarros/dia">10</button>
+              <button type="button" data-v="20 cigarros/dia (1 maço)">20 · 1 maço</button>
+              <button type="button" data-v="40 cigarros/dia (2 maços)">40 · 2 maços</button>
+            </div>
+          </div>
+          <div class="sub full hide" data-show="tabagismo=Ex-tabagista">
+            <span class="hint">Parou há quanto tempo?</span>
+            <input id="tabagismo_ex" type="hidden" />
+            <div class="pick" data-for="tabagismo_ex" role="group" aria-label="Parou há">
+              <button type="button" data-v="parou há menos de 1 ano">&lt; 1 ano</button>
+              <button type="button" data-v="parou há 1 a 5 anos">1 a 5 anos</button>
+              <button type="button" data-v="parou há mais de 5 anos">&gt; 5 anos</button>
+            </div>
+          </div>
+          <div class="sub full hide" data-show="alergia=Sim">
+            <span class="hint">Alérgico a quê?</span>
+            <input id="alergia_qual" type="text" placeholder="Outro: digite aqui" autocomplete="off" aria-label="Alergia a quê" />
+            <div class="quick" data-for="alergia_qual">
+              <button type="button" data-t="Dipirona">Dipirona</button>
+              <button type="button" data-t="AINE">AINE</button>
+              <button type="button" data-t="penicilina">Penicilina</button>
+              <button type="button" data-t="cefalosporina">Cefalosporina</button>
+              <button type="button" data-t="sulfa">Sulfa</button>
+              <button type="button" data-t="iodo/contraste">Iodo/contraste</button>
+              <button type="button" data-t="látex">Látex</button>
+            </div>
           </div>
         </div>
-        <div class="opt-row">
-          <span class="k">Para</span>
-          <div class="ctl chips" id="chPara">
+      </section>
+
+    </div>
+  </div>
+
+  <footer>feito por <b>Tales</b></footer>
+</main>
+
+<!-- ───────── MENSAGEM ───────── -->
+<aside class="rail" id="rail">
+  <div class="panel">
+    <div class="panel-head">
+      <h2>Mensagem</h2>
+      <span class="meter" title="Campos preenchidos"><i id="meterFill"></i></span>
+      <span class="meta" id="metaTxt"></span>
+      <span class="sp"></span>
+      <button type="button" class="urg" id="urgBtn" aria-pressed="false" title="Põe URGENTE no topo da mensagem">Urgente</button>
+      <button type="button" class="gear" id="cfgBtn" aria-expanded="false" title="Ajustes da mensagem" aria-label="Ajustes da mensagem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>
+      </button>
+    </div>
+
+    <div class="cfg hide" id="cfg">
+      <div class="orow"><span class="k">Saudação</span>
+        <div class="chips" id="chSau">
+          <button type="button" class="chip" data-v="auto" title="Pelo horário">Auto <small id="sauAutoLbl"></small></button>
+          <button type="button" class="chip" data-v="Bom dia">Bom dia</button>
+          <button type="button" class="chip" data-v="Boa tarde">Boa tarde</button>
+          <button type="button" class="chip" data-v="Boa noite">Boa noite</button>
+          <button type="button" class="chip ghost" data-v="">Nenhuma</button>
+        </div>
+      </div>
+      <div class="orow"><span class="k">Formato</span>
+        <div class="seg" id="segMode" role="group" aria-label="Formato">
+          <button type="button" data-v="full">Completo</button>
+          <button type="button" data-v="blocks">Em blocos</button>
+          <button type="button" data-v="short">Resumido</button>
+        </div>
+      </div>
+      <div class="orow"><span class="k">Resumo</span>
+        <div class="seg" id="segResumo" role="group" aria-label="Linha-resumo no topo">
+          <button type="button" data-v="1">Com linha-resumo</button>
+          <button type="button" data-v="0">Sem</button>
+        </div>
+      </div>
+      <div class="orow"><span class="k">Tópicos</span>
+        <div class="chips">
+          <div class="seg" id="segBold" role="group" aria-label="Negrito">
+            <button type="button" data-v="1">Negrito</button>
+            <button type="button" data-v="0">Simples</button>
+          </div>
+          <div class="seg" id="segCase" role="group" aria-label="Caixa dos tópicos">
+            <button type="button" data-v="normal">Aa</button>
+            <button type="button" data-v="upper">AA</button>
+            <button type="button" data-v="lower">aa</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mopts">
+      <div class="orow"><span class="k">Para</span>
+        <div>
+          <div class="chips" id="chPara">
             <button type="button" class="chip" data-v="chefe">Chefe</button>
             <button type="button" class="chip" data-v="chefes">Chefes</button>
             <button type="button" class="chip" data-v="pessoal">Pessoal</button>
+            <button type="button" class="chip" data-v="staff">Staff</button>
+            <button type="button" class="chip" data-v="professor">Professor</button>
+            <button type="button" class="chip" data-v="professora">Professora</button>
+            <button type="button" class="chip" data-v="__dr">Dr(a)…</button>
             <button type="button" class="chip ghost" data-v="">Ninguém</button>
           </div>
+          <input class="sel-sm hide" id="drNome" type="text" placeholder="Dr. Fulano / Dra. Fulana" autocomplete="off" aria-label="Nome do médico" />
         </div>
-        <div class="opt-row">
-          <span class="k">Frase</span>
-          <div class="ctl chips" id="chFrase">
-            <button type="button" class="chip" data-v="Temos um caso.">Temos um caso</button>
-            <button type="button" class="chip" data-v="Quero compartilhar um caso.">Compartilhar um caso</button>
-            <button type="button" class="chip" data-v="Gostaria de discutir um caso.">Discutir um caso</button>
-            <button type="button" class="chip" data-v="Caso para avaliação.">Para avaliação</button>
-            <button type="button" class="chip" data-v="Segue caso para definição de conduta.">Definir conduta</button>
-            <button type="button" class="chip ghost" data-v="__custom">Escrever…</button>
-            <button type="button" class="chip ghost" data-v="">Nenhuma</button>
-          </div>
+      </div>
+      <div class="orow"><span class="k">Grupo</span>
+        <div class="chips" id="chGrupo">
+          <button type="button" class="chip" data-v="Joelho">Joelho</button>
+          <button type="button" class="chip" data-v="Ombro e cotovelo">Ombro e cotovelo</button>
+          <button type="button" class="chip" data-v="Mão">Mão</button>
+          <button type="button" class="chip" data-v="Quadril">Quadril</button>
+          <button type="button" class="chip" data-v="Pé e tornozelo">Pé e tornozelo</button>
+          <button type="button" class="chip" data-v="Coluna">Coluna</button>
+          <button type="button" class="chip" data-v="Pediátrica">Pediátrica</button>
+          <button type="button" class="chip" data-v="Trauma">Trauma</button>
         </div>
-        <input class="sel-sm hide" id="abertura_custom" type="text" placeholder="Digite a frase de abertura" />
-        <div class="preview-line" id="prevAbertura"></div>
       </div>
 
-      <!-- FECHO -->
-      <div class="tabpane hide" data-pane="fecho">
-        <div class="opt-row">
-          <span class="k">Pedido</span>
-          <div class="ctl chips" id="chFecho">
-            <button type="button" class="chip" data-v="Aguardo conduta.">Aguardo conduta</button>
-            <button type="button" class="chip" data-v="Aguardo orientações.">Aguardo orientações</button>
-            <button type="button" class="chip" data-v="Podemos seguir com essa conduta?">Podemos seguir assim?</button>
-            <button type="button" class="chip" data-v="Aguardo avaliação presencial.">Avaliação presencial</button>
-            <button type="button" class="chip" data-v="Fico à disposição para qualquer dúvida.">À disposição</button>
-            <button type="button" class="chip ghost" data-v="__custom">Escrever…</button>
-            <button type="button" class="chip ghost" data-v="">Nenhum</button>
-          </div>
-        </div>
-        <div class="opt-row">
-          <span class="k">Extra</span>
-          <div class="ctl chips" id="chAgr">
-            <button type="button" class="chip" data-v="Obrigado!">Obrigado!</button>
-            <button type="button" class="chip" data-v="Obrigada!">Obrigada!</button>
-            <button type="button" class="chip ghost" data-v="">Sem</button>
-          </div>
-        </div>
-        <input class="sel-sm hide" id="fechamento_custom" type="text" placeholder="Digite o fecho" />
-        <div class="preview-line" id="prevFecho"></div>
-      </div>
-
-      <!-- ESTILO -->
-      <div class="tabpane hide" data-pane="estilo">
-        <div class="opt-row">
-          <span class="k">Formato</span>
-          <div class="ctl">
-            <div class="seg" id="segMode" role="group" aria-label="Formato da mensagem">
-              <button type="button" data-v="full" aria-pressed="true">Completo</button>
-              <button type="button" data-v="blocks" aria-pressed="false">Em blocos</button>
-              <button type="button" data-v="short" aria-pressed="false">Resumido</button>
+      <button type="button" class="txt-toggle" id="txtBtn" aria-expanded="false" aria-controls="txtPane">
+        <span>Frase e fecho</span><small id="txtResumo"></small>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="txt-pane hide" id="txtPane">
+        <div class="orow"><span class="k">Abre</span>
+          <div>
+            <div class="chips" id="chFrase">
+              <button type="button" class="chip" data-v="Temos um caso.">Temos um caso</button>
+              <button type="button" class="chip" data-v="Gostaria de discutir um caso.">Discutir um caso</button>
+              <button type="button" class="chip" data-v="Caso para avaliação.">Para avaliação</button>
+              <button type="button" class="chip" data-v="Segue caso para definição de conduta.">Definir conduta</button>
+              <button type="button" class="chip ghost" data-v="__custom">Escrever…</button>
+              <button type="button" class="chip ghost" data-v="">Nenhuma</button>
             </div>
+            <input class="sel-sm hide" id="abertura_custom" type="text" placeholder="Frase de abertura" aria-label="Frase de abertura" />
           </div>
         </div>
-        <div class="opt-row">
-          <span class="k">Tópicos</span>
-          <div class="ctl">
-            <div class="seg" id="segBold" role="group" aria-label="Estilo dos tópicos">
-              <button type="button" data-v="1" aria-pressed="true">Negrito</button>
-              <button type="button" data-v="0" aria-pressed="false">Simples</button>
+        <div class="orow"><span class="k">Pede</span>
+          <div>
+            <div class="chips" id="chFecho">
+              <button type="button" class="chip" data-v="Aguardo conduta.">Aguardo conduta</button>
+              <button type="button" class="chip" data-v="Podemos seguir com essa conduta?">Seguimos assim?</button>
+              <button type="button" class="chip" data-v="Posso dar alta com retorno ambulatorial?">Posso dar alta?</button>
+              <button type="button" class="chip" data-v="Aguardo avaliação presencial.">Avaliação presencial</button>
+              <button type="button" class="chip ghost" data-v="__custom">Escrever…</button>
+              <button type="button" class="chip ghost" data-v="">Nenhum</button>
             </div>
-            <div class="seg" id="segCase" role="group" aria-label="Caixa dos tópicos">
-              <button type="button" data-v="normal" aria-pressed="true">Aa</button>
-              <button type="button" data-v="upper" aria-pressed="false">AA</button>
-              <button type="button" data-v="lower" aria-pressed="false">aa</button>
-            </div>
+            <input class="sel-sm hide" id="fechamento_custom" type="text" placeholder="Fecho" aria-label="Fecho" />
+          </div>
+        </div>
+        <div class="orow"><span class="k">Extra</span>
+          <div class="chips">
+            <button type="button" class="chip" id="chImg" aria-pressed="false">Imagens a seguir</button>
+            <span class="chips" id="chAgr">
+              <button type="button" class="chip" data-v="Obrigado!">Obrigado!</button>
+              <button type="button" class="chip" data-v="Obrigada!">Obrigada!</button>
+              <button type="button" class="chip ghost" data-v="">Sem</button>
+            </span>
           </div>
         </div>
       </div>
-
-      <div class="capsbar" id="capsBar">
-        <span class="ico" aria-hidden="true">Aa</span>
-        <div class="txt">
-          <b id="capsTitle">Sem CAPS LOCK</b>
-          <small id="capsSub">Só a 1ª letra da frase maiúscula</small>
-        </div>
-        <button type="button" class="fix hide" id="capsFix" title="Reescreve os campos sem CAPS LOCK">Corrigir campos</button>
-        <button type="button" class="sw" id="capsSw" role="switch" aria-checked="true" aria-labelledby="capsTitle"></button>
-      </div>
-
-      <div class="phone">
-        <div class="chat">
-          <div class="chat-bar">
-            <div class="avatar">O</div>
-            <div>
-              <b id="chatName">Chefes da Ortopedia</b>
-              <small id="chatStatus">online</small>
-            </div>
-          </div>
-          <div class="wall">
-            <div class="bubble" id="bubble"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel-foot">
-        <button class="btn btn-whats" data-act="whats">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.561 4.14 1.538 5.878L0 24l6.305-1.511A11.93 11.93 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.017-1.374l-.36-.213-3.737.895.944-3.64-.234-.374A9.775 9.775 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
-          WhatsApp
-        </button>
-        <button class="btn btn-primary" data-act="copy">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-          Copiar
-        </button>
-        <button class="btn btn-clear btn-icon" data-act="clear" title="Limpar formulário" aria-label="Limpar formulário">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
-        </button>
-      </div>
-
     </div>
-  </aside>
+
+    <div class="capsbar" id="capsBar">
+      <span class="ico" aria-hidden="true">Aa</span>
+      <div class="txt">
+        <b id="capsTitle">Sem CAPS LOCK</b>
+        <small id="capsSub">Só a 1ª letra da frase maiúscula</small>
+      </div>
+      <button type="button" class="fix hide" id="capsFix" title="Reescreve os campos sem CAPS LOCK">Corrigir campos</button>
+      <button type="button" class="sw" id="capsSw" role="switch" aria-checked="true" aria-labelledby="capsTitle"></button>
+    </div>
+
+    <div class="phone">
+      <div class="chat">
+        <div class="chat-bar">
+          <div class="avatar" id="chatAv">C</div>
+          <div><b id="chatName">Chefe da Ortopedia</b><small id="chatStatus">online</small></div>
+        </div>
+        <div class="wall"><div class="bubble" id="bubble"></div></div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-whats" data-act="whats" title="Ctrl + Enter">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.561 4.14 1.538 5.878L0 24l6.305-1.511A11.93 11.93 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.017-1.374l-.36-.213-3.737.895.944-3.64-.234-.374A9.775 9.775 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+        WhatsApp
+      </button>
+      <button class="btn btn-primary" data-act="copy" title="Ctrl + Shift + C">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        Copiar
+      </button>
+      <button class="btn btn-clear btn-icon" data-act="clear" title="Novo caso (limpar)" aria-label="Novo caso (limpar)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+      </button>
+    </div>
+  </div>
+</aside>
 </div>
 
 <div class="mobilebar">
@@ -1020,11 +1122,11 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
     Enviar
   </button>
   <button class="btn btn-primary" data-act="copy">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
     Copiar
   </button>
   <button class="btn btn-quiet" data-act="see">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
     Ver
   </button>
 </div>
@@ -1328,7 +1430,7 @@ const CLASSIFICACOES = [
     ["C2","Abrasão profunda contaminada, contusão muscular — risco de síndrome compartimental"],
     ["C3","Contusão extensa, esmagamento, desenluvamento, lesão vascular ou síndrome compartimental"]
   ]},
-  { n:"AO/OTA diáfise", r:"Qualquer osso longo — diáfise", o:"AO/OTA tipo {c}", k:"ao ota diafise osso longo", g:[
+  { n:"AO/OTA diáfise", r:"Qualquer osso longo — diáfise", o:"AO/OTA tipo {c}", k:"ao ota diafise diafisaria osso longo tibia femur umero radio ulna antebraco", g:[
     ["A","Simples (espiral, oblíqua ou transversa)"],
     ["B","Em cunha"],
     ["C","Multifragmentária / segmentar"]
@@ -1351,57 +1453,62 @@ const CLASSIFICACOES = [
   const $ = (id) => document.getElementById(id);
 
   const ids = [
-    "nome","idade","numero","convenio","convenio_outro","alergia_qual","data","data_trauma","mecanismo","diagnostico","lado","classificacao",
-    "tipo_fratura","exame_fisico","comorbidades","tabagismo","muc","alergia","neurovascular","exames","lesoes",
-    "funcionalidade","profissao","lesao_previa","conduta"
+    "nome","idade","numero","sexo","convenio","convenio_outro","profissao","funcionalidade",
+    "comorbidades","muc","tabagismo","tabagismo_qtd","tabagismo_ex","etilismo","alergia","alergia_qual",
+    "data","data_trauma","mecanismo","diagnostico","lado","tipo_fratura","gustilo","classificacao",
+    "exame_fisico","neurovascular","lesoes","lesao_previa","lesao_previa_qual","exames","conduta"
   ];
-  const contaveis = ids.filter(id => id !== "convenio_outro" && id !== "alergia_qual");
-
+  /* detalhes que só existem dentro de outra resposta: não contam no progresso */
+  const detalhes = ["convenio_outro","alergia_qual","tabagismo_qtd","tabagismo_ex","gustilo","lesao_previa_qual"];
+  const contaveis = ids.filter(id => !detalhes.includes(id));
   const blocos = {
-    1: ["nome","idade","numero","convenio","profissao","funcionalidade","comorbidades","muc","tabagismo","alergia"],
+    1: ["nome","idade","numero","sexo","convenio","profissao","funcionalidade"],
     2: ["data","data_trauma","mecanismo","diagnostico","lado","tipo_fratura","classificacao"],
-    3: ["exame_fisico","neurovascular","lesoes","lesao_previa"],
-    4: ["exames","conduta"]
+    3: ["exame_fisico","neurovascular","lesoes","lesao_previa","exames"],
+    4: ["comorbidades","muc","tabagismo","etilismo","alergia"],
+    5: ["conduta"]
   };
   /* campos de texto livre: passam pela correção de CAPS LOCK */
   const textoLivre = ["nome","profissao","convenio_outro","alergia_qual","mecanismo","diagnostico","classificacao",
     "exame_fisico","neurovascular","exames","lesoes","comorbidades","muc","conduta"];
+  const NEGA_TUDO = ["comorbidades","muc","tabagismo","etilismo","alergia"];
 
-  /* preferências da mensagem (lembradas neste navegador) */
+  /* preferências (ficam salvas neste navegador) */
   const opts = {
-    bold:true, caixa:"normal", modo:"full", tab:"abertura", caps:true,
-    sau:"auto", para:"chefe", frase:"Temos um caso.", fecho:"Aguardo conduta.", agr:""
+    bold:true, caixa:"normal", modo:"full", resumo:true, caps:true,
+    sau:"auto", para:"chefe", frase:"Temos um caso.", fecho:"Aguardo conduta.", agr:"", imagens:false
   };
+  /* escolhas que valem só para este caso */
+  const caso = { urgente:false, grupo:"" };
+
   try{
     const salvo = JSON.parse(localStorage.getItem("enc_prefs") || "{}");
     Object.keys(opts).forEach(k => { if (salvo[k] !== undefined) opts[k] = salvo[k]; });
     if (salvo.aberturaCustom) $("abertura_custom").value = salvo.aberturaCustom;
     if (salvo.fechoCustom) $("fechamento_custom").value = salvo.fechoCustom;
+    if (salvo.drNome) $("drNome").value = salvo.drNome;
   }catch(e){}
   function salvarPrefs(){
     try{
       localStorage.setItem("enc_prefs", JSON.stringify(Object.assign({}, opts, {
-        aberturaCustom: $("abertura_custom").value, fechoCustom: $("fechamento_custom").value
+        aberturaCustom: $("abertura_custom").value, fechoCustom: $("fechamento_custom").value, drNome: $("drNome").value
       })));
     }catch(e){}
   }
 
-  const todayISO = () => {
-    const d = new Date();
+  const isoMenos = (n) => {
+    const d = new Date(); d.setDate(d.getDate() - n);
     return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+  };
+  const todayISO = () => isoMenos(0);
+  const diasEntre = (a, b) => {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(a || "") || !/^\d{4}-\d{2}-\d{2}$/.test(b || "")) return null;
+    return Math.round((Date.parse(b) - Date.parse(a)) / 864e5);
   };
   const humanDate = (iso) => {
     if (!iso || !/^\d{4}-\d{2}-\d{2}$/.test(iso)) return iso || "";
     const [y,m,d] = iso.split("-");
     return `${d}/${m}/${y}`;
-  };
-  const isoMenos = (n) => {
-    const d = new Date(); d.setDate(d.getDate() - n);
-    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
-  };
-  const diasEntre = (a, b) => {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(a || "") || !/^\d{4}-\d{2}-\d{2}$/.test(b || "")) return null;
-    return Math.round((Date.parse(b) - Date.parse(a)) / 864e5);
   };
   const val = (id) => { const el = $(id); return el ? (el.value || "").trim() : ""; };
   const flat = (s) => s.replace(/\s*\n+\s*/g, "; ");
@@ -1409,7 +1516,8 @@ const CLASSIFICACOES = [
   const cap = (s) => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
   const lowFirst = (s) => (s && !/^[A-ZÀ-Ý]{2}/.test(s)) ? s.charAt(0).toLowerCase() + s.slice(1) : s;
   const pontua = (s) => (!s || /[.!?…:]$/.test(s)) ? s : s + ".";
-  const norm = (s) => (s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  const norm = (s) => (s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  const escapeHTML = (s) => s.replace(/[&<>"]/g, ch => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[ch]));
 
   /* ── CAPS LOCK → texto normal ─────────────────────
      Frase escrita toda em maiúsculas vira "Só a primeira letra maiúscula.",
@@ -1419,7 +1527,7 @@ const CLASSIFICACOES = [
   const SIGLAS = new Set(("HAS DM DM1 DM2 DPOC IRC DRC IRA ICC IAM AVC AVE TCE TRM TVP TEP HIV HCV HBV " +
     "ATB AAS AINE AINES IECA BRA ACO DOAC MUC SUS UTI CTI CC PS UPA SAMU RX TC RNM RM USG ECG " +
     "LCA LCP LCM LCL LPFM ADM MMII MMSS MID MIE MSD MSE BEG REG EVA FC FR IOT VO EV IM SC ITU " +
-    "COVID IMC PO POI DPO HGT INR PCR VHS SF AP OBS CID FAF FAB PAF ATLS AO/OTA AO OTA").split(" "));
+    "TEV COVID IMC PO POI DPO HGT INR PCR VHS SF AP OBS CID FAF FAB PAF ATLS AO/OTA AO OTA").split(" "));
   // "AO" sozinho é a palavra "ao": só vale como sigla colado em "AO/OTA" ou antes de "OTA"
   const NOMES = {};
   CLASSIFICACOES.forEach(c => c.n.split(/[\s\-\/]+/).forEach(t => {
@@ -1470,43 +1578,103 @@ const CLASSIFICACOES = [
   const corrige = (id, v) => id === "nome" ? nomeSemCaps(v) : semCaps(v);
   const camposEmCaps = () => textoLivre.filter(id => corrige(id, val(id)) !== val(id));
 
+  /* ── Partes de um campo ("edema; ferida (< 1 cm, contaminada)") ── */
+  const partes = (v) => v.split(/\s*;\s*/).map(s => s.trim()).filter(Boolean);
+  const baseDe = (p) => {
+    const m = p.match(/^(.*?)\s*\(([^()]*)\)$/);
+    return m ? { b:m[1], it:m[2].split(/\s*,\s*/).filter(Boolean) } : { b:p, it:[] };
+  };
+  const montaParte = (b, it) => it.length ? `${b} (${it.join(", ")})` : b;
+  function idxPai(ps, prefixos){
+    const prefs = prefixos.split("|").map(norm);
+    for (let i = ps.length - 1; i >= 0; i--){
+      const b = norm(baseDe(ps[i]).b);
+      if (prefs.some(p => b.startsWith(p))) return i;
+    }
+    return -1;
+  }
+  const juntaPartes = (ps) => ps.map((p, j) => j === 0 ? cap(p) : lowFirst(p)).join("; ");
+
+  /* ── Valores finais de cada campo ─────────────── */
+  const fix = (s) => opts.caps ? semCaps(s) : s;
   function convenioFinal(){
     const c = val("convenio");
-    if (!c) return "";
     if (c !== "Outro") return c;
-    const o = val("convenio_outro");
-    return (opts.caps ? semCaps(o) : o) || "Outro";
+    return fix(val("convenio_outro")) || "Outro";
+  }
+  function tabagismoFinal(){
+    const t = val("tabagismo");
+    if (t === "Sim") return join(["Sim", val("tabagismo_qtd")], ", ");
+    if (t === "Ex-tabagista") return join(["Ex-tabagista", val("tabagismo_ex")], ", ");
+    return t;
   }
   function alergiaFinal(){
     const a = val("alergia");
     if (a !== "Sim") return a;
-    const q = val("alergia_qual");
-    return (opts.caps ? semCaps(q) : q) || "Sim";
+    return cap(fix(val("alergia_qual"))) || "Sim";
   }
-  function idadeTxt(i){ return /^\d{1,3}$/.test(i) ? `${i} anos` : i; }
+  function tipoFinal(){
+    const t = val("tipo_fratura");
+    return (t === "Exposta" && val("gustilo")) ? `Exposta (Gustilo ${val("gustilo")})` : t;
+  }
+  function lesaoPreviaFinal(){
+    const l = val("lesao_previa");
+    return (l === "Sim" && val("lesao_previa_qual")) ? `Sim: ${lowFirst(val("lesao_previa_qual"))}` : l;
+  }
+  const idadeTxt = (i) => /^\d{1,3}$/.test(i) ? `${i} anos` : i;
 
+  function dados(){
+    const d = {};
+    ids.forEach(id => d[id] = val(id));
+    if (opts.caps) textoLivre.forEach(id => d[id] = corrige(id, d[id]));
+    if (d.sexo === "Feminino") d.profissao = d.profissao.replace(/\b(aposentad)o\b/gi, "$1a");
+    d.convenio = convenioFinal();
+    d.tabagismo = tabagismoFinal();
+    d.alergia = alergiaFinal();
+    d.tipo_fratura = tipoFinal();
+    d.lesao_previa = lesaoPreviaFinal();
+    d.idade = idadeTxt(d.idade);
+    d.data = humanDate(d.data);
+    const dias = diasEntre(val("data_trauma"), val("data") || todayISO());
+    d.data_trauma = humanDate(d.data_trauma);
+    if (d.data_trauma && dias !== null && dias >= 0)
+      d.data_trauma += dias === 0 ? " (hoje)" : dias === 1 ? " (ontem)" : ` (há ${dias} dias)`;
+    return d;
+  }
+
+  /* ── Montagem da mensagem ─────────────────────── */
   function topico(label){
     let L = label;
     if (opts.caixa === "upper") L = L.toUpperCase();
     if (opts.caixa === "lower") L = L.toLowerCase();
     return opts.bold ? `*${L}:*` : `${L}:`;
   }
-  function linha(label, valor){
-    if (!valor) return "";
-    return `${topico(label)} ${valor}\n`;
-  }
+  const linha = (label, valor) => valor ? `${topico(label)} ${valor}\n` : "";
   const negrito = (t) => (t && opts.bold) ? `*${t}*` : t;
+  const italico = (t) => (t && opts.bold) ? `_${t}_` : t;
 
-  /* ── Abertura e fecho ─────────────────────────── */
+  const GRUPOS = {
+    "Joelho":"de joelho", "Ombro e cotovelo":"de ombro e cotovelo", "Mão":"de mão", "Quadril":"de quadril",
+    "Pé e tornozelo":"de pé e tornozelo", "Coluna":"de coluna", "Pediátrica":"de ortopedia pediátrica", "Trauma":"de trauma"
+  };
+  const PARA = { chefe:"Chefe da Ortopedia", chefes:"Chefes da Ortopedia", pessoal:"Grupo da Ortopedia",
+    staff:"Staff da Ortopedia", professor:"Professor", professora:"Professora" };
+
   function saudacaoAuto(){
     const h = new Date().getHours();
     return h >= 5 && h < 12 ? "Bom dia" : h >= 12 && h < 18 ? "Boa tarde" : "Boa noite";
   }
+  function fraseAbertura(){
+    let p = opts.frase === "__custom" ? val("abertura_custom") : opts.frase;
+    return fix(p);
+  }
+  /* o grupo entra na própria frase: "Temos um caso de joelho." */
+  const grupoNaFrase = () => !!(caso.grupo && /\bcaso\b/i.test(fraseAbertura()));
   function aberturaTexto(){
     const g = opts.sau === "auto" ? saudacaoAuto() : opts.sau;
-    const r = opts.para;
-    let p = opts.frase === "__custom" ? val("abertura_custom") : opts.frase;
-    if (opts.caps) p = semCaps(p);
+    const r = opts.para === "__dr" ? fix(val("drNome")) : opts.para;
+    let p = fraseAbertura();
+    if (grupoNaFrase()) p = p.replace(/\b(caso)\b/i, `$1 ${GRUPOS[caso.grupo]}`);
     p = pontua(p);
     let head = "";
     if (g && r) head = `${g}, ${r}.`;
@@ -1518,123 +1686,120 @@ const CLASSIFICACOES = [
   }
   function fechoTexto(){
     let f = opts.fecho === "__custom" ? val("fechamento_custom") : opts.fecho;
-    if (opts.caps) f = semCaps(f);
-    f = pontua(f);
-    return join([f, opts.agr], " ");
+    f = pontua(fix(f));
+    return join([opts.imagens ? "Imagens a seguir." : "", f, opts.agr], " ");
   }
 
-  function dados(){
-    const d = {};
-    ids.forEach(id => d[id] = val(id));
-    if (opts.caps) textoLivre.forEach(id => d[id] = corrige(id, d[id]));
-    d.convenio = convenioFinal();
-    d.alergia = alergiaFinal();
-    d.idade = idadeTxt(d.idade);
-    d.data = humanDate(d.data);
-    const dias = diasEntre(val("data_trauma"), val("data") || todayISO());
-    d.data_trauma = humanDate(d.data_trauma);
-    if (d.data_trauma && dias !== null && dias >= 0)
-      d.data_trauma += dias === 0 ? " (hoje)" : dias === 1 ? " (ontem)" : ` (há ${dias} dias)`;
-    return d;
+  /* "Masc., 67 anos — Fratura do platô tibial (D), Schatzker VI, fechada" */
+  function resumoLinha(d){
+    const sx = d.sexo === "Masculino" ? "Masc." : d.sexo === "Feminino" ? "Fem." : "";
+    const lado = { Direito:"D", Esquerdo:"E", Bilateral:"bilateral" }[d.lado];
+    const dx = d.diagnostico ? d.diagnostico + (lado ? ` (${lado})` : "") : "";
+    const quadro = join([dx, d.classificacao, d.tipo_fratura ? lowFirst(d.tipo_fratura) : ""], ", ");
+    if (!quadro) return "";
+    const pac = join([sx, d.idade], ", ");
+    return pac ? `${pac} — ${quadro}` : quadro;
   }
 
   function corpoCompleto(d, espacado){
     const grupos = [
-      linha("Nome", d.nome) + linha("Idade", d.idade) + linha("Número de Atendimento", d.numero) +
+      (caso.grupo && !grupoNaFrase()) ? linha("Grupo", caso.grupo) : "",
+      linha("Nome", d.nome) + linha("Idade", d.idade) + linha("Sexo", d.sexo) + linha("Nº de Atendimento", d.numero) +
       linha("Convênio", d.convenio) + linha("Profissão", d.profissao) + linha("Funcionalidade Prévia", d.funcionalidade),
       linha("Data do Atendimento", d.data) + linha("Data do Trauma", d.data_trauma) + linha("Mecanismo", d.mecanismo) +
-      linha("Diagnóstico", d.diagnostico) + linha("Lado", d.lado) + linha("Classificação", d.classificacao) + linha("Tipo de Fratura", d.tipo_fratura),
-      linha("Exame Físico", d.exame_fisico) + linha("Exame Neurovascular", d.neurovascular) + linha("Exames de Imagem", d.exames) +
-      linha("Lesões Associadas", d.lesoes) + linha("Lesão Prévia no Membro", d.lesao_previa),
-      linha("Comorbidades", d.comorbidades) + linha("MUC", d.muc) + linha("Tabagismo", d.tabagismo) + linha("Alergia", d.alergia),
+      linha("Diagnóstico", d.diagnostico) + linha("Lado", d.lado) + linha("Classificação", d.classificacao) + linha("Fratura", d.tipo_fratura),
+      linha("Exame Físico", d.exame_fisico) + linha("Neurovascular", d.neurovascular) +
+      linha("Lesões Associadas", d.lesoes) + linha("Lesão Prévia no Membro", d.lesao_previa) + linha("Exames de Imagem", d.exames),
+      linha("Comorbidades", d.comorbidades) + linha("MUC", d.muc) + linha("Tabagismo", d.tabagismo) +
+      linha("Etilismo", d.etilismo) + linha("Alergia", d.alergia),
       linha("Conduta no Plantão", d.conduta)
     ];
     return grupos.filter(Boolean).join(espacado ? "\n" : "");
   }
 
   function corpoResumido(d){
-    const paciente = join([
-      d.nome, d.idade, d.convenio,
-      d.numero ? `atend. ${d.numero}` : "",
-      d.data ? `em ${d.data}` : ""
-    ], ", ");
-    const perfil = join([
-      d.profissao,
-      d.funcionalidade ? `funcionalidade: ${lowFirst(d.funcionalidade)}` : "",
-      d.lesao_previa ? `lesão prévia no membro: ${d.lesao_previa.toLowerCase()}` : ""
-    ]);
-    const quadro = join([
-      d.diagnostico,
-      d.lado ? `lado ${d.lado.toLowerCase()}` : "",
-      d.classificacao,
-      d.tipo_fratura ? `fratura ${d.tipo_fratura.toLowerCase()}` : "",
-      d.mecanismo,
-      d.data_trauma ? `trauma em ${d.data_trauma}` : ""
-    ]);
-    const exame = join([
-      flat(d.exame_fisico),
+    const paciente = join([d.nome, d.idade, d.sexo ? d.sexo.toLowerCase() : "", d.convenio,
+      d.numero ? `atend. ${d.numero}` : "", d.data ? `em ${d.data}` : ""], ", ");
+    const perfil = join([d.profissao, d.funcionalidade,
+      d.lesao_previa ? `lesão prévia no membro: ${lowFirst(d.lesao_previa)}` : ""]);
+    const quadro = join([d.diagnostico, d.lado ? `lado ${d.lado.toLowerCase()}` : "", d.classificacao,
+      d.tipo_fratura ? `fratura ${lowFirst(d.tipo_fratura)}` : "", d.mecanismo,
+      d.data_trauma ? `trauma em ${d.data_trauma}` : ""]);
+    const exame = join([flat(d.exame_fisico),
       d.neurovascular ? `neurovascular: ${lowFirst(d.neurovascular)}` : "",
-      d.exames ? `imagem: ${lowFirst(d.exames)}` : "",
-      d.lesoes ? `lesões associadas: ${lowFirst(d.lesoes)}` : ""
-    ]);
-    const antecedentes = join([
-      d.comorbidades,
-      d.muc ? `MUC: ${d.muc}` : "",
-      d.tabagismo ? `tabagismo: ${d.tabagismo.toLowerCase()}` : "",
-      d.alergia ? `alergia: ${lowFirst(d.alergia)}` : ""
-    ]);
-    let s = "";
-    s += linha("Paciente", paciente);
-    s += linha("Perfil", perfil);
-    s += linha("Quadro", quadro);
-    s += linha("Exame", exame);
-    s += linha("Antecedentes", antecedentes);
-    s += linha("Conduta", flat(d.conduta));
-    return s;
+      d.lesoes ? `lesões associadas: ${lowFirst(d.lesoes)}` : "",
+      d.exames ? `imagem: ${lowFirst(d.exames)}` : ""]);
+    const antecedentes = join([d.comorbidades, d.muc ? `MUC: ${d.muc}` : "",
+      d.tabagismo ? `tabagismo: ${lowFirst(d.tabagismo)}` : "", d.etilismo ? `etilismo: ${d.etilismo.toLowerCase()}` : "",
+      d.alergia ? `alergia: ${lowFirst(d.alergia)}` : ""]);
+    return (caso.grupo && !grupoNaFrase() ? linha("Grupo", caso.grupo) : "") +
+      linha("Paciente", paciente) + linha("Perfil", perfil) + linha("Quadro", quadro) +
+      linha("Exame", exame) + linha("Antecedentes", antecedentes) + linha("Conduta", flat(d.conduta));
   }
 
   function buildMessage(){
     const d = dados();
     const corpo = (opts.modo === "short" ? corpoResumido(d) : corpoCompleto(d, opts.modo === "blocks")).trim();
-    return [negrito(aberturaTexto()), corpo, negrito(fechoTexto())].filter(Boolean).join("\n\n");
+    const topo = join([caso.urgente ? negrito("URGENTE") : "", negrito(aberturaTexto())], "\n");
+    const resumo = (opts.resumo && opts.modo !== "short") ? italico(resumoLinha(d)) : "";
+    return [topo, resumo, corpo, negrito(fechoTexto())].filter(Boolean).join("\n\n");
   }
 
-  const escapeHTML = (s) => s.replace(/[&<>"]/g, ch => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[ch]));
+  /* ── Tela ─────────────────────────────────────── */
+  function revela(){
+    document.querySelectorAll("[data-show]").forEach(el => {
+      const [id, v] = el.dataset.show.split("=");
+      el.classList.toggle("hide", val(id) !== v);
+    });
+    document.querySelectorAll(".quick[data-parent]").forEach(q => {
+      q.classList.toggle("hide", idxPai(partes($(q.dataset.for).value), q.dataset.parent) < 0);
+    });
+  }
 
+  function atualizaQuick(){
+    document.querySelectorAll(".quick[data-for]").forEach(q => {
+      const ps = partes($(q.dataset.for).value);
+      let marcados;
+      if (q.dataset.parent){
+        const i = idxPai(ps, q.dataset.parent);
+        marcados = i >= 0 ? baseDe(ps[i]).it.map(norm) : [];
+      } else marcados = ps.map(p => norm(baseDe(p).b));
+      q.querySelectorAll("button[data-t]").forEach(b => b.setAttribute("aria-pressed", String(marcados.includes(norm(b.dataset.t)))));
+    });
+  }
+
+  let capsLigado = false;
   function render(){
-    const preenchidos = contaveis.filter(id => val(id)).length;
+    revela();
     const msg = buildMessage();
     const hora = new Date().toLocaleTimeString("pt-BR", { hour:"2-digit", minute:"2-digit" });
-    const corpoHTML = escapeHTML(msg).replace(/\*([^*\n]+)\*/g, "<strong>$1</strong>");
-
+    const html = escapeHTML(msg)
+      .replace(/\*URGENTE\*/, `<strong class="urg-l">URGENTE</strong>`)
+      .replace(/\*([^*\n]+)\*/g, "<strong>$1</strong>")
+      .replace(/(^|\n)_([^_\n]+)_(?=\n|$)/g, "$1<em>$2</em>");
     $("bubble").innerHTML = !msg
       ? `<span class="empty">Comece a preencher. A mensagem aparece aqui.</span><span class="stamp">${hora}</span>`
-      : `${corpoHTML}<span class="stamp">${hora} ✓✓</span>`;
+      : `${html}<span class="stamp">${hora} ✓✓</span>`;
 
-    $("countFilled").textContent = preenchidos;
-    $("countTotal").textContent = contaveis.length;
-    $("countChars").textContent = msg.length;
+    const preenchidos = contaveis.filter(id => val(id)).length;
+    $("metaTxt").textContent = `${preenchidos}/${contaveis.length}`;
     $("meterFill").style.width = `${Math.round(preenchidos / contaveis.length * 100)}%`;
-    $("chatStatus").textContent = preenchidos === 0 ? "online" : `${preenchidos} de ${contaveis.length} campos`;
-    $("chatName").textContent = opts.para === "chefe" ? "Chefe da Ortopedia" : opts.para === "chefes" ? "Chefes da Ortopedia" : "Grupo da Ortopedia";
+    let nome = opts.para === "__dr" ? (val("drNome") || "Dr(a).") : (PARA[opts.para] || "Ortopedia");
+    if (caso.grupo) nome += ` · ${caso.grupo}`;
+    $("chatName").textContent = nome;
+    $("chatAv").textContent = nome.replace(/^(Dra?\.?\s*)/i, "").charAt(0).toUpperCase() || "O";
+    $("chatStatus").textContent = preenchidos === 0 ? "online" : `${msg.length} caracteres`;
 
     Object.keys(blocos).forEach(k => {
+      const n = blocos[k].filter(id => val(id)).length, tot = blocos[k].length;
       const el = document.querySelector(`[data-tally="${k}"]`);
-      if (!el) return;
-      const lista = blocos[k];
-      const n = lista.filter(id => val(id)).length;
-      el.textContent = `${n}/${lista.length}`;
-      el.classList.toggle("done", n === lista.length);
+      if (el){ el.textContent = tot > 1 ? `${n}/${tot}` : (n ? "✓" : ""); el.classList.toggle("ok", n === tot); }
+      const nav = document.querySelector(`[data-nav="${k}"]`);
+      if (nav){ nav.querySelector("i").textContent = n ? (tot > 1 ? `${n}/${tot}` : "✓") : ""; nav.classList.toggle("ok", n === tot); }
     });
+    ids.forEach(id => { const el = $(id); if (el && el.type !== "hidden") el.classList.toggle("filled", !!val(id)); });
 
-    document.querySelectorAll("select").forEach(s => s.classList.toggle("empty", !s.value));
-    ids.forEach(id => { const el = $(id); if (el) el.classList.toggle("filled", !!val(id)); });
-
-    const ab = aberturaTexto(), fe = fechoTexto();
-    $("prevAbertura").innerHTML = ab ? `<b>${escapeHTML(ab)}</b>` : `<span class="none">Sem abertura</span>`;
-    $("prevFecho").innerHTML = fe ? `<b>${escapeHTML(fe)}</b>` : `<span class="none">Sem fecho</span>`;
-    $("sauAutoLbl").textContent = `· ${saudacaoAuto().toLowerCase()}`;
-
+    /* barra de CAPS */
     const emCapsAgora = camposEmCaps();
     $("capsBar").classList.toggle("on-caps", emCapsAgora.length > 0 || capsLigado);
     $("capsSw").setAttribute("aria-checked", String(opts.caps));
@@ -1644,22 +1809,32 @@ const CLASSIFICACOES = [
       : emCapsAgora.length
         ? `${emCapsAgora.length} ${emCapsAgora.length === 1 ? "campo corrigido" : "campos corrigidos"}`
         : capsLigado ? "Caps Lock ligado — sai corrigido" : "Só a 1ª letra da frase maiúscula";
-    const trauma = val("data_trauma");
-    $("quickTrauma").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(trauma === isoMenos(+b.dataset.dias))));
-    guardaRascunho();
 
+    /* botões */
     atualizaQuick();
     document.querySelectorAll(".pick").forEach(p => {
       const v = val(p.dataset.for);
       p.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === v)));
     });
+    const trauma = val("data_trauma");
+    $("quickTrauma").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(trauma === isoMenos(+b.dataset.dias))));
+    $("negaTudo").setAttribute("aria-pressed", String(NEGA_TUDO.every(id => val(id) === "Nega")));
+    const exposta = val("tipo_fratura") === "Exposta";
+    document.querySelectorAll('[data-sug="exposta"]').forEach(b => b.classList.toggle("sug", exposta));
+    $("urgBtn").setAttribute("aria-pressed", String(caso.urgente));
+    $("chGrupo").querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", String(c.dataset.v === caso.grupo)));
+    $("chImg").setAttribute("aria-pressed", String(opts.imagens));
+    $("sauAutoLbl").textContent = `· ${saudacaoAuto().toLowerCase()}`;
+    $("txtResumo").textContent = join([fraseAbertura().replace(/\.$/, ""), fechoTexto()], " · ") || "nenhum";
+
+    guardaRascunho();
   }
 
   /* ── Rascunho: sobrevive a recarregar a aba (ida e volta do WhatsApp).
      sessionStorage some ao fechar a aba — dado de paciente não fica no aparelho. */
   function guardaRascunho(){
     try{
-      const r = {};
+      const r = { caso };
       ids.forEach(id => { if ($(id).value) r[id] = $(id).value; });
       sessionStorage.setItem("enc_rascunho", JSON.stringify(r));
     }catch(e){}
@@ -1667,13 +1842,14 @@ const CLASSIFICACOES = [
   function recuperaRascunho(){
     try{
       const r = JSON.parse(sessionStorage.getItem("enc_rascunho") || "{}");
-      Object.keys(r).forEach(id => { if ($(id) && ids.includes(id)) $(id).value = r[id]; });
+      ids.forEach(id => { if (r[id] !== undefined) $(id).value = r[id]; });
+      if (r.caso) Object.assign(caso, r.caso);
     }catch(e){}
   }
 
-  /* textarea cresce com o texto, sem barra de rolagem */
+  /* textarea cresce com o texto */
   function cresce(el){
-    if (el.tagName !== "TEXTAREA") return;
+    if (!el || el.tagName !== "TEXTAREA") return;
     el.style.height = "auto";
     el.style.height = (el.scrollHeight + 2) + "px";
   }
@@ -1695,142 +1871,94 @@ const CLASSIFICACOES = [
     t._t = setTimeout(() => t.classList.remove("show"), acao ? 5000 : 2100);
   }
 
-  function flashBubble(){
-    const b = $("bubble");
-    b.classList.add("flash");
-    setTimeout(() => b.classList.remove("flash"), 420);
-  }
-
   async function copiar(){
     const text = buildMessage();
     if (!text){ showToast("Mensagem vazia"); return; }
-    try{
-      await navigator.clipboard.writeText(text);
-    }catch(e){
+    try{ await navigator.clipboard.writeText(text); }
+    catch(e){
       const ta = document.createElement("textarea");
       ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
-      document.body.appendChild(ta); ta.select();
-      document.execCommand("copy"); document.body.removeChild(ta);
+      document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta);
     }
-    flashBubble();
+    const b = $("bubble"); b.classList.add("flash"); setTimeout(() => b.classList.remove("flash"), 420);
     showToast(opts.caps && camposEmCaps().length ? "Copiada, sem CAPS LOCK" : "Mensagem copiada");
   }
-
   function enviar(){
     const text = buildMessage();
     if (!text){ showToast("Mensagem vazia"); return; }
     window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank", "noopener");
   }
 
-  function toggleConvenio(){
-    $("wrap_convenio_outro").classList.toggle("hide", val("convenio") !== "Outro");
-    $("wrap_alergia_qual").classList.toggle("hide", val("alergia") !== "Sim");
-  }
-
   function limpar(){
-    const antes = {};
-    ids.forEach(id => { antes[id] = $(id).value; });
-    ids.forEach(id => { $(id).value = ""; });
+    const antes = {}, casoAntes = Object.assign({}, caso);
+    ids.forEach(id => { antes[id] = $(id).value; $(id).value = ""; });
+    caso.urgente = false; caso.grupo = "";
     $("data").value = todayISO();
-    toggleConvenio();
-    cresceTodas();
-    render();
-    showToast("Formulário limpo", { label:"Desfazer", fn: () => {
+    cresceTodas(); render();
+    showToast("Novo caso", { label:"Desfazer", fn: () => {
       ids.forEach(id => { $(id).value = antes[id]; });
-      toggleConvenio(); cresceTodas(); render();
+      Object.assign(caso, casoAntes);
+      cresceTodas(); render();
     }});
-    $("nome").focus();
+    window.scrollTo({ top:0, behavior:"smooth" });
+    $("nome").focus({ preventScroll:true });
   }
 
-  /* ── Controles do painel ──────────────────────── */
-  function bindSeg(segId, key){
-    const seg = $(segId);
-    const marcar = () => seg.querySelectorAll("button").forEach(x => {
-      const v = key === "bold" ? (x.dataset.v === "1") : x.dataset.v;
-      x.setAttribute("aria-pressed", String(v === opts[key]));
-    });
-    seg.addEventListener("click", (e) => {
-      const b = e.target.closest("button");
-      if (!b) return;
-      opts[key] = (key === "bold") ? b.dataset.v === "1" : b.dataset.v;
-      marcar(); salvarPrefs(); render();
-    });
-    marcar();
-  }
-
-  function bindChips(boxId, key, customInput){
-    const box = $(boxId);
-    const marcar = () => {
-      box.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", String(c.dataset.v === opts[key])));
-      if (customInput) $(customInput).classList.toggle("hide", opts[key] !== "__custom");
-    };
-    box.addEventListener("click", (e) => {
-      const c = e.target.closest(".chip");
-      if (!c) return;
-      opts[key] = c.dataset.v;
-      marcar(); salvarPrefs(); render();
-      if (customInput && opts[key] === "__custom") $(customInput).focus();
-    });
-    marcar();
-  }
-
-  /* no celular as opções da mensagem começam recolhidas (menos rolagem);
-     tocar na aba aberta recolhe de novo */
-  const telaEstreita = window.matchMedia("(max-width:1180px)");
-  let recolhido = telaEstreita.matches;
-  function setTab(tab){
-    opts.tab = tab;
-    document.querySelectorAll("#tabs [data-tab]").forEach(b => b.setAttribute("aria-selected", String(!recolhido && b.dataset.tab === tab)));
-    document.querySelectorAll("[data-pane]").forEach(p => p.classList.toggle("hide", recolhido || p.dataset.pane !== tab));
-    $("tabs").classList.toggle("recolhido", recolhido);
-  }
-  $("tabs").addEventListener("click", (e) => {
-    const b = e.target.closest("[data-tab]");
-    if (!b) return;
-    recolhido = telaEstreita.matches && !recolhido && b.dataset.tab === opts.tab;
-    setTab(b.dataset.tab); salvarPrefs();
-  });
-
-  /* ── Chips de preenchimento rápido ─────────────── */
-  const partes = (v) => v.split(/\s*;\s*/).map(s => s.trim()).filter(Boolean);
-  function atualizaQuick(){
-    document.querySelectorAll(".quick[data-for]").forEach(q => {
-      const ps = partes($(q.dataset.for).value).map(norm);
-      q.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(ps.includes(norm(b.dataset.t)))));
-    });
-  }
+  /* ── Botões do formulário ─────────────────────── */
   document.querySelectorAll(".quick[data-for]").forEach(q => {
     q.addEventListener("click", (e) => {
-      const b = e.target.closest("button");
+      const b = e.target.closest("button[data-t]");
       if (!b) return;
-      const el = $(q.dataset.for);
+      const id = q.dataset.for, el = $(id), t = b.dataset.t;
       let ps = partes(el.value);
-      const i = ps.findIndex(p => norm(p) === norm(b.dataset.t));
-      if (i >= 0) ps.splice(i, 1); else ps.push(b.dataset.t);
-      ps = ps.map((p, j) => j === 0 ? cap(p) : lowFirst(p));
-      el.value = ps.join("; ");
+      if (q.dataset.parent){
+        // sub-opção: entra entre parênteses na opção-mãe ("ferida (1 a 10 cm)")
+        const i = idxPai(ps, q.dataset.parent);
+        if (i < 0) return;
+        const { b:base, it } = baseDe(ps[i]);
+        const j = it.findIndex(x => norm(x) === norm(t));
+        if (j >= 0) it.splice(j, 1); else it.push(t);
+        ps[i] = montaParte(base, it);
+      } else {
+        const i = ps.findIndex(p => norm(baseDe(p).b) === norm(t));
+        // opções exclusivas (Nega, Preservado) não convivem com as demais
+        const excl = [...document.querySelectorAll(`.quick[data-for="${id}"] button[data-x]`)].map(x => norm(x.dataset.t));
+        if (i >= 0) ps.splice(i, 1);
+        else if (b.hasAttribute("data-x")) ps = [t];
+        else { ps = ps.filter(p => !excl.includes(norm(baseDe(p).b))); ps.push(t); }
+      }
+      el.value = juntaPartes(ps);
       cresce(el);
       render();
     });
   });
 
-  /* botões de escolha única: clicar de novo desmarca */
+  /* escolha única: clicar de novo desmarca; se abrir um campo de texto, já foca nele */
   document.querySelectorAll(".pick").forEach(p => {
     p.addEventListener("click", (e) => {
       const b = e.target.closest("button");
       if (!b) return;
-      const el = $(p.dataset.for);
+      const id = p.dataset.for, el = $(id);
       el.value = el.value === b.dataset.v ? "" : b.dataset.v;
-      if (p.dataset.for === "convenio"){
-        toggleConvenio();
-        if (el.value === "Outro") $("convenio_outro").focus();
-      }
-      if (p.dataset.for === "alergia"){
-        toggleConvenio();
-        if (el.value === "Sim") $("alergia_qual").focus();
-      }
       render();
+      const aberto = document.querySelector(`[data-show="${id}=${el.value}"]`);
+      const txt = aberto && aberto.querySelector('input[type="text"]');
+      if (txt && !txt.value) txt.focus();
     });
+  });
+
+  $("negaTudo").addEventListener("click", () => {
+    const todos = NEGA_TUDO.every(id => val(id) === "Nega");
+    NEGA_TUDO.forEach(id => { $(id).value = todos ? "" : "Nega"; });
+    render();
+  });
+
+  $("quickTrauma").addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    const iso = isoMenos(+b.dataset.dias);
+    $("data_trauma").value = $("data_trauma").value === iso ? "" : iso;
+    render();
   });
 
   /* ── Autocompletar de classificações ───────────── */
@@ -1856,8 +1984,17 @@ const CLASSIFICACOES = [
     inp.dispatchEvent(new Event("input", { bubbles:true }));
   }
 
+  /* classificações sugeridas pelo diagnóstico ("platô" → Schatzker) */
+  const IGNORA = ["fratura","fraturas","direito","direita","esquerdo","esquerda","bilateral","lesao","luxacao"];
+  function pontosSugestao(){
+    const toks = norm(val("diagnostico")).split(" ").filter(t => t.length >= 4 && !IGNORA.includes(t));
+    return (c) => toks.filter(t => c.hay.some(w => w.startsWith(t.slice(0, 6)))).length;
+  }
   function buscaClasses(q){
-    if (!q) return CL.slice();
+    if (!q){
+      const pts = pontosSugestao();
+      return CL.map((c, i) => [c, pts(c), i]).sort((a, b) => b[1] - a[1] || a[2] - b[2]).map(x => Object.assign({ sug:x[1] > 0 }, x[0]));
+    }
     const toks = q.split(" ");
     const pontos = (c) => {
       if (c.nn.startsWith(q)) return 3;
@@ -1868,15 +2005,12 @@ const CLASSIFICACOES = [
     return CL.map(c => [c, pontos(c)]).filter(x => x[1] > 0).sort((a, b) => b[1] - a[1]).map(x => x[0]);
   }
   function classeDigitada(q){
-    // "schatzker ii" → modo de subtipos da Schatzker
     const cands = CL.filter(c => q === c.nn || q.startsWith(c.nn + " ")).sort((a, b) => b.nn.length - a.nn.length);
     const c = cands[0];
     if (!c) return null;
-    // "neer" sozinho: há "Neer" e "Neer clavícula" → mostra a lista para escolher
     if (q === c.nn && CL.some(o => o !== c && o.nn.startsWith(q + " "))) return null;
     return { c, resto: q.slice(c.nn.length).trim() };
   }
-
   function marca(txt, q){
     const i = q ? txt.toLowerCase().indexOf(q) : -1;
     if (i < 0) return escapeHTML(txt);
@@ -1897,11 +2031,10 @@ const CLASSIFICACOES = [
         ? acItens.map((it, i) => `<div class="ac-item" role="option" data-i="${i}"><span class="code">${escapeHTML(it.code)}</span><span class="txt">${escapeHTML(it.desc)}</span></div>`).join("")
         : `<div class="ac-empty">Nenhum subtipo com “${escapeHTML(r)}”.</div>`;
     } else {
-      const cs = buscaClasses(q);
-      acItens = cs.map(c => ({ tipo:"c", c }));
+      acItens = buscaClasses(q).map(c => ({ tipo:"c", c }));
       head.classList.add("hide");
       list.innerHTML = acItens.length
-        ? acItens.map((it, i) => `<div class="ac-item" role="option" data-i="${i}"><span class="code">${it.c.g.length}</span><span class="txt"><b>${marca(it.c.n, q)}</b><small>${escapeHTML(it.c.r)}</small></span></div>`).join("")
+        ? acItens.map((it, i) => `<div class="ac-item" role="option" data-i="${i}"><span class="code">${it.c.g.length}</span><span class="txt"><b>${marca(it.c.n, q)}${it.c.sug ? "<em>sugerida</em>" : ""}</b><small>${escapeHTML(it.c.r)}</small></span></div>`).join("")
         : `<div class="ac-empty">Nenhuma classificação encontrada. Pode escrever livremente.</div>`;
     }
     menu.classList.remove("hide");
@@ -1934,15 +2067,11 @@ const CLASSIFICACOES = [
       inp.focus();
     }
   }
-
   inp.addEventListener("input", abrirMenu);
   inp.addEventListener("focus", () => { if (!acAberto) abrirMenu(); });
   inp.addEventListener("click", () => { if (!acAberto) abrirMenu(); });
   inp.addEventListener("keydown", (e) => {
-    if (!acAberto){
-      if (e.key === "ArrowDown"){ e.preventDefault(); abrirMenu(); }
-      return;
-    }
+    if (!acAberto){ if (e.key === "ArrowDown"){ e.preventDefault(); abrirMenu(); } return; }
     if (e.key === "ArrowDown"){ e.preventDefault(); acAtivo = Math.min(acAtivo + 1, acItens.length - 1); destaca(); }
     else if (e.key === "ArrowUp"){ e.preventDefault(); acAtivo = Math.max(acAtivo - 1, 0); destaca(); }
     else if (e.key === "Enter" && !e.ctrlKey && !e.metaKey && acItens.length){ e.preventDefault(); escolhe(acAtivo); }
@@ -1960,22 +2089,77 @@ const CLASSIFICACOES = [
     if (item && +item.dataset.i !== acAtivo){ acAtivo = +item.dataset.i; list.querySelectorAll(".ac-item").forEach((el, i) => el.classList.toggle("on", i === acAtivo)); }
   });
   acBtn.addEventListener("mousedown", (e) => e.preventDefault());
-  acBtn.addEventListener("click", () => {
-    if (acAberto){ fecharMenu(); return; }
-    inp.focus();
-    abrirMenu();
+  acBtn.addEventListener("click", () => { if (acAberto){ fecharMenu(); return; } inp.focus(); abrirMenu(); });
+
+  /* ── Painel da mensagem ───────────────────────── */
+  const BOOL = ["bold","resumo"];
+  function bindSeg(segId, key){
+    const seg = $(segId);
+    const marcar = () => seg.querySelectorAll("button").forEach(x => {
+      const v = BOOL.includes(key) ? (x.dataset.v === "1") : x.dataset.v;
+      x.setAttribute("aria-pressed", String(v === opts[key]));
+    });
+    seg.addEventListener("click", (e) => {
+      const b = e.target.closest("button");
+      if (!b) return;
+      opts[key] = BOOL.includes(key) ? b.dataset.v === "1" : b.dataset.v;
+      marcar(); salvarPrefs(); render();
+    });
+    marcar();
+  }
+  function bindCustom(boxId, key, inputId, gatilho){
+    const box = $(boxId);
+    const marcar = () => {
+      box.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", String(c.dataset.v === opts[key])));
+      if (inputId) $(inputId).classList.toggle("hide", opts[key] !== gatilho);
+    };
+    box.addEventListener("click", (e) => {
+      const c = e.target.closest(".chip");
+      if (!c) return;
+      opts[key] = c.dataset.v;
+      marcar(); salvarPrefs(); render();
+      if (inputId && opts[key] === gatilho) $(inputId).focus();
+    });
+    marcar();
+  }
+  bindCustom("chSau", "sau");
+  bindCustom("chPara", "para", "drNome", "__dr");
+  bindCustom("chFrase", "frase", "abertura_custom", "__custom");
+  bindCustom("chFecho", "fecho", "fechamento_custom", "__custom");
+  bindCustom("chAgr", "agr");
+  bindSeg("segBold", "bold");
+  bindSeg("segCase", "caixa");
+  bindSeg("segMode", "modo");
+  bindSeg("segResumo", "resumo");
+  ["abertura_custom","fechamento_custom","drNome"].forEach(id => $(id).addEventListener("input", () => { salvarPrefs(); render(); }));
+
+  $("chGrupo").addEventListener("click", (e) => {
+    const c = e.target.closest(".chip");
+    if (!c) return;
+    caso.grupo = caso.grupo === c.dataset.v ? "" : c.dataset.v;
+    render();
   });
+  $("urgBtn").addEventListener("click", () => { caso.urgente = !caso.urgente; render(); });
+  $("chImg").addEventListener("click", () => { opts.imagens = !opts.imagens; salvarPrefs(); render(); });
+
+  function painel(btnId, paneId){
+    $(btnId).addEventListener("click", () => {
+      const abrir = $(paneId).classList.contains("hide");
+      $(paneId).classList.toggle("hide", !abrir);
+      $(btnId).setAttribute("aria-expanded", String(abrir));
+    });
+  }
+  painel("cfgBtn", "cfg");
+  painel("txtBtn", "txtPane");
 
   /* ── CAPS LOCK: chave, correção nos campos e aviso ─ */
-  let capsLigado = false;
   $("capsSw").addEventListener("click", () => {
     opts.caps = !opts.caps;
     salvarPrefs(); render();
     showToast(opts.caps ? "Mensagem sai sem CAPS LOCK" : "Mensagem sai como digitada");
   });
   $("capsFix").addEventListener("click", () => {
-    const antes = {};
-    const lista = camposEmCaps();
+    const antes = {}, lista = camposEmCaps();
     lista.forEach(id => { antes[id] = $(id).value; $(id).value = corrige(id, $(id).value); });
     cresceTodas(); render();
     showToast(`${lista.length} ${lista.length === 1 ? "campo corrigido" : "campos corrigidos"}`, { label:"Desfazer", fn: () => {
@@ -2005,55 +2189,21 @@ const CLASSIFICACOES = [
   document.addEventListener("focusout", () => pill.classList.add("hide"));
   window.addEventListener("scroll", () => pill.classList.add("hide"), { passive:true });
 
-  /* data do trauma: hoje / ontem / anteontem num toque */
-  $("quickTrauma").addEventListener("click", (e) => {
-    const b = e.target.closest("button");
-    if (!b) return;
-    const iso = isoMenos(+b.dataset.dias);
-    $("data_trauma").value = $("data_trauma").value === iso ? "" : iso;
-    render();
-  });
-
   /* ── Tema ─────────────────────────────────────── */
-  function marcaTema(){
-    const dark = document.documentElement.getAttribute("data-theme") === "dark";
-    $("themeBtn").setAttribute("aria-checked", String(dark));
-    $("themeLabel").textContent = dark ? "Escuro" : "Claro";
-    $("themeBtn").title = dark ? "Mudar para o modo claro" : "Mudar para o modo escuro";
-  }
   $("themeBtn").addEventListener("click", () => {
     const novo = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", novo);
     try { localStorage.setItem("enc_tema", novo); } catch(e){}
-    marcaTema();
   });
-  marcaTema();
 
   /* ── Inicialização ────────────────────────────── */
   $("data").value = todayISO();
   recuperaRascunho();
-  toggleConvenio();
-
   ids.forEach(id => {
     const el = $(id);
     el.addEventListener("input", () => { cresce(el); render(); });
     el.addEventListener("change", render);
   });
-  requestAnimationFrame(cresceTodas);
-
-
-  bindSeg("segBold", "bold");
-  bindSeg("segCase", "caixa");
-  bindSeg("segMode", "modo");
-  bindChips("chSau", "sau");
-  bindChips("chPara", "para");
-  bindChips("chFrase", "frase", "abertura_custom");
-  bindChips("chFecho", "fecho", "fechamento_custom");
-  bindChips("chAgr", "agr");
-  setTab(opts.tab);
-  $("abertura_custom").addEventListener("input", () => { salvarPrefs(); render(); });
-  $("fechamento_custom").addEventListener("input", () => { salvarPrefs(); render(); });
-
   document.querySelectorAll("[data-act]").forEach(btn => {
     btn.addEventListener("click", () => {
       const a = btn.dataset.act;
@@ -2063,16 +2213,14 @@ const CLASSIFICACOES = [
       if (a === "see") $("rail").scrollIntoView({ behavior:"smooth", block:"start" });
     });
   });
-
   document.addEventListener("keydown", (e) => {
     const mod = e.ctrlKey || e.metaKey;
     if (mod && e.key === "Enter"){ e.preventDefault(); enviar(); }
     if (mod && e.shiftKey && e.key.toLowerCase() === "c"){ e.preventDefault(); copiar(); }
   });
-
-  // atualiza a hora/saudação automática a cada minuto
   setInterval(render, 60000);
   render();
+  requestAnimationFrame(cresceTodas);
 })();
 </script>
 
