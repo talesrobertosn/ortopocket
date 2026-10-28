@@ -176,17 +176,19 @@ html[data-theme="dark"] .ts-knob .i-sun{display:none}
 
 /* ── ESTRUTURA ────────────────────────────────────── */
 .shell{
-  max-width:1400px;margin:0 auto;padding:20px 20px 24px;
+  max-width:1400px;margin:0 auto;padding:14px 20px 20px;
   display:grid;grid-template-columns:minmax(0,1fr) 384px;gap:20px;align-items:start;
 }
 @media(max-width:1340px){.shell{grid-template-columns:minmax(0,1fr) 350px;gap:16px}}
 @media(max-width:1180px){.shell{grid-template-columns:minmax(0,1fr);gap:16px;padding-bottom:92px}}
 @media(max-width:520px){.shell{padding:14px 12px 92px}}
 
-.page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:14px;flex-wrap:wrap}
-.page-head h1{font-family:'Instrument Serif',Georgia,serif;font-size:31px;font-weight:400;line-height:1.02;letter-spacing:.2px}
+.page-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px;flex-wrap:wrap}
+.page-head h1{font-family:'Instrument Serif',Georgia,serif;font-size:26px;font-weight:400;line-height:1;letter-spacing:.2px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
 .page-head h1 em{font-style:italic;color:var(--petrol)}
-.page-head p{font-size:12.5px;color:var(--ink-3);margin-top:4px}
+.page-head p{font-family:'Inter',system-ui,sans-serif;font-size:12px;color:var(--ink-3);letter-spacing:0}
+.page-head p{white-space:nowrap}
+@media(max-width:520px){.page-head{display:none}}
 
 .hint{
   display:inline-flex;align-items:center;gap:9px;height:32px;padding:0 12px;
@@ -201,17 +203,17 @@ html[data-theme="dark"] .ts-knob .i-sun{display:none}
 @media(max-width:900px){.hint{display:none}}
 
 /* ── CARTÕES ──────────────────────────────────────── */
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.grid + .grid{margin-top:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid + .grid{margin-top:12px}
 @media(max-width:800px){.grid{grid-template-columns:1fr}}
 
 .card{
   background:var(--card);border:1px solid var(--line);border-radius:16px;
-  box-shadow:var(--shadow);padding:16px 18px 18px;
+  box-shadow:var(--shadow);padding:13px 16px 15px;
   transition:box-shadow .22s,border-color .22s;
 }
 .card:focus-within{box-shadow:var(--shadow-lift);border-color:var(--card-focus)}
-.card-head{display:flex;align-items:center;gap:9px;margin-bottom:14px}
+.card-head{display:flex;align-items:center;gap:9px;margin-bottom:10px}
 .card-head .num{
   width:22px;height:22px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
   font-size:11px;font-weight:700;color:var(--petrol);background:var(--petrol-tint);border:1px solid var(--line);
@@ -225,23 +227,32 @@ html[data-theme="dark"] .ts-knob .i-sun{display:none}
 }
 .card-head .tally.done{color:var(--brass-2);background:var(--brass-tint);border-color:rgba(176,120,43,.35)}
 
-.fields{display:grid;grid-template-columns:1fr 1fr;gap:11px 12px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:9px 12px}
 .full{grid-column:span 2}
-@media(max-width:520px){.fields{grid-template-columns:1fr}.full{grid-column:span 1}.card{padding:15px 14px 16px}}
+/* nome + idade + nº numa linha só */
+.trio{display:grid;grid-template-columns:minmax(0,1fr) 66px 124px;gap:9px 12px;grid-column:span 2}
+/* celular: uma coluna, mas campos curtos (.half) continuam lado a lado */
+@media(max-width:520px){
+  .fields > .field:not(.half){grid-column:span 2}
+  .card{padding:13px 13px 14px}
+  .trio{grid-template-columns:1fr 1fr}
+  .trio > .field:first-child{grid-column:span 2}
+}
 
 .field{display:flex;flex-direction:column;gap:4px;min-width:0}
 label{font-size:9.5px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3)}
 
 input,textarea,select{
   font-family:'Inter',system-ui,sans-serif;font-size:13.5px;color:var(--ink);
-  background:var(--field);border:1px solid var(--line);border-radius:9px;padding:7px 10px;width:100%;
+  background:var(--field);border:1px solid var(--line);border-radius:9px;padding:6px 10px;width:100%;
   transition:border-color .16s,box-shadow .16s,background .16s;outline:none;
 }
 input:hover,textarea:hover,select:hover{border-color:var(--field-border-hover);background:var(--field-hover)}
 input:focus,textarea:focus,select:focus{background:var(--field-hover);border-color:var(--petrol);box-shadow:0 0 0 3px var(--ring)}
 input::placeholder,textarea::placeholder{color:var(--placeholder)}
-textarea{resize:vertical;min-height:62px;line-height:1.5}
-input[type="date"]{min-height:34px}
+textarea{resize:vertical;min-height:50px;line-height:1.5;overflow:hidden}
+input[type="date"]{min-height:33px}
+@media(max-width:520px){input,textarea,select{font-size:16px}}
 select{
   cursor:pointer;appearance:none;-webkit-appearance:none;padding-right:28px;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238497A0' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
@@ -254,27 +265,27 @@ optgroup option{color:var(--ink);font-weight:400}
 .hide{display:none !important}
 
 /* chips de preenchimento rápido */
-.quick{display:flex;flex-wrap:wrap;gap:5px;margin-top:3px}
+.quick{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
 .quick button{
-  height:23px;padding:0 9px;border-radius:99px;cursor:pointer;
-  font-size:11px;font-weight:500;color:var(--ink-3);background:transparent;
-  border:1px dashed var(--line);transition:background .15s,color .15s,border-color .15s;
+  height:23px;padding:0 9px;border-radius:7px;cursor:pointer;
+  font-size:11px;font-weight:500;color:var(--ink-3);background:var(--surface-3);
+  border:1px solid var(--line-soft);transition:background .15s,color .15s,border-color .15s;
 }
-.quick button::before{content:'+ ';opacity:.6}
 .quick button:hover{color:var(--petrol);border-color:var(--petrol);background:var(--petrol-tint)}
-.quick button[aria-pressed="true"]{color:var(--petrol);border-style:solid;border-color:var(--petrol);background:var(--petrol-tint);font-weight:600}
-.quick button[aria-pressed="true"]::before{content:'✓ ';opacity:1}
+.quick button[aria-pressed="true"]{color:var(--petrol);border-color:var(--petrol);background:var(--petrol-tint);font-weight:600}
+.quick button[aria-pressed="true"]::before{content:'✓ '}
+@media(max-width:520px){.quick button{height:28px;font-size:12px;padding:0 10px}}
 
 /* botões de escolha única (tabagismo, alergia) */
 .pick{display:flex;flex-wrap:wrap;gap:4px;background:var(--surface-2);border:1px solid var(--line-soft);border-radius:10px;padding:3px}
 .pick button{white-space:nowrap;
-  flex:1 1 auto;height:28px;min-width:0;padding:0 8px;border:none;border-radius:7px;background:transparent;cursor:pointer;
+  flex:1 1 auto;height:27px;min-width:0;padding:0 8px;border:none;border-radius:7px;background:transparent;cursor:pointer;
   font-size:12.5px;font-weight:500;color:var(--ink-3);transition:background .15s,color .15s,box-shadow .15s;
 }
 .pick button:hover{color:var(--ink);background:var(--field-hover)}
 .pick button[aria-pressed="true"]{background:var(--petrol);color:#fff;font-weight:600;box-shadow:0 1px 2px rgba(11,26,33,.2)}
 html[data-theme="dark"] .pick button[aria-pressed="true"]{color:#0A1418}
-@media(max-width:520px){.pick button{padding:0 3px;font-size:12px}}
+@media(max-width:520px){.pick button{padding:0 3px;font-size:12.5px;height:32px}}
 
 /* ── AUTOCOMPLETAR DE CLASSIFICAÇÕES ─────────────── */
 .ac{position:relative}
@@ -325,7 +336,7 @@ html[data-theme="dark"] .ac-btn:hover,html[data-theme="dark"] .ac-btn[aria-expan
 @media(max-width:520px){.ac-foot{display:none}}
 
 /* ── PAINEL DA MENSAGEM ───────────────────────────── */
-.rail{position:sticky;top:68px;align-self:start;display:flex;flex-direction:column;gap:10px}
+.rail{position:sticky;top:74px;align-self:start;display:flex;flex-direction:column;gap:10px}
 @media(max-width:1180px){.rail{position:static}}
 
 .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-lift);overflow:hidden}
@@ -344,16 +355,17 @@ html[data-theme="dark"] .ac-btn:hover,html[data-theme="dark"] .ac-btn[aria-expan
 .tabs button:hover{color:var(--ink)}
 .tabs button[aria-selected="true"]{background:var(--seg-on);color:var(--petrol);font-weight:600;box-shadow:0 1px 2px rgba(11,26,33,.14)}
 .tabs button svg{width:14px;height:14px}
+.tabs.recolhido{margin-bottom:0}
 
-.tabpane{padding:12px 14px 13px;border-bottom:1px solid var(--line-soft);display:flex;flex-direction:column;gap:10px}
-.opt-row{display:flex;flex-direction:column;gap:6px}
-.opt-row .k{font-size:9.5px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+.tabpane{padding:11px 14px 0;display:flex;flex-direction:column;gap:8px}
+.opt-row{display:grid;grid-template-columns:62px minmax(0,1fr);gap:8px;align-items:start}
+.opt-row .k{font-size:9.5px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);padding-top:7px}
 .opt-row .ctl{flex:1;display:flex;align-items:center;gap:6px;min-width:0;flex-wrap:wrap}
 
-.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
 .chip{
-  height:28px;padding:0 10px;border-radius:99px;cursor:pointer;
-  font-size:12px;font-weight:500;color:var(--ink-2);background:var(--quiet-bg);
+  height:26px;padding:0 9px;border-radius:99px;cursor:pointer;
+  font-size:11.5px;font-weight:500;color:var(--ink-2);background:var(--quiet-bg);
   border:1px solid var(--line);transition:background .15s,color .15s,border-color .15s;white-space:nowrap;
 }
 .chip:hover{border-color:var(--quiet-border-hover);background:var(--quiet-hover)}
@@ -379,6 +391,45 @@ html[data-theme="dark"] .chip[aria-pressed="true"]{color:#0A1418}
 .preview-line b{color:var(--ink);font-weight:600}
 .preview-line .none{color:var(--muted);font-style:italic}
 
+/* ── CAPS LOCK ────────────────────────────────────── */
+.capsbar{
+  display:flex;align-items:center;gap:10px;margin:10px 14px 0;padding:8px 10px 8px 11px;
+  border:1px solid var(--line);border-radius:11px;background:var(--surface-3);
+  transition:background .2s,border-color .2s;
+}
+.capsbar.on-caps{background:var(--brass-tint);border-color:rgba(176,120,43,.4)}
+.capsbar .ico{
+  width:26px;height:26px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;color:var(--petrol);background:var(--card);border:1px solid var(--line);
+}
+.capsbar.on-caps .ico{color:var(--brass-2);border-color:rgba(176,120,43,.4)}
+.capsbar .txt{min-width:0;flex:1;line-height:1.25}
+.capsbar .txt b{display:block;font-size:12px;font-weight:600;color:var(--ink)}
+.capsbar .txt small{display:block;font-size:10.5px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.capsbar .fix{
+  height:26px;padding:0 9px;border-radius:7px;cursor:pointer;flex-shrink:0;
+  font-size:11px;font-weight:600;color:var(--brass-2);background:var(--card);border:1px solid rgba(176,120,43,.45);
+}
+.capsbar .fix:hover{background:var(--brass);border-color:var(--brass);color:#fff}
+.sw{
+  position:relative;width:38px;height:22px;border-radius:99px;flex-shrink:0;cursor:pointer;
+  background:var(--line);border:none;transition:background .2s;
+}
+.sw::after{
+  content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;
+  background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:transform .2s cubic-bezier(.34,1.3,.64,1);
+}
+.sw[aria-checked="true"]{background:var(--petrol)}
+.sw[aria-checked="true"]::after{transform:translateX(16px)}
+html[data-theme="dark"] .sw[aria-checked="true"]::after{background:#0A1418}
+/* aviso de Caps Lock junto ao campo */
+.caps-pill{
+  position:fixed;z-index:80;pointer-events:none;
+  font-size:10.5px;font-weight:700;letter-spacing:.04em;color:#2B1B04;
+  background:linear-gradient(135deg,#FBE7AE,#E3B45A);border-radius:6px;padding:2px 7px;
+  box-shadow:0 4px 12px -4px rgba(176,120,43,.7);
+}
+
 /* ── TELEFONE / CONVERSA ──────────────────────────── */
 .phone{padding:12px 14px 14px;background:var(--phone-bg)}
 .chat{border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 10px 26px -20px rgba(11,26,33,.75)}
@@ -392,7 +443,7 @@ html[data-theme="dark"] .chip[aria-pressed="true"]{color:#0A1418}
 .wall{
   background:var(--wall);background-image:radial-gradient(var(--wall-dot) 1px,transparent 1px);
   background-size:15px 15px;padding:14px 12px;display:block;
-  max-height:min(44vh,440px);overflow-y:auto;overscroll-behavior:contain;
+  max-height:max(190px,calc(100vh - 560px));overflow-y:auto;overscroll-behavior:contain;
   -webkit-overflow-scrolling:touch;
 }
 @media(max-width:1180px){.wall{max-height:none;overflow:visible}}
@@ -497,10 +548,7 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
 
   <div>
     <div class="page-head">
-      <div>
-        <h1>Encaminhamento <em>ortopédico</em></h1>
-        <p>Preencha o que tiver. Campo em branco não entra na mensagem.</p>
-      </div>
+      <h1><span>Encaminhamento <em>ortopédico</em></span><p>Campo em branco não entra na mensagem.</p></h1>
       <div class="hint">
         <kbd>Ctrl</kbd><kbd>Enter</kbd> enviar
         <b></b>
@@ -510,19 +558,21 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
 
     <div class="grid">
       <section class="card">
-        <div class="card-head"><span class="num">1</span><h2>Identificação</h2><span class="tally" data-tally="1">0/6</span></div>
+        <div class="card-head"><span class="num">1</span><h2>Paciente</h2><span class="tally" data-tally="1">0/6</span></div>
         <div class="fields">
-          <div class="field full">
-            <label for="nome">Nome</label>
-            <input id="nome" type="text" placeholder="Nome completo" autocomplete="off" />
-          </div>
-          <div class="field">
-            <label for="idade">Idade</label>
-            <input id="idade" type="text" placeholder="45" inputmode="numeric" autocomplete="off" />
-          </div>
-          <div class="field">
-            <label for="numero">Nº de atendimento</label>
-            <input id="numero" type="text" placeholder="123456" autocomplete="off" />
+          <div class="trio">
+            <div class="field">
+              <label for="nome">Nome</label>
+              <input id="nome" type="text" placeholder="Nome completo" autocomplete="off" />
+            </div>
+            <div class="field">
+              <label for="idade">Idade</label>
+              <input id="idade" type="text" placeholder="45" inputmode="numeric" autocomplete="off" />
+            </div>
+            <div class="field">
+              <label for="numero">Nº atendimento</label>
+              <input id="numero" type="text" placeholder="123456" autocomplete="off" />
+            </div>
           </div>
           <div class="field full">
             <label id="lbl_convenio">Convênio</label>
@@ -539,11 +589,11 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
               <input id="convenio_outro" type="text" placeholder="Qual convênio?" autocomplete="off" />
             </div>
           </div>
-          <div class="field full">
+          <div class="field">
             <label for="profissao">Profissão</label>
             <input id="profissao" type="text" placeholder="Pedreiro, aposentado..." />
           </div>
-          <div class="field full">
+          <div class="field">
             <label for="funcionalidade">Funcionalidade prévia</label>
             <select id="funcionalidade">
               <option value="">Não informada</option>
@@ -565,19 +615,63 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
               </optgroup>
             </select>
           </div>
+          <div class="field">
+            <label for="comorbidades">Comorbidades</label>
+            <input id="comorbidades" type="text" placeholder="HAS, DM, DRC, anticoagulação..." />
+            <div class="quick" data-for="comorbidades">
+              <button type="button" data-t="Nega">Nega</button>
+              <button type="button" data-t="HAS">HAS</button>
+              <button type="button" data-t="DM2">DM2</button>
+              <button type="button" data-t="anticoagulado">Anticoagulado</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="muc">Medicamentos de uso contínuo</label>
+            <input id="muc" type="text" placeholder="Listar medicamentos" />
+            <div class="quick" data-for="muc">
+              <button type="button" data-t="Nega">Nega</button>
+              <button type="button" data-t="losartana">Losartana</button>
+              <button type="button" data-t="metformina">Metformina</button>
+              <button type="button" data-t="AAS">AAS</button>
+            </div>
+          </div>
+          <div class="field half">
+            <label id="lbl_tabagismo">Tabagismo</label>
+            <input id="tabagismo" type="hidden" />
+            <div class="pick" data-for="tabagismo" role="group" aria-labelledby="lbl_tabagismo">
+              <button type="button" data-v="Nega">Nega</button>
+              <button type="button" data-v="Sim">Sim</button>
+              <button type="button" data-v="Ex-tabagista" title="Ex-tabagista">Ex</button>
+            </div>
+          </div>
+          <div class="field half">
+            <label id="lbl_alergia">Alergia</label>
+            <input id="alergia" type="hidden" />
+            <div class="pick" data-for="alergia" role="group" aria-labelledby="lbl_alergia">
+              <button type="button" data-v="Nega">Nega</button>
+              <button type="button" data-v="Sim">Sim</button>
+            </div>
+            <div id="wrap_alergia_qual" class="hide" style="margin-top:6px;">
+              <input id="alergia_qual" type="text" placeholder="Qual? Ex.: dipirona" autocomplete="off" />
+            </div>
+          </div>
         </div>
       </section>
 
       <section class="card">
-        <div class="card-head"><span class="num">2</span><h2>Ocorrência</h2><span class="tally" data-tally="2">0/6</span></div>
+        <div class="card-head"><span class="num">2</span><h2>Ocorrência</h2><span class="tally" data-tally="2">0/7</span></div>
         <div class="fields">
-          <div class="field">
+          <div class="field half">
             <label for="data">Data do atendimento</label>
             <input id="data" type="date" />
           </div>
-          <div class="field">
+          <div class="field half">
             <label for="data_trauma">Data do trauma</label>
             <input id="data_trauma" type="date" />
+            <div class="quick" id="quickTrauma">
+              <button type="button" data-dias="0">Hoje</button>
+              <button type="button" data-dias="1">Ontem</button>
+            </div>
           </div>
           <div class="field full">
             <label for="mecanismo">Mecanismo</label>
@@ -586,6 +680,7 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
               <button type="button" data-t="Queda da própria altura">Queda da própria altura</button>
               <button type="button" data-t="acidente de moto">Acidente de moto</button>
               <button type="button" data-t="acidente automobilístico">Acidente de carro</button>
+              <button type="button" data-t="atropelamento">Atropelamento</button>
               <button type="button" data-t="queda de altura">Queda de altura</button>
               <button type="button" data-t="trauma direto">Trauma direto</button>
               <button type="button" data-t="entorse">Entorse</button>
@@ -593,9 +688,60 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
           </div>
           <div class="field full">
             <label for="diagnostico">Diagnóstico</label>
-            <input id="diagnostico" type="text" placeholder="Fratura do rádio distal direito" />
+            <input id="diagnostico" type="text" placeholder="Fratura do rádio distal" list="dxList" autocomplete="off" />
+            <datalist id="dxList">
+              <option value="Fratura do rádio distal"></option>
+              <option value="Fratura transtrocantérica do fêmur"></option>
+              <option value="Fratura do colo do fêmur"></option>
+              <option value="Fratura diafisária do fêmur"></option>
+              <option value="Fratura supracondiliana do úmero"></option>
+              <option value="Fratura do úmero proximal"></option>
+              <option value="Fratura diafisária do úmero"></option>
+              <option value="Fratura da clavícula"></option>
+              <option value="Fratura dos ossos do antebraço"></option>
+              <option value="Fratura do escafoide"></option>
+              <option value="Fratura de metacarpo"></option>
+              <option value="Fratura de falange"></option>
+              <option value="Fratura do platô tibial"></option>
+              <option value="Fratura diafisária da tíbia"></option>
+              <option value="Fratura do pilão tibial"></option>
+              <option value="Fratura do tornozelo"></option>
+              <option value="Fratura bimaleolar"></option>
+              <option value="Fratura trimaleolar"></option>
+              <option value="Fratura do calcâneo"></option>
+              <option value="Fratura da base do 5º metatarso"></option>
+              <option value="Fratura da patela"></option>
+              <option value="Fratura do acetábulo"></option>
+              <option value="Fratura do anel pélvico"></option>
+              <option value="Fratura da cabeça do rádio"></option>
+              <option value="Fratura do olécrano"></option>
+              <option value="Fratura periprotética"></option>
+              <option value="Luxação glenoumeral"></option>
+              <option value="Luxação acromioclavicular"></option>
+              <option value="Luxação do cotovelo"></option>
+              <option value="Luxação do quadril"></option>
+              <option value="Luxação de prótese do quadril"></option>
+              <option value="Entorse do tornozelo"></option>
+              <option value="Entorse do joelho"></option>
+              <option value="Ruptura do tendão calcâneo"></option>
+              <option value="Lesão de tendão flexor"></option>
+              <option value="Lesão de tendão extensor"></option>
+              <option value="Ferimento corto-contuso"></option>
+              <option value="Pronação dolorosa"></option>
+              <option value="Artrite séptica"></option>
+              <option value="Síndrome compartimental"></option>
+            </datalist>
           </div>
-          <div class="field full">
+          <div class="field half">
+            <label id="lbl_lado">Lado</label>
+            <input id="lado" type="hidden" />
+            <div class="pick" data-for="lado" role="group" aria-labelledby="lbl_lado">
+              <button type="button" data-v="Direito">Dir.</button>
+              <button type="button" data-v="Esquerdo">Esq.</button>
+              <button type="button" data-v="Bilateral">Bilat.</button>
+            </div>
+          </div>
+          <div class="field half">
             <label id="lbl_tipo_fratura">Tipo de fratura</label>
             <input id="tipo_fratura" type="hidden" />
             <div class="pick" data-for="tipo_fratura" role="group" aria-labelledby="lbl_tipo_fratura">
@@ -624,11 +770,11 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
 
     <div class="grid">
       <section class="card">
-        <div class="card-head"><span class="num">3</span><h2>Exame físico</h2><span class="tally" data-tally="3">0/4</span></div>
+        <div class="card-head"><span class="num">3</span><h2>Exame</h2><span class="tally" data-tally="3">0/4</span></div>
         <div class="fields">
           <div class="field full">
-            <label for="exame_fisico">Achados</label>
-            <textarea id="exame_fisico" placeholder="Dor, amplitude de movimento, edema, ferida, estabilidade..."></textarea>
+            <label for="exame_fisico">Exame físico</label>
+            <textarea id="exame_fisico" rows="2" placeholder="Dor, amplitude de movimento, edema, ferida, estabilidade..."></textarea>
             <div class="quick" data-for="exame_fisico">
               <button type="button" data-t="Dor à palpação">Dor à palpação</button>
               <button type="button" data-t="edema">Edema</button>
@@ -637,7 +783,7 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
               <button type="button" data-t="impotência funcional">Impotência funcional</button>
               <button type="button" data-t="equimose">Equimose</button>
               <button type="button" data-t="limitação da amplitude de movimento">Limitação da ADM</button>
-              <button type="button" data-t="encurtamento e rotação externa do membro">Encurtamento + rot. externa</button>
+              <button type="button" data-t="encurtamento e rotação externa do membro">Encurt. + rot. externa</button>
               <button type="button" data-t="pele íntegra">Pele íntegra</button>
               <button type="button" data-t="compartimentos livres">Compartimentos livres</button>
             </div>
@@ -651,16 +797,16 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
               <button type="button" data-t="pulsos palpáveis">Pulsos palpáveis</button>
             </div>
           </div>
-          <div class="field full">
+          <div class="field">
             <label for="lesoes">Lesões associadas</label>
-            <input id="lesoes" type="text" placeholder="Traumatismo cranioencefálico leve, fratura de costela..." />
+            <input id="lesoes" type="text" placeholder="TCE leve, fratura de costela..." />
             <div class="quick" data-for="lesoes">
               <button type="button" data-t="Nega">Nega</button>
               <button type="button" data-t="traumatismo cranioencefálico">TCE</button>
-              <button type="button" data-t="fratura de arco costal">Fratura de arco costal</button>
+              <button type="button" data-t="fratura de arco costal">Arco costal</button>
             </div>
           </div>
-          <div class="field full">
+          <div class="field">
             <label id="lbl_lesao_previa">Lesão prévia no membro</label>
             <input id="lesao_previa" type="hidden" />
             <div class="pick" data-for="lesao_previa" role="group" aria-labelledby="lbl_lesao_previa">
@@ -672,63 +818,34 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
       </section>
 
       <section class="card">
-        <div class="card-head"><span class="num">4</span><h2>Histórico e conduta</h2><span class="tally" data-tally="4">0/5</span></div>
+        <div class="card-head"><span class="num">4</span><h2>Imagem e conduta</h2><span class="tally" data-tally="4">0/2</span></div>
         <div class="fields">
           <div class="field full">
-            <label for="comorbidades">Comorbidades</label>
-            <input id="comorbidades" type="text" placeholder="Hipertensão, diabetes, doença renal crônica, anticoagulação..." />
-            <div class="quick" data-for="comorbidades">
-              <button type="button" data-t="Nega">Nega</button>
-              <button type="button" data-t="HAS">HAS</button>
-              <button type="button" data-t="DM2">DM2</button>
-              <button type="button" data-t="anticoagulado">Anticoagulado</button>
-            </div>
-          </div>
-          <div class="field full">
-            <label for="muc">Medicamentos de uso contínuo</label>
-            <input id="muc" type="text" placeholder="Listar medicamentos" />
-            <div class="quick" data-for="muc">
-              <button type="button" data-t="Nega">Nega</button>
-              <button type="button" data-t="losartana">Losartana</button>
-              <button type="button" data-t="hidroclorotiazida">Hidroclorotiazida</button>
-              <button type="button" data-t="metformina">Metformina</button>
-              <button type="button" data-t="AAS">AAS</button>
-            </div>
-          </div>
-          <div class="field">
-            <label id="lbl_tabagismo">Tabagismo</label>
-            <input id="tabagismo" type="hidden" />
-            <div class="pick" data-for="tabagismo" role="group" aria-labelledby="lbl_tabagismo">
-              <button type="button" data-v="Nega">Nega</button>
-              <button type="button" data-v="Sim">Sim</button>
-              <button type="button" data-v="Ex-tabagista" title="Ex-tabagista">Ex</button>
-            </div>
-          </div>
-          <div class="field">
-            <label id="lbl_alergia">Alergia</label>
-            <input id="alergia" type="hidden" />
-            <div class="pick" data-for="alergia" role="group" aria-labelledby="lbl_alergia">
-              <button type="button" data-v="Nega">Nega</button>
-              <button type="button" data-v="Sim">Sim</button>
-            </div>
-            <div id="wrap_alergia_qual" class="hide" style="margin-top:6px;">
-              <input id="alergia_qual" type="text" placeholder="Qual? Ex.: dipirona" autocomplete="off" />
+            <label for="exames">Exames de imagem</label>
+            <input id="exames" type="text" placeholder="RX punho AP e perfil, TC..." />
+            <div class="quick" data-for="exames">
+              <button type="button" data-t="RX realizado">RX realizado</button>
+              <button type="button" data-t="TC realizada">TC realizada</button>
+              <button type="button" data-t="TC solicitada">TC solicitada</button>
             </div>
           </div>
           <div class="field full">
             <label for="conduta">Conduta no plantão</label>
-            <textarea id="conduta" placeholder="Imobilização, analgesia, exames, antibiótico, redução..."></textarea>
+            <textarea id="conduta" rows="3" placeholder="Imobilização, analgesia, exames, antibiótico, redução..."></textarea>
             <div class="quick" data-for="conduta">
               <button type="button" data-t="Imobilizado com tala gessada">Tala gessada</button>
+              <button type="button" data-t="Imobilizado com gesso">Gesso</button>
               <button type="button" data-t="Imobilizado com tipoia">Tipoia</button>
-              <button type="button" data-t="Fixador externo em centro cirúrgico">Fixador externo no CC</button>
-              <button type="button" data-t="Aguarda tomografia">Aguarda tomografia</button>
-              <button type="button" data-t="Antibioticoterapia conforme protocolo de fratura exposta">ATB protocolo fratura exposta</button>
               <button type="button" data-t="analgesia">Analgesia</button>
               <button type="button" data-t="redução incruenta">Redução incruenta</button>
-              <button type="button" data-t="profilaxia antitetânica">Antitetânica</button>
-              <button type="button" data-t="jejum">Jejum</button>
+              <button type="button" data-t="Encaminhado ao ambulatório">Ambulatório</button>
+              <button type="button" data-t="Aguarda tomografia">Aguarda TC</button>
               <button type="button" data-t="internação para tratamento cirúrgico">Internação p/ cirurgia</button>
+              <button type="button" data-t="jejum">Jejum</button>
+              <button type="button" data-t="Fixador externo em centro cirúrgico">Fixador externo no CC</button>
+              <button type="button" data-t="tração esquelética">Tração esquelética</button>
+              <button type="button" data-t="Antibioticoterapia conforme protocolo de fratura exposta">ATB fratura exposta</button>
+              <button type="button" data-t="profilaxia antitetânica">Antitetânica</button>
             </div>
           </div>
         </div>
@@ -852,6 +969,16 @@ html[data-theme="dark"] .toast button{color:#8E5F1E}
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="capsbar" id="capsBar">
+        <span class="ico" aria-hidden="true">Aa</span>
+        <div class="txt">
+          <b id="capsTitle">Sem CAPS LOCK</b>
+          <small id="capsSub">Só a 1ª letra da frase maiúscula</small>
+        </div>
+        <button type="button" class="fix hide" id="capsFix" title="Reescreve os campos sem CAPS LOCK">Corrigir campos</button>
+        <button type="button" class="sw" id="capsSw" role="switch" aria-checked="true" aria-labelledby="capsTitle"></button>
       </div>
 
       <div class="phone">
@@ -1224,22 +1351,25 @@ const CLASSIFICACOES = [
   const $ = (id) => document.getElementById(id);
 
   const ids = [
-    "nome","idade","numero","convenio","convenio_outro","alergia_qual","data","data_trauma","mecanismo","diagnostico","classificacao",
-    "tipo_fratura","exame_fisico","comorbidades","tabagismo","muc","alergia","neurovascular","lesoes",
+    "nome","idade","numero","convenio","convenio_outro","alergia_qual","data","data_trauma","mecanismo","diagnostico","lado","classificacao",
+    "tipo_fratura","exame_fisico","comorbidades","tabagismo","muc","alergia","neurovascular","exames","lesoes",
     "funcionalidade","profissao","lesao_previa","conduta"
   ];
   const contaveis = ids.filter(id => id !== "convenio_outro" && id !== "alergia_qual");
 
   const blocos = {
-    1: ["nome","idade","numero","convenio","profissao","funcionalidade"],
-    2: ["data","data_trauma","mecanismo","diagnostico","classificacao","tipo_fratura"],
+    1: ["nome","idade","numero","convenio","profissao","funcionalidade","comorbidades","muc","tabagismo","alergia"],
+    2: ["data","data_trauma","mecanismo","diagnostico","lado","tipo_fratura","classificacao"],
     3: ["exame_fisico","neurovascular","lesoes","lesao_previa"],
-    4: ["comorbidades","muc","tabagismo","alergia","conduta"]
+    4: ["exames","conduta"]
   };
+  /* campos de texto livre: passam pela correção de CAPS LOCK */
+  const textoLivre = ["nome","profissao","convenio_outro","alergia_qual","mecanismo","diagnostico","classificacao",
+    "exame_fisico","neurovascular","exames","lesoes","comorbidades","muc","conduta"];
 
   /* preferências da mensagem (lembradas neste navegador) */
   const opts = {
-    bold:true, caixa:"normal", modo:"full", tab:"abertura",
+    bold:true, caixa:"normal", modo:"full", tab:"abertura", caps:true,
     sau:"auto", para:"chefe", frase:"Temos um caso.", fecho:"Aguardo conduta.", agr:""
   };
   try{
@@ -1265,6 +1395,14 @@ const CLASSIFICACOES = [
     const [y,m,d] = iso.split("-");
     return `${d}/${m}/${y}`;
   };
+  const isoMenos = (n) => {
+    const d = new Date(); d.setDate(d.getDate() - n);
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+  };
+  const diasEntre = (a, b) => {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(a || "") || !/^\d{4}-\d{2}-\d{2}$/.test(b || "")) return null;
+    return Math.round((Date.parse(b) - Date.parse(a)) / 864e5);
+  };
   const val = (id) => { const el = $(id); return el ? (el.value || "").trim() : ""; };
   const flat = (s) => s.replace(/\s*\n+\s*/g, "; ");
   const join = (arr, sep) => arr.filter(Boolean).join(sep || " · ");
@@ -1273,17 +1411,77 @@ const CLASSIFICACOES = [
   const pontua = (s) => (!s || /[.!?…:]$/.test(s)) ? s : s + ".";
   const norm = (s) => (s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 
+  /* ── CAPS LOCK → texto normal ─────────────────────
+     Frase escrita toda em maiúsculas vira "Só a primeira letra maiúscula.",
+     mantendo siglas (HAS, DM2, TCE, RX...), números romanos (Schatzker II),
+     códigos com número (C2, 31A2) e nomes próprios das classificações. */
+  const semAcento = (s) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const SIGLAS = new Set(("HAS DM DM1 DM2 DPOC IRC DRC IRA ICC IAM AVC AVE TCE TRM TVP TEP HIV HCV HBV " +
+    "ATB AAS AINE AINES IECA BRA ACO DOAC MUC SUS UTI CTI CC PS UPA SAMU RX TC RNM RM USG ECG " +
+    "LCA LCP LCM LCL LPFM ADM MMII MMSS MID MIE MSD MSE BEG REG EVA FC FR IOT VO EV IM SC ITU " +
+    "COVID IMC PO POI DPO HGT INR PCR VHS SF AP OBS CID FAF FAB PAF ATLS AO/OTA AO OTA").split(" "));
+  // "AO" sozinho é a palavra "ao": só vale como sigla colado em "AO/OTA" ou antes de "OTA"
+  const NOMES = {};
+  CLASSIFICACOES.forEach(c => c.n.split(/[\s\-\/]+/).forEach(t => {
+    if (/^[A-ZÀ-Ý][a-zà-ÿ']/.test(t)) NOMES[semAcento(t).toLowerCase()] = t;
+  }));
+  ("Colles Smith Barton Galeazzi Monteggia Bennett Rolando Jones Watson Lisfranc Chopart Maisonneuve Tillaux " +
+   "Hill Sachs Bankart Segond Hoffa Perthes Osgood Schlatter Kienböck Aquiles Kirschner Steinmann Velpeau " +
+   "Ilizarov Thomas Ponseti Volkmann Dupuytren").split(" ").forEach(t => NOMES[semAcento(t).toLowerCase()] = t);
+  const ROMANO = /^(?:(?:I{1,3}|IV)[A-C]?|VI{0,3}|IX|X)$/;
+
+  function emCaps(t){
+    const letras = t.replace(/[^A-Za-zÀ-ÿ]/g, "");
+    if (letras.length < 4) return false;
+    const mai = letras.replace(/[^A-ZÀ-Ý]/g, "").length;
+    return mai / letras.length >= 0.7;
+  }
+  function palavra(w, prox){
+    const up = w.toUpperCase();
+    if (w !== up) return w;                                    // já estava em minúscula: respeita
+    if (SIGLAS.has(semAcento(up)) && (up !== "AO" || /^OTA/i.test(prox || ""))) return w;
+    if (ROMANO.test(up)) return w;
+    if (/\d/.test(w)) return /^\d+(CM|MM|KG|MG|ML|G|H|X|MIN|ANOS?)$/.test(up) ? w.toLowerCase() : w;
+    const nome = NOMES[semAcento(w).toLowerCase()];
+    if (nome) return nome;
+    return w.toLowerCase();
+  }
+  function trechoSemCaps(t){
+    const re = /[A-Za-zÀ-ÿ0-9'’\/]+/g;
+    const ws = t.match(re) || [];
+    let i = 0;
+    return t.replace(re, (w) => palavra(w, ws[++i]));
+  }
+  const iniciais = (t) => t.replace(/(^\s*|[.!?…]\s+|\n\s*)([a-zà-ÿ])/g, (m, a, l) => a + l.toUpperCase());
+  /* corrige frase a frase: só mexe no que está gritando */
+  function semCaps(t){
+    if (!t) return t;
+    const partes = t.match(/[^.!?…\n]+[.!?…\n]*|[.!?…\n]+/g) || [t];
+    if (!partes.some(emCaps)) return t;
+    return iniciais(partes.map(p => emCaps(p) ? trechoSemCaps(p) : p).join(""));
+  }
+  const PARTICULAS = new Set(["da","de","do","das","dos","e","di","du"]);
+  function nomeSemCaps(t){
+    if (!emCaps(t)) return t;
+    return t.toLowerCase().split(/(\s+)/).map((w, i) =>
+      (i > 0 && PARTICULAS.has(w)) ? w : w.replace(/(^|[-'’])([a-zà-ÿ])/g, (m, a, l) => a + l.toUpperCase())
+    ).join("");
+  }
+  const corrige = (id, v) => id === "nome" ? nomeSemCaps(v) : semCaps(v);
+  const camposEmCaps = () => textoLivre.filter(id => corrige(id, val(id)) !== val(id));
+
   function convenioFinal(){
     const c = val("convenio");
     if (!c) return "";
     if (c !== "Outro") return c;
     const o = val("convenio_outro");
-    return o || "Outro";
+    return (opts.caps ? semCaps(o) : o) || "Outro";
   }
   function alergiaFinal(){
     const a = val("alergia");
     if (a !== "Sim") return a;
-    return val("alergia_qual") || "Sim";
+    const q = val("alergia_qual");
+    return (opts.caps ? semCaps(q) : q) || "Sim";
   }
   function idadeTxt(i){ return /^\d{1,3}$/.test(i) ? `${i} anos` : i; }
 
@@ -1308,6 +1506,7 @@ const CLASSIFICACOES = [
     const g = opts.sau === "auto" ? saudacaoAuto() : opts.sau;
     const r = opts.para;
     let p = opts.frase === "__custom" ? val("abertura_custom") : opts.frase;
+    if (opts.caps) p = semCaps(p);
     p = pontua(p);
     let head = "";
     if (g && r) head = `${g}, ${r}.`;
@@ -1318,18 +1517,24 @@ const CLASSIFICACOES = [
     return head ? `${head} ${p}` : p;
   }
   function fechoTexto(){
-    const f = pontua(opts.fecho === "__custom" ? val("fechamento_custom") : opts.fecho);
+    let f = opts.fecho === "__custom" ? val("fechamento_custom") : opts.fecho;
+    if (opts.caps) f = semCaps(f);
+    f = pontua(f);
     return join([f, opts.agr], " ");
   }
 
   function dados(){
     const d = {};
     ids.forEach(id => d[id] = val(id));
+    if (opts.caps) textoLivre.forEach(id => d[id] = corrige(id, d[id]));
     d.convenio = convenioFinal();
     d.alergia = alergiaFinal();
     d.idade = idadeTxt(d.idade);
     d.data = humanDate(d.data);
+    const dias = diasEntre(val("data_trauma"), val("data") || todayISO());
     d.data_trauma = humanDate(d.data_trauma);
+    if (d.data_trauma && dias !== null && dias >= 0)
+      d.data_trauma += dias === 0 ? " (hoje)" : dias === 1 ? " (ontem)" : ` (há ${dias} dias)`;
     return d;
   }
 
@@ -1338,8 +1543,8 @@ const CLASSIFICACOES = [
       linha("Nome", d.nome) + linha("Idade", d.idade) + linha("Número de Atendimento", d.numero) +
       linha("Convênio", d.convenio) + linha("Profissão", d.profissao) + linha("Funcionalidade Prévia", d.funcionalidade),
       linha("Data do Atendimento", d.data) + linha("Data do Trauma", d.data_trauma) + linha("Mecanismo", d.mecanismo) +
-      linha("Diagnóstico", d.diagnostico) + linha("Classificação", d.classificacao) + linha("Tipo de Fratura", d.tipo_fratura),
-      linha("Exame Físico", d.exame_fisico) + linha("Exame Neurovascular", d.neurovascular) +
+      linha("Diagnóstico", d.diagnostico) + linha("Lado", d.lado) + linha("Classificação", d.classificacao) + linha("Tipo de Fratura", d.tipo_fratura),
+      linha("Exame Físico", d.exame_fisico) + linha("Exame Neurovascular", d.neurovascular) + linha("Exames de Imagem", d.exames) +
       linha("Lesões Associadas", d.lesoes) + linha("Lesão Prévia no Membro", d.lesao_previa),
       linha("Comorbidades", d.comorbidades) + linha("MUC", d.muc) + linha("Tabagismo", d.tabagismo) + linha("Alergia", d.alergia),
       linha("Conduta no Plantão", d.conduta)
@@ -1360,6 +1565,7 @@ const CLASSIFICACOES = [
     ]);
     const quadro = join([
       d.diagnostico,
+      d.lado ? `lado ${d.lado.toLowerCase()}` : "",
       d.classificacao,
       d.tipo_fratura ? `fratura ${d.tipo_fratura.toLowerCase()}` : "",
       d.mecanismo,
@@ -1368,6 +1574,7 @@ const CLASSIFICACOES = [
     const exame = join([
       flat(d.exame_fisico),
       d.neurovascular ? `neurovascular: ${lowFirst(d.neurovascular)}` : "",
+      d.exames ? `imagem: ${lowFirst(d.exames)}` : "",
       d.lesoes ? `lesões associadas: ${lowFirst(d.lesoes)}` : ""
     ]);
     const antecedentes = join([
@@ -1428,12 +1635,49 @@ const CLASSIFICACOES = [
     $("prevFecho").innerHTML = fe ? `<b>${escapeHTML(fe)}</b>` : `<span class="none">Sem fecho</span>`;
     $("sauAutoLbl").textContent = `· ${saudacaoAuto().toLowerCase()}`;
 
+    const emCapsAgora = camposEmCaps();
+    $("capsBar").classList.toggle("on-caps", emCapsAgora.length > 0 || capsLigado);
+    $("capsSw").setAttribute("aria-checked", String(opts.caps));
+    $("capsFix").classList.toggle("hide", emCapsAgora.length === 0);
+    $("capsSub").textContent = !opts.caps
+      ? "Desligado: sai como digitado"
+      : emCapsAgora.length
+        ? `${emCapsAgora.length} ${emCapsAgora.length === 1 ? "campo corrigido" : "campos corrigidos"}`
+        : capsLigado ? "Caps Lock ligado — sai corrigido" : "Só a 1ª letra da frase maiúscula";
+    const trauma = val("data_trauma");
+    $("quickTrauma").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(trauma === isoMenos(+b.dataset.dias))));
+    guardaRascunho();
+
     atualizaQuick();
     document.querySelectorAll(".pick").forEach(p => {
       const v = val(p.dataset.for);
       p.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === v)));
     });
   }
+
+  /* ── Rascunho: sobrevive a recarregar a aba (ida e volta do WhatsApp).
+     sessionStorage some ao fechar a aba — dado de paciente não fica no aparelho. */
+  function guardaRascunho(){
+    try{
+      const r = {};
+      ids.forEach(id => { if ($(id).value) r[id] = $(id).value; });
+      sessionStorage.setItem("enc_rascunho", JSON.stringify(r));
+    }catch(e){}
+  }
+  function recuperaRascunho(){
+    try{
+      const r = JSON.parse(sessionStorage.getItem("enc_rascunho") || "{}");
+      Object.keys(r).forEach(id => { if ($(id) && ids.includes(id)) $(id).value = r[id]; });
+    }catch(e){}
+  }
+
+  /* textarea cresce com o texto, sem barra de rolagem */
+  function cresce(el){
+    if (el.tagName !== "TEXTAREA") return;
+    el.style.height = "auto";
+    el.style.height = (el.scrollHeight + 2) + "px";
+  }
+  const cresceTodas = () => document.querySelectorAll("textarea").forEach(cresce);
 
   /* ── Toast ────────────────────────────────────── */
   function showToast(msg, acao){
@@ -1469,7 +1713,7 @@ const CLASSIFICACOES = [
       document.execCommand("copy"); document.body.removeChild(ta);
     }
     flashBubble();
-    showToast("Mensagem copiada");
+    showToast(opts.caps && camposEmCaps().length ? "Copiada, sem CAPS LOCK" : "Mensagem copiada");
   }
 
   function enviar(){
@@ -1489,10 +1733,11 @@ const CLASSIFICACOES = [
     ids.forEach(id => { $(id).value = ""; });
     $("data").value = todayISO();
     toggleConvenio();
+    cresceTodas();
     render();
     showToast("Formulário limpo", { label:"Desfazer", fn: () => {
       ids.forEach(id => { $(id).value = antes[id]; });
-      toggleConvenio(); render();
+      toggleConvenio(); cresceTodas(); render();
     }});
     $("nome").focus();
   }
@@ -1529,26 +1774,32 @@ const CLASSIFICACOES = [
     marcar();
   }
 
+  /* no celular as opções da mensagem começam recolhidas (menos rolagem);
+     tocar na aba aberta recolhe de novo */
+  const telaEstreita = window.matchMedia("(max-width:1180px)");
+  let recolhido = telaEstreita.matches;
   function setTab(tab){
     opts.tab = tab;
-    document.querySelectorAll("#tabs [data-tab]").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === tab)));
-    document.querySelectorAll("[data-pane]").forEach(p => p.classList.toggle("hide", p.dataset.pane !== tab));
+    document.querySelectorAll("#tabs [data-tab]").forEach(b => b.setAttribute("aria-selected", String(!recolhido && b.dataset.tab === tab)));
+    document.querySelectorAll("[data-pane]").forEach(p => p.classList.toggle("hide", recolhido || p.dataset.pane !== tab));
+    $("tabs").classList.toggle("recolhido", recolhido);
   }
   $("tabs").addEventListener("click", (e) => {
     const b = e.target.closest("[data-tab]");
     if (!b) return;
+    recolhido = telaEstreita.matches && !recolhido && b.dataset.tab === opts.tab;
     setTab(b.dataset.tab); salvarPrefs();
   });
 
   /* ── Chips de preenchimento rápido ─────────────── */
   const partes = (v) => v.split(/\s*;\s*/).map(s => s.trim()).filter(Boolean);
   function atualizaQuick(){
-    document.querySelectorAll(".quick").forEach(q => {
+    document.querySelectorAll(".quick[data-for]").forEach(q => {
       const ps = partes($(q.dataset.for).value).map(norm);
       q.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(ps.includes(norm(b.dataset.t)))));
     });
   }
-  document.querySelectorAll(".quick").forEach(q => {
+  document.querySelectorAll(".quick[data-for]").forEach(q => {
     q.addEventListener("click", (e) => {
       const b = e.target.closest("button");
       if (!b) return;
@@ -1558,6 +1809,7 @@ const CLASSIFICACOES = [
       if (i >= 0) ps.splice(i, 1); else ps.push(b.dataset.t);
       ps = ps.map((p, j) => j === 0 ? cap(p) : lowFirst(p));
       el.value = ps.join("; ");
+      cresce(el);
       render();
     });
   });
@@ -1714,6 +1966,54 @@ const CLASSIFICACOES = [
     abrirMenu();
   });
 
+  /* ── CAPS LOCK: chave, correção nos campos e aviso ─ */
+  let capsLigado = false;
+  $("capsSw").addEventListener("click", () => {
+    opts.caps = !opts.caps;
+    salvarPrefs(); render();
+    showToast(opts.caps ? "Mensagem sai sem CAPS LOCK" : "Mensagem sai como digitada");
+  });
+  $("capsFix").addEventListener("click", () => {
+    const antes = {};
+    const lista = camposEmCaps();
+    lista.forEach(id => { antes[id] = $(id).value; $(id).value = corrige(id, $(id).value); });
+    cresceTodas(); render();
+    showToast(`${lista.length} ${lista.length === 1 ? "campo corrigido" : "campos corrigidos"}`, { label:"Desfazer", fn: () => {
+      Object.keys(antes).forEach(id => { $(id).value = antes[id]; });
+      cresceTodas(); render();
+    }});
+  });
+  const pill = document.createElement("div");
+  pill.className = "caps-pill hide";
+  pill.textContent = "⇪ CAPS LOCK";
+  document.body.appendChild(pill);
+  function avisoCaps(e){
+    if (!e.getModifierState) return;
+    const lig = e.getModifierState("CapsLock");
+    const el = document.activeElement;
+    const campo = el && /^(INPUT|TEXTAREA)$/.test(el.tagName) && el.type !== "date";
+    if (lig !== capsLigado){ capsLigado = lig; render(); }
+    if (lig && campo){
+      const r = el.getBoundingClientRect();
+      pill.style.top = `${Math.max(4, r.top - 9)}px`;
+      pill.style.left = `${r.right - 92}px`;
+      pill.classList.remove("hide");
+    } else pill.classList.add("hide");
+  }
+  document.addEventListener("keydown", avisoCaps);
+  document.addEventListener("keyup", avisoCaps);
+  document.addEventListener("focusout", () => pill.classList.add("hide"));
+  window.addEventListener("scroll", () => pill.classList.add("hide"), { passive:true });
+
+  /* data do trauma: hoje / ontem / anteontem num toque */
+  $("quickTrauma").addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    const iso = isoMenos(+b.dataset.dias);
+    $("data_trauma").value = $("data_trauma").value === iso ? "" : iso;
+    render();
+  });
+
   /* ── Tema ─────────────────────────────────────── */
   function marcaTema(){
     const dark = document.documentElement.getAttribute("data-theme") === "dark";
@@ -1731,13 +2031,15 @@ const CLASSIFICACOES = [
 
   /* ── Inicialização ────────────────────────────── */
   $("data").value = todayISO();
+  recuperaRascunho();
   toggleConvenio();
 
   ids.forEach(id => {
     const el = $(id);
-    el.addEventListener("input", render);
+    el.addEventListener("input", () => { cresce(el); render(); });
     el.addEventListener("change", render);
   });
+  requestAnimationFrame(cresceTodas);
 
 
   bindSeg("segBold", "bold");
