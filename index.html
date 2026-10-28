@@ -1585,7 +1585,7 @@ const CLASSIFICACOES = [
 
   function emCaps(t){
     const letras = t.replace(/[^A-Za-zÀ-ÿ]/g, "");
-    if (letras.length < 4) return false;
+    if (letras.length < 2) return false;
     const mai = letras.replace(/[^A-ZÀ-Ý]/g, "").length;
     return mai / letras.length >= 0.7;
   }
@@ -1606,12 +1606,15 @@ const CLASSIFICACOES = [
     return t.replace(re, (w) => palavra(w, ws[++i]));
   }
   const iniciais = (t) => t.replace(/(^\s*|[.!?…]\s+|\n\s*)([a-zà-ÿ])/g, (m, a, l) => a + l.toUpperCase());
-  /* corrige frase a frase: só mexe no que está gritando */
+  /* palavra longa em CAPS no meio de texto normal: "Fratura do RÁDIO distal" */
+  const palavrasGritadas = (t) => t.replace(/[A-Za-zÀ-ÿ'’]{4,}/g, (w) => w === w.toUpperCase() ? palavra(w) : w);
+  /* corrige trecho a trecho (frase, ";" ou ","): assim o texto de um botão
+     ("Tala gessada") não impede de corrigir o que foi digitado em CAPS depois */
   function semCaps(t){
     if (!t) return t;
-    const partes = t.match(/[^.!?…\n]+[.!?…\n]*|[.!?…\n]+/g) || [t];
-    if (!partes.some(emCaps)) return t;
-    return iniciais(partes.map(p => emCaps(p) ? trechoSemCaps(p) : p).join(""));
+    const partes = t.match(/[^.!?…\n;,]+[.!?…\n;,]*|[.!?…\n;,]+/g) || [t];
+    const out = partes.map(p => emCaps(p) ? trechoSemCaps(p) : palavrasGritadas(p)).join("");
+    return out === t ? t : iniciais(out);
   }
   const PARTICULAS = new Set(["da","de","do","das","dos","e","di","du"]);
   function nomeSemCaps(t){
@@ -2240,6 +2243,12 @@ const CLASSIFICACOES = [
   });
   setInterval(render, 60000);
   render();
+  /* ao sair do campo, o texto em CAPS já fica corrigido nele também */
+  textoLivre.forEach(id => $(id).addEventListener("blur", () => {
+    if (!opts.caps) return;
+    const el = $(id), novo = corrige(id, el.value);
+    if (novo !== el.value){ el.value = novo; cresce(el); render(); }
+  }));
   requestAnimationFrame(cresceTodas);
 })();
 </script>
