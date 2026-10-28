@@ -323,13 +323,6 @@ footer b{font-weight:700;color:var(--ink-3)}
 .meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--gold));border-radius:99px;transition:width .3s ease}
 .panel-head .meta{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
 .panel-head .sp{flex:1}
-.urg{
-  height:28px;padding:0 10px;border-radius:99px;cursor:pointer;display:flex;align-items:center;gap:5px;
-  font-size:11.5px;font-weight:800;letter-spacing:.02em;color:var(--danger);background:transparent;border:1px solid color-mix(in srgb,var(--danger) 45%,transparent);
-}
-.urg::before{content:'';width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.55}
-.urg[aria-pressed="true"]{background:var(--danger);color:#fff;border-color:var(--danger)}
-.urg[aria-pressed="true"]::before{opacity:1;box-shadow:0 0 0 3px rgba(255,255,255,.3)}
 .gear{
   width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;cursor:pointer;
   background:var(--surface);border:1px solid var(--line);color:var(--ink-3);
@@ -419,8 +412,6 @@ footer b{font-weight:700;color:var(--ink-3)}
 .bubble.flash{box-shadow:0 0 0 3px rgba(29,168,81,.4)}
 .bubble::after{content:'';position:absolute;top:0;right:-7px;border-width:0 0 9px 8px;border-style:solid;border-color:transparent transparent transparent var(--bubble)}
 .bubble strong{font-weight:700}
-.bubble .urg-l{color:#D93A27}
-html[data-theme="dark"] .bubble .urg-l{color:#FF9A88}
 .bubble .stamp{display:block;text-align:right;font-size:10px;color:var(--bubble-meta);margin-top:2px}
 .bubble .empty{color:var(--bubble-meta);font-style:italic}
 
@@ -459,6 +450,76 @@ html[data-theme="dark"] .bubble .urg-l{color:#FF9A88}
 .toast button{border:none;background:transparent;color:#E9C27A;font-weight:800;font-size:13px;cursor:pointer;padding:0}
 html[data-theme="dark"] .toast button{color:#7A5517}
 @media(max-width:1180px){.toast{bottom:80px}}
+/* ── ACABAMENTO (estilo app iOS) ─────────────────── */
+:root{
+  --fill:#F1F3F5; --fill-2:#E7EBEE; --seg-on:#FFFFFF; --hair:rgba(14,26,32,.08);
+  --label:#6B7A82;
+}
+html[data-theme="dark"]{
+  --fill:#15242B; --fill-2:#1B2D35; --seg-on:#2A3F48; --hair:rgba(255,255,255,.07);
+  --label:#8EA1AA;
+}
+body{letter-spacing:-.006em}
+.sheet,.panel{border-radius:24px;border-color:var(--hair);box-shadow:0 1px 1px rgba(14,26,32,.03),0 20px 44px -30px rgba(14,26,32,.45)}
+.col + .col,.sec + .sec{border-color:var(--hair)}
+.sec-h .n{background:var(--accent-tint);color:var(--accent);border-radius:8px;font-size:12.5px}
+.sec-h h2,.panel-head h2{font-size:17px;font-weight:700;letter-spacing:-.024em}
+label,.lbl{font-size:12px;font-weight:600;color:var(--label)}
+
+input,textarea{background:var(--fill);border:1px solid transparent;border-radius:11px;padding:8px 12px}
+input:hover,textarea:hover{border-color:transparent;background:var(--fill-2)}
+input:focus,textarea:focus{background:var(--card);border-color:var(--accent);box-shadow:0 0 0 4px var(--ring)}
+.filled{background:var(--fill);border-color:transparent}
+
+/* controle segmentado: pílula branca que "flutua" sobre o trilho */
+.pick{background:var(--fill-2);border-radius:11px;padding:2px;gap:2px}
+.pick button{height:30px;border-radius:9px;font-size:13px;font-weight:500;color:var(--ink-2);transition:background .18s,color .18s,box-shadow .18s}
+.pick button:hover{background:rgba(255,255,255,.45)}
+html[data-theme="dark"] .pick button:hover{background:rgba(255,255,255,.04)}
+.pick button[aria-pressed="true"]{
+  background:var(--seg-on);color:var(--ink);font-weight:650;
+  box-shadow:0 3px 8px rgba(0,0,0,.12),0 3px 1px rgba(0,0,0,.04),0 0 0 .5px rgba(0,0,0,.04);
+}
+.pick.danger button[data-v="Exposta"][aria-pressed="true"]{background:var(--seg-on);color:var(--danger)}
+.sub .pick{background:var(--fill)}
+
+/* chips */
+.quick button,.chip{
+  height:28px;padding:0 11px;border-radius:99px;border:1px solid transparent;
+  background:var(--fill);color:var(--ink-2);font-size:12.5px;font-weight:500;
+  transition:background .15s,color .15s,box-shadow .15s,transform .08s;
+}
+.quick button:hover,.chip:hover{background:var(--fill-2);border-color:transparent;color:var(--ink)}
+.quick button:active,.chip:active,.pick button:active{transform:scale(.97)}
+.quick button[aria-pressed="true"]{background:var(--accent-tint);color:var(--accent);font-weight:650;border-color:transparent;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 30%,transparent)}
+.quick button.warn[aria-pressed="true"]{background:var(--danger-tint);color:var(--danger);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--danger) 30%,transparent)}
+.quick button.sug{background:var(--gold-tint);color:var(--gold-ink);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--gold) 35%,transparent)}
+.sub .quick button,.sub.quick button{background:var(--card);box-shadow:inset 0 0 0 1px var(--hair)}
+.sub{border-left-color:var(--hair)}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);font-weight:650;box-shadow:0 2px 6px -2px color-mix(in srgb,var(--accent) 60%,transparent)}
+.chip.ghost{background:transparent;border:1px dashed var(--line);color:var(--muted)}
+.quick .ql{font-size:10.5px;letter-spacing:.07em;color:var(--muted)}
+.mini{height:28px;background:var(--accent-tint);border:none;font-weight:650}
+
+/* painel */
+.txt-toggle,.capsbar,.cfg{background:var(--fill);border-color:transparent}
+.capsbar.on-caps{background:var(--gold-tint);border-color:transparent}
+.capsbar .ico{background:var(--card);border-color:transparent;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.gear{background:var(--fill);border-color:transparent}
+.seg{background:var(--fill-2)}
+.seg button[aria-pressed="true"]{background:var(--seg-on);color:var(--ink);box-shadow:0 3px 8px rgba(0,0,0,.12),0 3px 1px rgba(0,0,0,.04)}
+.chat{border-color:var(--hair);border-radius:16px}
+
+/* botões principais com volume sutil */
+.btn{height:46px;border-radius:14px;font-size:15px;font-weight:650;letter-spacing:-.01em}
+.btn-whats{background:linear-gradient(180deg,#2CC56B,#1DA851);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 10px 22px -12px rgba(29,168,81,.9)}
+.btn-whats:hover{background:linear-gradient(180deg,#27B862,#189A49)}
+.btn-primary{background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 88%,#fff),var(--accent));box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 10px 22px -14px var(--accent)}
+.btn-primary:hover{background:var(--accent-2)}
+.btn-clear,.btn-quiet{background:var(--fill);border-color:transparent}
+.mobilebar{border-radius:20px;border-color:var(--hair)}
+.secnav a{background:var(--fill);border-color:transparent}
+
 @media(prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
 </style>
 </head>
@@ -962,7 +1023,6 @@ html[data-theme="dark"] .toast button{color:#7A5517}
       <span class="meter" title="Campos preenchidos"><i id="meterFill"></i></span>
       <span class="meta" id="metaTxt"></span>
       <span class="sp"></span>
-      <button type="button" class="urg" id="urgBtn" aria-pressed="false" title="Põe URGENTE no topo da mensagem">Urgente</button>
       <button type="button" class="gear" id="cfgBtn" aria-expanded="false" title="Ajustes da mensagem" aria-label="Ajustes da mensagem">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>
       </button>
@@ -1016,22 +1076,8 @@ html[data-theme="dark"] .toast button{color:#7A5517}
             <button type="button" class="chip" data-v="staff">Staff</button>
             <button type="button" class="chip" data-v="professor">Professor</button>
             <button type="button" class="chip" data-v="professora">Professora</button>
-            <button type="button" class="chip" data-v="__dr">Dr(a)…</button>
             <button type="button" class="chip ghost" data-v="">Ninguém</button>
           </div>
-          <input class="sel-sm hide" id="drNome" type="text" placeholder="Dr. Fulano / Dra. Fulana" autocomplete="off" aria-label="Nome do médico" />
-        </div>
-      </div>
-      <div class="orow"><span class="k">Grupo</span>
-        <div class="chips" id="chGrupo">
-          <button type="button" class="chip" data-v="Joelho">Joelho</button>
-          <button type="button" class="chip" data-v="Ombro e cotovelo">Ombro e cotovelo</button>
-          <button type="button" class="chip" data-v="Mão">Mão</button>
-          <button type="button" class="chip" data-v="Quadril">Quadril</button>
-          <button type="button" class="chip" data-v="Pé e tornozelo">Pé e tornozelo</button>
-          <button type="button" class="chip" data-v="Coluna">Coluna</button>
-          <button type="button" class="chip" data-v="Pediátrica">Pediátrica</button>
-          <button type="button" class="chip" data-v="Trauma">Trauma</button>
         </div>
       </div>
 
@@ -1044,9 +1090,8 @@ html[data-theme="dark"] .toast button{color:#7A5517}
           <div>
             <div class="chips" id="chFrase">
               <button type="button" class="chip" data-v="Temos um caso.">Temos um caso</button>
-              <button type="button" class="chip" data-v="Gostaria de discutir um caso.">Discutir um caso</button>
+              <button type="button" class="chip" data-v="Segue um caso.">Segue um caso</button>
               <button type="button" class="chip" data-v="Caso para avaliação.">Para avaliação</button>
-              <button type="button" class="chip" data-v="Segue caso para definição de conduta.">Definir conduta</button>
               <button type="button" class="chip ghost" data-v="__custom">Escrever…</button>
               <button type="button" class="chip ghost" data-v="">Nenhuma</button>
             </div>
@@ -1057,9 +1102,8 @@ html[data-theme="dark"] .toast button{color:#7A5517}
           <div>
             <div class="chips" id="chFecho">
               <button type="button" class="chip" data-v="Aguardo conduta.">Aguardo conduta</button>
-              <button type="button" class="chip" data-v="Podemos seguir com essa conduta?">Seguimos assim?</button>
-              <button type="button" class="chip" data-v="Posso dar alta com retorno ambulatorial?">Posso dar alta?</button>
-              <button type="button" class="chip" data-v="Aguardo avaliação presencial.">Avaliação presencial</button>
+              <button type="button" class="chip" data-v="Podemos seguir assim?">Seguimos assim?</button>
+              <button type="button" class="chip" data-v="Posso dar alta com retorno no ambulatório?">Posso dar alta?</button>
               <button type="button" class="chip ghost" data-v="__custom">Escrever…</button>
               <button type="button" class="chip ghost" data-v="">Nenhum</button>
             </div>
@@ -1068,10 +1112,10 @@ html[data-theme="dark"] .toast button{color:#7A5517}
         </div>
         <div class="orow"><span class="k">Extra</span>
           <div class="chips">
-            <button type="button" class="chip" id="chImg" aria-pressed="false">Imagens a seguir</button>
+            <button type="button" class="chip" id="chImg" aria-pressed="false">Mando as imagens</button>
             <span class="chips" id="chAgr">
-              <button type="button" class="chip" data-v="Obrigado!">Obrigado!</button>
-              <button type="button" class="chip" data-v="Obrigada!">Obrigada!</button>
+              <button type="button" class="chip" data-v="Obrigado.">Obrigado</button>
+              <button type="button" class="chip" data-v="Obrigada.">Obrigada</button>
               <button type="button" class="chip ghost" data-v="">Sem</button>
             </span>
           </div>
@@ -1478,20 +1522,21 @@ const CLASSIFICACOES = [
     bold:true, caixa:"normal", modo:"full", resumo:true, caps:true,
     sau:"auto", para:"chefe", frase:"Temos um caso.", fecho:"Aguardo conduta.", agr:"", imagens:false
   };
-  /* escolhas que valem só para este caso */
-  const caso = { urgente:false, grupo:"" };
 
   try{
     const salvo = JSON.parse(localStorage.getItem("enc_prefs") || "{}");
     Object.keys(opts).forEach(k => { if (salvo[k] !== undefined) opts[k] = salvo[k]; });
+    if (!document.querySelector(`#chPara [data-v="${opts.para}"]`)) opts.para = "chefe";
+    if (!document.querySelector(`#chFrase [data-v="${opts.frase}"]`)) opts.frase = "Temos um caso.";
+    if (!document.querySelector(`#chFecho [data-v="${opts.fecho}"]`)) opts.fecho = "Aguardo conduta.";
+    if (!document.querySelector(`#chAgr [data-v="${opts.agr}"]`)) opts.agr = "";
     if (salvo.aberturaCustom) $("abertura_custom").value = salvo.aberturaCustom;
     if (salvo.fechoCustom) $("fechamento_custom").value = salvo.fechoCustom;
-    if (salvo.drNome) $("drNome").value = salvo.drNome;
   }catch(e){}
   function salvarPrefs(){
     try{
       localStorage.setItem("enc_prefs", JSON.stringify(Object.assign({}, opts, {
-        aberturaCustom: $("abertura_custom").value, fechoCustom: $("fechamento_custom").value, drNome: $("drNome").value
+        aberturaCustom: $("abertura_custom").value, fechoCustom: $("fechamento_custom").value
       })));
     }catch(e){}
   }
@@ -1653,10 +1698,6 @@ const CLASSIFICACOES = [
   const negrito = (t) => (t && opts.bold) ? `*${t}*` : t;
   const italico = (t) => (t && opts.bold) ? `_${t}_` : t;
 
-  const GRUPOS = {
-    "Joelho":"de joelho", "Ombro e cotovelo":"de ombro e cotovelo", "Mão":"de mão", "Quadril":"de quadril",
-    "Pé e tornozelo":"de pé e tornozelo", "Coluna":"de coluna", "Pediátrica":"de ortopedia pediátrica", "Trauma":"de trauma"
-  };
   const PARA = { chefe:"Chefe da Ortopedia", chefes:"Chefes da Ortopedia", pessoal:"Grupo da Ortopedia",
     staff:"Staff da Ortopedia", professor:"Professor", professora:"Professora" };
 
@@ -1668,14 +1709,10 @@ const CLASSIFICACOES = [
     let p = opts.frase === "__custom" ? val("abertura_custom") : opts.frase;
     return fix(p);
   }
-  /* o grupo entra na própria frase: "Temos um caso de joelho." */
-  const grupoNaFrase = () => !!(caso.grupo && /\bcaso\b/i.test(fraseAbertura()));
   function aberturaTexto(){
     const g = opts.sau === "auto" ? saudacaoAuto() : opts.sau;
-    const r = opts.para === "__dr" ? fix(val("drNome")) : opts.para;
-    let p = fraseAbertura();
-    if (grupoNaFrase()) p = p.replace(/\b(caso)\b/i, `$1 ${GRUPOS[caso.grupo]}`);
-    p = pontua(p);
+    const r = opts.para;
+    const p = pontua(fraseAbertura());
     let head = "";
     if (g && r) head = `${g}, ${r}.`;
     else if (g) head = `${g}.`;
@@ -1687,7 +1724,7 @@ const CLASSIFICACOES = [
   function fechoTexto(){
     let f = opts.fecho === "__custom" ? val("fechamento_custom") : opts.fecho;
     f = pontua(fix(f));
-    return join([opts.imagens ? "Imagens a seguir." : "", f, opts.agr], " ");
+    return join([opts.imagens ? "Em seguida mando as imagens." : "", f, opts.agr], " ");
   }
 
   /* "Masc., 67 anos — Fratura do platô tibial (D), Schatzker VI, fechada" */
@@ -1703,7 +1740,6 @@ const CLASSIFICACOES = [
 
   function corpoCompleto(d, espacado){
     const grupos = [
-      (caso.grupo && !grupoNaFrase()) ? linha("Grupo", caso.grupo) : "",
       linha("Nome", d.nome) + linha("Idade", d.idade) + linha("Sexo", d.sexo) + linha("Nº de Atendimento", d.numero) +
       linha("Convênio", d.convenio) + linha("Profissão", d.profissao) + linha("Funcionalidade Prévia", d.funcionalidade),
       linha("Data do Atendimento", d.data) + linha("Data do Trauma", d.data_trauma) + linha("Mecanismo", d.mecanismo) +
@@ -1732,17 +1768,15 @@ const CLASSIFICACOES = [
     const antecedentes = join([d.comorbidades, d.muc ? `MUC: ${d.muc}` : "",
       d.tabagismo ? `tabagismo: ${lowFirst(d.tabagismo)}` : "", d.etilismo ? `etilismo: ${d.etilismo.toLowerCase()}` : "",
       d.alergia ? `alergia: ${lowFirst(d.alergia)}` : ""]);
-    return (caso.grupo && !grupoNaFrase() ? linha("Grupo", caso.grupo) : "") +
-      linha("Paciente", paciente) + linha("Perfil", perfil) + linha("Quadro", quadro) +
+    return linha("Paciente", paciente) + linha("Perfil", perfil) + linha("Quadro", quadro) +
       linha("Exame", exame) + linha("Antecedentes", antecedentes) + linha("Conduta", flat(d.conduta));
   }
 
   function buildMessage(){
     const d = dados();
     const corpo = (opts.modo === "short" ? corpoResumido(d) : corpoCompleto(d, opts.modo === "blocks")).trim();
-    const topo = join([caso.urgente ? negrito("URGENTE") : "", negrito(aberturaTexto())], "\n");
     const resumo = (opts.resumo && opts.modo !== "short") ? italico(resumoLinha(d)) : "";
-    return [topo, resumo, corpo, negrito(fechoTexto())].filter(Boolean).join("\n\n");
+    return [aberturaTexto(), resumo, corpo, fechoTexto()].filter(Boolean).join("\n\n");
   }
 
   /* ── Tela ─────────────────────────────────────── */
@@ -1774,7 +1808,6 @@ const CLASSIFICACOES = [
     const msg = buildMessage();
     const hora = new Date().toLocaleTimeString("pt-BR", { hour:"2-digit", minute:"2-digit" });
     const html = escapeHTML(msg)
-      .replace(/\*URGENTE\*/, `<strong class="urg-l">URGENTE</strong>`)
       .replace(/\*([^*\n]+)\*/g, "<strong>$1</strong>")
       .replace(/(^|\n)_([^_\n]+)_(?=\n|$)/g, "$1<em>$2</em>");
     $("bubble").innerHTML = !msg
@@ -1784,10 +1817,9 @@ const CLASSIFICACOES = [
     const preenchidos = contaveis.filter(id => val(id)).length;
     $("metaTxt").textContent = `${preenchidos}/${contaveis.length}`;
     $("meterFill").style.width = `${Math.round(preenchidos / contaveis.length * 100)}%`;
-    let nome = opts.para === "__dr" ? (val("drNome") || "Dr(a).") : (PARA[opts.para] || "Ortopedia");
-    if (caso.grupo) nome += ` · ${caso.grupo}`;
+    const nome = PARA[opts.para] || "Ortopedia";
     $("chatName").textContent = nome;
-    $("chatAv").textContent = nome.replace(/^(Dra?\.?\s*)/i, "").charAt(0).toUpperCase() || "O";
+    $("chatAv").textContent = nome.charAt(0);
     $("chatStatus").textContent = preenchidos === 0 ? "online" : `${msg.length} caracteres`;
 
     Object.keys(blocos).forEach(k => {
@@ -1821,8 +1853,6 @@ const CLASSIFICACOES = [
     $("negaTudo").setAttribute("aria-pressed", String(NEGA_TUDO.every(id => val(id) === "Nega")));
     const exposta = val("tipo_fratura") === "Exposta";
     document.querySelectorAll('[data-sug="exposta"]').forEach(b => b.classList.toggle("sug", exposta));
-    $("urgBtn").setAttribute("aria-pressed", String(caso.urgente));
-    $("chGrupo").querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", String(c.dataset.v === caso.grupo)));
     $("chImg").setAttribute("aria-pressed", String(opts.imagens));
     $("sauAutoLbl").textContent = `· ${saudacaoAuto().toLowerCase()}`;
     $("txtResumo").textContent = join([fraseAbertura().replace(/\.$/, ""), fechoTexto()], " · ") || "nenhum";
@@ -1834,7 +1864,7 @@ const CLASSIFICACOES = [
      sessionStorage some ao fechar a aba — dado de paciente não fica no aparelho. */
   function guardaRascunho(){
     try{
-      const r = { caso };
+      const r = {};
       ids.forEach(id => { if ($(id).value) r[id] = $(id).value; });
       sessionStorage.setItem("enc_rascunho", JSON.stringify(r));
     }catch(e){}
@@ -1843,7 +1873,6 @@ const CLASSIFICACOES = [
     try{
       const r = JSON.parse(sessionStorage.getItem("enc_rascunho") || "{}");
       ids.forEach(id => { if (r[id] !== undefined) $(id).value = r[id]; });
-      if (r.caso) Object.assign(caso, r.caso);
     }catch(e){}
   }
 
@@ -1890,14 +1919,12 @@ const CLASSIFICACOES = [
   }
 
   function limpar(){
-    const antes = {}, casoAntes = Object.assign({}, caso);
+    const antes = {};
     ids.forEach(id => { antes[id] = $(id).value; $(id).value = ""; });
-    caso.urgente = false; caso.grupo = "";
     $("data").value = todayISO();
     cresceTodas(); render();
     showToast("Novo caso", { label:"Desfazer", fn: () => {
       ids.forEach(id => { $(id).value = antes[id]; });
-      Object.assign(caso, casoAntes);
       cresceTodas(); render();
     }});
     window.scrollTo({ top:0, behavior:"smooth" });
@@ -2123,7 +2150,7 @@ const CLASSIFICACOES = [
     marcar();
   }
   bindCustom("chSau", "sau");
-  bindCustom("chPara", "para", "drNome", "__dr");
+  bindCustom("chPara", "para");
   bindCustom("chFrase", "frase", "abertura_custom", "__custom");
   bindCustom("chFecho", "fecho", "fechamento_custom", "__custom");
   bindCustom("chAgr", "agr");
@@ -2131,15 +2158,8 @@ const CLASSIFICACOES = [
   bindSeg("segCase", "caixa");
   bindSeg("segMode", "modo");
   bindSeg("segResumo", "resumo");
-  ["abertura_custom","fechamento_custom","drNome"].forEach(id => $(id).addEventListener("input", () => { salvarPrefs(); render(); }));
+  ["abertura_custom","fechamento_custom"].forEach(id => $(id).addEventListener("input", () => { salvarPrefs(); render(); }));
 
-  $("chGrupo").addEventListener("click", (e) => {
-    const c = e.target.closest(".chip");
-    if (!c) return;
-    caso.grupo = caso.grupo === c.dataset.v ? "" : c.dataset.v;
-    render();
-  });
-  $("urgBtn").addEventListener("click", () => { caso.urgente = !caso.urgente; render(); });
   $("chImg").addEventListener("click", () => { opts.imagens = !opts.imagens; salvarPrefs(); render(); });
 
   function painel(btnId, paneId){
