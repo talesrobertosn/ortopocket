@@ -47,7 +47,7 @@ html[data-theme="dark"]{
   --wall:#0D1916; --wall-dot:rgba(255,255,255,.04); --bubble:#144D37; --bubble-ink:#E7F3EC; --bubble-meta:#8FB3A2;
   --bar:rgba(12,22,27,.93);
 }
-html{color-scheme:light;-webkit-text-size-adjust:100%;scroll-padding-top:110px}
+html{color-scheme:light;-webkit-text-size-adjust:100%;scroll-padding-top:142px}
 html[data-theme="dark"]{color-scheme:dark}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -127,19 +127,6 @@ html[data-theme="dark"] .icon-btn .i-sun{display:none}
 }
 @media(max-width:360px){.brand b{display:none}}
 
-/* navegação das seções (celular) */
-.secnav{
-  display:none;position:sticky;top:58px;z-index:55;gap:6px;padding:8px 12px;overflow-x:auto;scrollbar-width:none;
-  background:var(--bar);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
-}
-.secnav::-webkit-scrollbar{display:none}
-.secnav a{
-  flex-shrink:0;height:30px;padding:0 12px;border-radius:99px;display:flex;align-items:center;gap:6px;
-  font-size:12.5px;font-weight:600;color:var(--ink-3);text-decoration:none;background:var(--surface);border:1px solid var(--line-soft);
-}
-.secnav a i{font-style:normal;font-size:10.5px;color:var(--muted);font-variant-numeric:tabular-nums}
-.secnav a.ok i{color:var(--accent)}
-@media(max-width:1180px){.secnav{display:flex}}
 
 /* ── ESTRUTURA ────────────────────────────────────── */
 .shell{
@@ -150,23 +137,7 @@ html[data-theme="dark"] .icon-btn .i-sun{display:none}
 @media(max-width:1180px){.shell{grid-template-columns:minmax(0,1fr);padding-bottom:92px}}
 @media(max-width:560px){.shell{padding:10px 10px 92px}}
 
-/* folha única, duas colunas */
-.sheet{
-  background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);
-  display:grid;grid-template-columns:1fr 1fr;
-}
-.col{min-width:0}
-.col + .col{border-left:1px solid var(--line-soft)}
-/* uma coluna: volta à ordem clínica 1→5 */
-@media(max-width:860px){
-  .sheet{display:flex;flex-direction:column}
-  .col{display:contents}
-  #s1{order:1}#s2{order:2}#s3{order:3}#s4{order:4}#s5{order:5}
-  .sec + .sec,.sec{border-top:1px solid var(--line-soft)}
-  #s1{border-top:none}
-}
 .sec{padding:15px 18px 16px}
-.sec + .sec{border-top:1px solid var(--line-soft)}
 @media(max-width:560px){.sec{padding:14px 13px 16px}}
 
 .sec-h{display:flex;align-items:center;gap:10px;margin-bottom:12px}
@@ -460,15 +431,14 @@ html[data-theme="dark"]{
   --label:#8EA1AA;
 }
 body{letter-spacing:-.006em}
-.sheet,.panel{border-radius:24px;border-color:var(--hair);box-shadow:0 1px 1px rgba(14,26,32,.03),0 20px 44px -30px rgba(14,26,32,.45)}
-.col + .col,.sec + .sec{border-color:var(--hair)}
-.sec-h .n{background:var(--accent-tint);color:var(--accent);border-radius:8px;font-size:12.5px}
+.panel{border-radius:24px;border-color:var(--hair);box-shadow:0 1px 1px rgba(14,26,32,.03),0 20px 44px -30px rgba(14,26,32,.45)}
 .sec-h h2,.panel-head h2{font-size:17px;font-weight:700;letter-spacing:-.024em}
 label,.lbl{font-size:12px;font-weight:600;color:var(--label)}
 
 input,textarea{background:var(--fill);border:1px solid transparent;border-radius:11px;padding:8px 12px}
 input:hover,textarea:hover{border-color:transparent;background:var(--fill-2)}
 input:focus,textarea:focus{background:var(--card);border-color:var(--accent);box-shadow:0 0 0 4px var(--ring)}
+input:focus-visible,textarea:focus-visible{outline:none}
 .filled{background:var(--fill);border-color:transparent}
 
 /* controle segmentado: pílula branca que "flutua" sobre o trilho */
@@ -518,7 +488,91 @@ html[data-theme="dark"] .pick button:hover{background:rgba(255,255,255,.04)}
 .btn-primary:hover{background:var(--accent-2)}
 .btn-clear,.btn-quiet{background:var(--fill);border-color:transparent}
 .mobilebar{border-radius:20px;border-color:var(--hair)}
-.secnav a{background:var(--fill);border-color:transparent}
+
+/* ── ETAPAS EM CARTÕES (estilo Ajustes / Saúde do iOS) ── */
+body{background:var(--bg-grp)}
+:root{--bg-grp:#EEF1F3}
+html[data-theme="dark"]{--bg-grp:#050B0E}
+#s1{--sc:#2F7CF6}#s2{--sc:#8D5CE6}#s3{--sc:#F08A1C}#s4{--sc:#12A0A6}#s5{--sc:#23A55A}
+[data-step="1"]{--sc:#2F7CF6}[data-step="2"]{--sc:#8D5CE6}[data-step="3"]{--sc:#F08A1C}[data-step="4"]{--sc:#12A0A6}[data-step="5"]{--sc:#23A55A}
+
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+#s5{grid-column:1 / -1}
+@media(max-width:900px){.cards{grid-template-columns:1fr}}
+
+.sec{
+  position:relative;background:var(--card);border:1px solid var(--hair);border-radius:22px;padding:16px 20px 18px;
+  box-shadow:0 1px 2px rgba(14,26,32,.04),0 12px 28px -22px rgba(14,26,32,.35);
+  transition:box-shadow .25s ease,transform .25s ease,border-color .25s ease;
+  scroll-margin-top:142px;
+}
+.sec::before{
+  content:'';position:absolute;left:20px;right:20px;top:0;height:3px;border-radius:0 0 3px 3px;
+  background:var(--sc);opacity:0;transition:opacity .25s;
+}
+.sec:focus-within{
+  border-color:color-mix(in srgb,var(--sc) 40%,transparent);
+  box-shadow:0 0 0 4px color-mix(in srgb,var(--sc) 12%,transparent),0 24px 48px -26px rgba(14,26,32,.5);
+}
+.sec:focus-within::before{opacity:1}
+html[data-theme="dark"] .sec{box-shadow:0 1px 0 rgba(255,255,255,.03) inset,0 16px 34px -24px rgba(0,0,0,.9)}
+
+.sec-h{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--hair)}
+.sec-h .ic{
+  width:38px;height:38px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--sc) 78%,#fff),var(--sc));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 6px 14px -6px color-mix(in srgb,var(--sc) 80%,transparent);
+}
+.sec-h .ic svg{width:20px;height:20px}
+.sec-h .tt{display:flex;flex-direction:column;line-height:1.1;min-width:0}
+.sec-h .tt small{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sc)}
+.sec-h .tt h2{font-size:19px;font-weight:800;letter-spacing:-.028em;margin-top:2px}
+.sec-h .prog{
+  margin-left:auto;display:flex;align-items:center;gap:5px;height:26px;padding:0 10px;border-radius:99px;
+  font-size:11.5px;font-weight:650;color:var(--muted);background:var(--fill);font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+.sec-h .prog.ok{color:#fff;background:var(--sc)}
+.sec-h .prog.ok::before{content:'✓';font-weight:800}
+.sec-h .mini{margin-left:4px}
+
+/* conduta larga: grupos de botões em duas colunas */
+@media(min-width:901px){
+  #s5 .groups{display:grid;grid-template-columns:1fr 1fr;gap:8px 28px}
+  #s5 textarea{min-height:44px}
+}
+
+/* barra de etapas */
+.steps{
+  position:sticky;top:58px;z-index:50;margin:-16px 0 14px;padding:12px 0;
+  display:flex;align-items:center;gap:10px;
+  background:color-mix(in srgb,var(--bg-grp) 86%,transparent);
+  backdrop-filter:blur(18px) saturate(170%);-webkit-backdrop-filter:blur(18px) saturate(170%);
+}
+.step{
+  display:flex;align-items:center;gap:9px;flex-shrink:0;text-decoration:none;color:var(--ink);
+  padding:5px 12px 5px 5px;border-radius:99px;background:var(--card);border:1px solid var(--hair);
+  box-shadow:0 1px 2px rgba(14,26,32,.05);transition:box-shadow .2s,border-color .2s,transform .15s;
+}
+.step:hover{transform:translateY(-1px);box-shadow:0 6px 14px -8px rgba(14,26,32,.35)}
+.step .dot{
+  width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;color:var(--sc);background:color-mix(in srgb,var(--sc) 14%,transparent);transition:background .25s,color .25s;
+}
+.step .dot svg{width:14px;height:14px;display:none}
+.step.ok .dot{background:var(--sc);color:#fff}
+.step.ok .dot b{display:none}
+.step.ok .dot svg{display:block}
+.step .st{display:flex;flex-direction:column;line-height:1.1}
+.step .st b{font-size:12.5px;font-weight:700;letter-spacing:-.01em}
+.step .st small{font-size:10.5px;font-weight:500;color:var(--muted);font-variant-numeric:tabular-nums}
+.step.on{border-color:color-mix(in srgb,var(--sc) 55%,transparent);box-shadow:0 0 0 3px color-mix(in srgb,var(--sc) 14%,transparent)}
+.steps .bar{flex:1;min-width:10px;height:2px;border-radius:2px;background:var(--line);position:relative;overflow:hidden}
+.steps .bar::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--c1),var(--c2));transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+.steps .bar.ok::after{transform:scaleX(1)}
+.bar[data-bar="1"]{--c1:#2F7CF6;--c2:#8D5CE6}.bar[data-bar="2"]{--c1:#8D5CE6;--c2:#F08A1C}
+.bar[data-bar="3"]{--c1:#F08A1C;--c2:#12A0A6}.bar[data-bar="4"]{--c1:#12A0A6;--c2:#23A55A}
+@media(max-width:1100px){.step .st small{display:none}}
+@media(max-width:760px){.step .st{display:none}.step{padding:5px}.steps{margin:-10px 0 12px;padding:10px 0}}
 
 @media(prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
 </style>
@@ -544,24 +598,25 @@ html[data-theme="dark"] .pick button:hover{background:rgba(255,255,255,.04)}
   </div>
 </header>
 
-<nav class="secnav" aria-label="Seções">
-  <a href="#s1" data-nav="1">Paciente <i></i></a>
-  <a href="#s2" data-nav="2">Trauma <i></i></a>
-  <a href="#s3" data-nav="3">Exame <i></i></a>
-  <a href="#s4" data-nav="4">Antecedentes <i></i></a>
-  <a href="#s5" data-nav="5">Conduta <i></i></a>
-  <a href="#rail">Mensagem</a>
-</nav>
 
 <div class="shell">
 <main>
-  <div class="sheet">
+  <nav class="steps" aria-label="Etapas">
+    <a href="#s1" class="step" data-step="1"><span class="dot"><b>1</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="st"><b>Paciente</b><small data-ss="1"></small></span></a>
+    <i class="bar" data-bar="1"></i>
+    <a href="#s2" class="step" data-step="2"><span class="dot"><b>2</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="st"><b>Antecedentes</b><small data-ss="2"></small></span></a>
+    <i class="bar" data-bar="2"></i>
+    <a href="#s3" class="step" data-step="3"><span class="dot"><b>3</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="st"><b>Trauma</b><small data-ss="3"></small></span></a>
+    <i class="bar" data-bar="3"></i>
+    <a href="#s4" class="step" data-step="4"><span class="dot"><b>4</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="st"><b>Exame</b><small data-ss="4"></small></span></a>
+    <i class="bar" data-bar="4"></i>
+    <a href="#s5" class="step" data-step="5"><span class="dot"><b>5</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="st"><b>Conduta</b><small data-ss="5"></small></span></a>
+  </nav>
 
-    <!-- ───────── COLUNA 1 ───────── -->
-    <div class="col">
+  <div class="cards">
 
       <section class="sec" id="s1">
-        <div class="sec-h"><span class="n">1</span><h2>Paciente</h2><span class="prog" data-tally="1"></span></div>
+        <div class="sec-h"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7.5" r="4"/><path d="M4 20.5c0-4.1 3.6-7 8-7s8 2.9 8 7a1 1 0 01-1 1H5a1 1 0 01-1-1z"/></svg></span><div class="tt"><small>Etapa 1</small><h2>Paciente</h2></div><span class="prog" data-tally="1"></span></div>
         <div class="fields">
           <div class="trio">
             <div class="field">
@@ -629,7 +684,110 @@ html[data-theme="dark"] .pick button:hover{background:rgba(255,255,255,.04)}
       </section>
 
       <section class="sec" id="s2">
-        <div class="sec-h"><span class="n">2</span><h2>Trauma</h2><span class="prog" data-tally="2"></span></div>
+        <div class="sec-h"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4.5V3h6v1.5M9 10h6M9 14h6M9 18h3"/></svg></span><div class="tt"><small>Etapa 2</small><h2>Antecedentes</h2></div><span class="prog" data-tally="2"></span><button type="button" class="mini" id="negaTudo" aria-pressed="false" title="Marca Nega em comorbidades, medicamentos, tabagismo, etilismo e alergia">Nega tudo</button></div>
+        <div class="fields">
+          <div class="field full">
+            <label for="comorbidades">Comorbidades</label>
+            <input id="comorbidades" type="text" placeholder="Outras: hepatopatia, HIV..." />
+            <div class="quick" data-for="comorbidades">
+              <button type="button" data-t="Nega" data-x>Nega</button>
+              <button type="button" data-t="HAS">HAS</button>
+              <button type="button" data-t="DM">DM</button>
+              <button type="button" data-t="cardiopatia">Cardiopatia</button>
+              <button type="button" data-t="DRC">DRC</button>
+              <button type="button" data-t="DPOC">DPOC</button>
+              <button type="button" data-t="osteoporose">Osteoporose</button>
+              <button type="button" data-t="demência">Demência</button>
+              <button type="button" data-t="obesidade">Obesidade</button>
+            </div>
+          </div>
+          <div class="field full">
+            <label for="muc">Medicamentos de uso contínuo</label>
+            <input id="muc" type="text" placeholder="Nome ou classe do medicamento" />
+            <div class="quick" data-for="muc">
+              <button type="button" data-t="Nega" data-x>Nega</button>
+              <button type="button" data-t="anti-hipertensivo">Anti-hipertensivo</button>
+              <button type="button" data-t="antidiabético oral">Antidiabético oral</button>
+              <button type="button" data-t="insulina">Insulina</button>
+              <button type="button" data-t="AAS">AAS</button>
+              <button type="button" data-t="clopidogrel">Clopidogrel</button>
+              <button type="button" data-t="anticoagulante" class="warn">Anticoagulante</button>
+              <button type="button" data-t="corticoide">Corticoide</button>
+            </div>
+            <div class="sub quick hide" data-for="muc" data-parent="anticoagulante">
+              <span class="hint">Qual anticoagulante?</span>
+              <button type="button" data-t="varfarina">Varfarina</button>
+              <button type="button" data-t="rivaroxabana">Rivaroxabana</button>
+              <button type="button" data-t="apixabana">Apixabana</button>
+              <button type="button" data-t="dabigatrana">Dabigatrana</button>
+              <button type="button" data-t="enoxaparina">Enoxaparina</button>
+            </div>
+          </div>
+          <div class="tri">
+            <div class="field">
+              <span class="lbl" id="lbl_tabagismo">Tabagismo</span>
+              <input id="tabagismo" type="hidden" />
+              <div class="pick una" data-for="tabagismo" role="group" aria-labelledby="lbl_tabagismo">
+                <button type="button" data-v="Nega">Nega</button>
+                <button type="button" data-v="Sim">Sim</button>
+                <button type="button" data-v="Ex-tabagista" title="Ex-tabagista">Ex</button>
+              </div>
+            </div>
+            <div class="field">
+              <span class="lbl" id="lbl_etilismo">Etilismo</span>
+              <input id="etilismo" type="hidden" />
+              <div class="pick una" data-for="etilismo" role="group" aria-labelledby="lbl_etilismo">
+                <button type="button" data-v="Nega">Nega</button>
+                <button type="button" data-v="Social">Social</button>
+                <button type="button" data-v="Sim">Sim</button>
+              </div>
+            </div>
+            <div class="field">
+              <span class="lbl" id="lbl_alergia">Alergia</span>
+              <input id="alergia" type="hidden" />
+              <div class="pick una" data-for="alergia" role="group" aria-labelledby="lbl_alergia">
+                <button type="button" data-v="Nega">Nega</button>
+                <button type="button" data-v="Sim">Sim</button>
+              </div>
+            </div>
+          </div>
+          <div class="sub full hide" data-show="tabagismo=Sim">
+            <span class="hint">Quantos cigarros por dia?</span>
+            <input id="tabagismo_qtd" type="hidden" />
+            <div class="pick" data-for="tabagismo_qtd" role="group" aria-label="Cigarros por dia">
+              <button type="button" data-v="5 cigarros/dia">5</button>
+              <button type="button" data-v="10 cigarros/dia">10</button>
+              <button type="button" data-v="20 cigarros/dia (1 maço)">20 · 1 maço</button>
+              <button type="button" data-v="40 cigarros/dia (2 maços)">40 · 2 maços</button>
+            </div>
+          </div>
+          <div class="sub full hide" data-show="tabagismo=Ex-tabagista">
+            <span class="hint">Parou há quanto tempo?</span>
+            <input id="tabagismo_ex" type="hidden" />
+            <div class="pick" data-for="tabagismo_ex" role="group" aria-label="Parou há">
+              <button type="button" data-v="parou há menos de 1 ano">&lt; 1 ano</button>
+              <button type="button" data-v="parou há 1 a 5 anos">1 a 5 anos</button>
+              <button type="button" data-v="parou há mais de 5 anos">&gt; 5 anos</button>
+            </div>
+          </div>
+          <div class="sub full hide" data-show="alergia=Sim">
+            <span class="hint">Alérgico a quê?</span>
+            <input id="alergia_qual" type="text" placeholder="Outro: digite aqui" autocomplete="off" aria-label="Alergia a quê" />
+            <div class="quick" data-for="alergia_qual">
+              <button type="button" data-t="Dipirona">Dipirona</button>
+              <button type="button" data-t="AINE">AINE</button>
+              <button type="button" data-t="penicilina">Penicilina</button>
+              <button type="button" data-t="cefalosporina">Cefalosporina</button>
+              <button type="button" data-t="sulfa">Sulfa</button>
+              <button type="button" data-t="iodo/contraste">Iodo/contraste</button>
+              <button type="button" data-t="látex">Látex</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="s3">
+        <div class="sec-h"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 2L4.6 13.2c-.4.5 0 1.3.6 1.3H11l-1.5 7.5L19.4 10.8c.4-.5 0-1.3-.6-1.3H13z"/></svg></span><div class="tt"><small>Etapa 3</small><h2>Trauma</h2></div><span class="prog" data-tally="3"></span></div>
         <div class="fields">
           <div class="field half">
             <label for="data">Atendimento</label>
@@ -754,57 +912,21 @@ html[data-theme="dark"] .pick button:hover{background:rgba(255,255,255,.04)}
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section class="sec" id="s5">
-        <div class="sec-h"><span class="n">5</span><h2>Conduta no plantão</h2><span class="prog" data-tally="5"></span></div>
-        <div class="fields">
           <div class="field full">
-            <textarea id="conduta" rows="1" placeholder="O que foi feito e o que está proposto" aria-label="Conduta no plantão"></textarea>
-            <div class="groups">
-              <div class="quick" data-for="conduta">
-                <span class="ql">Imobilização</span>
-                <button type="button" data-t="tala gessada">Tala gessada</button>
-                <button type="button" data-t="gesso">Gesso</button>
-                <button type="button" data-t="tipoia">Tipoia</button>
-                <button type="button" data-t="imobilizador de joelho">Imobilizador de joelho</button>
-                <button type="button" data-t="bota imobilizadora">Bota</button>
-              </div>
-              <div class="quick" data-for="conduta">
-                <span class="ql">Procedimento</span>
-                <button type="button" data-t="redução incruenta">Redução incruenta</button>
-                <button type="button" data-t="sutura">Sutura</button>
-                <button type="button" data-t="lavagem e desbridamento">Lavagem + desbridamento</button>
-                <button type="button" data-t="fixador externo">Fixador externo</button>
-                <button type="button" data-t="tração esquelética">Tração esquelética</button>
-              </div>
-              <div class="quick" data-for="conduta">
-                <span class="ql">Medicação</span>
-                <button type="button" data-t="analgesia">Analgesia</button>
-                <button type="button" data-t="antibioticoterapia" data-sug="exposta">ATB</button>
-                <button type="button" data-t="profilaxia antitetânica" data-sug="exposta">Antitetânica</button>
-                <button type="button" data-t="profilaxia de TEV">Profilaxia de TEV</button>
-              </div>
-              <div class="quick" data-for="conduta">
-                <span class="ql">Destino</span>
-                <button type="button" data-t="alta com retorno ambulatorial">Alta + ambulatório</button>
-                <button type="button" data-t="internação para tratamento cirúrgico">Internação p/ cirurgia</button>
-                <button type="button" data-t="jejum">Jejum</button>
-                <button type="button" data-t="aguarda tomografia">Aguarda TC</button>
-                <button type="button" data-t="aguarda avaliação da especialidade">Aguarda avaliação</button>
-              </div>
+            <label for="exames">Exames de imagem</label>
+            <input id="exames" type="text" placeholder="RX punho AP e perfil..." />
+            <div class="quick" data-for="exames">
+              <button type="button" data-t="RX realizado">RX realizado</button>
+              <button type="button" data-t="RX pós-redução satisfatório">RX pós-redução ok</button>
+              <button type="button" data-t="TC solicitada">TC solicitada</button>
+              <button type="button" data-t="TC realizada">TC realizada</button>
             </div>
           </div>
         </div>
       </section>
-    </div>
 
-    <!-- ───────── COLUNA 2 ───────── -->
-    <div class="col">
-
-      <section class="sec" id="s3">
-        <div class="sec-h"><span class="n">3</span><h2>Exame</h2><span class="prog" data-tally="3"></span></div>
+      <section class="sec" id="s4">
+        <div class="sec-h"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5-6 5 12 2.5-6h4"/></svg></span><div class="tt"><small>Etapa 4</small><h2>Exame</h2></div><span class="prog" data-tally="4"></span></div>
         <div class="fields">
           <div class="field full">
             <label for="exame_fisico">Exame físico</label>
@@ -893,123 +1015,51 @@ html[data-theme="dark"] .pick button:hover{background:rgba(255,255,255,.04)}
               </div>
             </div>
           </div>
-          <div class="field full">
-            <label for="exames">Exames de imagem</label>
-            <input id="exames" type="text" placeholder="RX punho AP e perfil..." />
-            <div class="quick" data-for="exames">
-              <button type="button" data-t="RX realizado">RX realizado</button>
-              <button type="button" data-t="RX pós-redução satisfatório">RX pós-redução ok</button>
-              <button type="button" data-t="TC solicitada">TC solicitada</button>
-              <button type="button" data-t="TC realizada">TC realizada</button>
-            </div>
-          </div>
         </div>
       </section>
 
-      <section class="sec" id="s4">
-        <div class="sec-h"><span class="n">4</span><h2>Antecedentes</h2><span class="prog" data-tally="4"></span><button type="button" class="mini" id="negaTudo" aria-pressed="false" title="Marca Nega em comorbidades, medicamentos, tabagismo, etilismo e alergia">Nega tudo</button></div>
+      <section class="sec" id="s5">
+        <div class="sec-h"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span><div class="tt"><small>Etapa 5</small><h2>Conduta no plantão</h2></div><span class="prog" data-tally="5"></span></div>
         <div class="fields">
           <div class="field full">
-            <label for="comorbidades">Comorbidades</label>
-            <input id="comorbidades" type="text" placeholder="Outras: hepatopatia, HIV..." />
-            <div class="quick" data-for="comorbidades">
-              <button type="button" data-t="Nega" data-x>Nega</button>
-              <button type="button" data-t="HAS">HAS</button>
-              <button type="button" data-t="DM">DM</button>
-              <button type="button" data-t="cardiopatia">Cardiopatia</button>
-              <button type="button" data-t="DRC">DRC</button>
-              <button type="button" data-t="DPOC">DPOC</button>
-              <button type="button" data-t="osteoporose">Osteoporose</button>
-              <button type="button" data-t="demência">Demência</button>
-              <button type="button" data-t="obesidade">Obesidade</button>
-            </div>
-          </div>
-          <div class="field full">
-            <label for="muc">Medicamentos de uso contínuo</label>
-            <input id="muc" type="text" placeholder="Nome ou classe do medicamento" />
-            <div class="quick" data-for="muc">
-              <button type="button" data-t="Nega" data-x>Nega</button>
-              <button type="button" data-t="anti-hipertensivo">Anti-hipertensivo</button>
-              <button type="button" data-t="antidiabético oral">Antidiabético oral</button>
-              <button type="button" data-t="insulina">Insulina</button>
-              <button type="button" data-t="AAS">AAS</button>
-              <button type="button" data-t="clopidogrel">Clopidogrel</button>
-              <button type="button" data-t="anticoagulante" class="warn">Anticoagulante</button>
-              <button type="button" data-t="corticoide">Corticoide</button>
-            </div>
-            <div class="sub quick hide" data-for="muc" data-parent="anticoagulante">
-              <span class="hint">Qual anticoagulante?</span>
-              <button type="button" data-t="varfarina">Varfarina</button>
-              <button type="button" data-t="rivaroxabana">Rivaroxabana</button>
-              <button type="button" data-t="apixabana">Apixabana</button>
-              <button type="button" data-t="dabigatrana">Dabigatrana</button>
-              <button type="button" data-t="enoxaparina">Enoxaparina</button>
-            </div>
-          </div>
-          <div class="tri">
-            <div class="field">
-              <span class="lbl" id="lbl_tabagismo">Tabagismo</span>
-              <input id="tabagismo" type="hidden" />
-              <div class="pick una" data-for="tabagismo" role="group" aria-labelledby="lbl_tabagismo">
-                <button type="button" data-v="Nega">Nega</button>
-                <button type="button" data-v="Sim">Sim</button>
-                <button type="button" data-v="Ex-tabagista" title="Ex-tabagista">Ex</button>
+            <textarea id="conduta" rows="1" placeholder="O que foi feito e o que está proposto" aria-label="Conduta no plantão"></textarea>
+            <div class="groups">
+              <div class="quick" data-for="conduta">
+                <span class="ql">Imobilização</span>
+                <button type="button" data-t="tala gessada">Tala gessada</button>
+                <button type="button" data-t="gesso">Gesso</button>
+                <button type="button" data-t="tipoia">Tipoia</button>
+                <button type="button" data-t="imobilizador de joelho">Imobilizador de joelho</button>
+                <button type="button" data-t="bota imobilizadora">Bota</button>
               </div>
-            </div>
-            <div class="field">
-              <span class="lbl" id="lbl_etilismo">Etilismo</span>
-              <input id="etilismo" type="hidden" />
-              <div class="pick una" data-for="etilismo" role="group" aria-labelledby="lbl_etilismo">
-                <button type="button" data-v="Nega">Nega</button>
-                <button type="button" data-v="Social">Social</button>
-                <button type="button" data-v="Sim">Sim</button>
+              <div class="quick" data-for="conduta">
+                <span class="ql">Procedimento</span>
+                <button type="button" data-t="redução incruenta">Redução incruenta</button>
+                <button type="button" data-t="sutura">Sutura</button>
+                <button type="button" data-t="lavagem e desbridamento">Lavagem + desbridamento</button>
+                <button type="button" data-t="fixador externo">Fixador externo</button>
+                <button type="button" data-t="tração esquelética">Tração esquelética</button>
               </div>
-            </div>
-            <div class="field">
-              <span class="lbl" id="lbl_alergia">Alergia</span>
-              <input id="alergia" type="hidden" />
-              <div class="pick una" data-for="alergia" role="group" aria-labelledby="lbl_alergia">
-                <button type="button" data-v="Nega">Nega</button>
-                <button type="button" data-v="Sim">Sim</button>
+              <div class="quick" data-for="conduta">
+                <span class="ql">Medicação</span>
+                <button type="button" data-t="analgesia">Analgesia</button>
+                <button type="button" data-t="antibioticoterapia" data-sug="exposta">ATB</button>
+                <button type="button" data-t="profilaxia antitetânica" data-sug="exposta">Antitetânica</button>
+                <button type="button" data-t="profilaxia de TEV">Profilaxia de TEV</button>
               </div>
-            </div>
-          </div>
-          <div class="sub full hide" data-show="tabagismo=Sim">
-            <span class="hint">Quantos cigarros por dia?</span>
-            <input id="tabagismo_qtd" type="hidden" />
-            <div class="pick" data-for="tabagismo_qtd" role="group" aria-label="Cigarros por dia">
-              <button type="button" data-v="5 cigarros/dia">5</button>
-              <button type="button" data-v="10 cigarros/dia">10</button>
-              <button type="button" data-v="20 cigarros/dia (1 maço)">20 · 1 maço</button>
-              <button type="button" data-v="40 cigarros/dia (2 maços)">40 · 2 maços</button>
-            </div>
-          </div>
-          <div class="sub full hide" data-show="tabagismo=Ex-tabagista">
-            <span class="hint">Parou há quanto tempo?</span>
-            <input id="tabagismo_ex" type="hidden" />
-            <div class="pick" data-for="tabagismo_ex" role="group" aria-label="Parou há">
-              <button type="button" data-v="parou há menos de 1 ano">&lt; 1 ano</button>
-              <button type="button" data-v="parou há 1 a 5 anos">1 a 5 anos</button>
-              <button type="button" data-v="parou há mais de 5 anos">&gt; 5 anos</button>
-            </div>
-          </div>
-          <div class="sub full hide" data-show="alergia=Sim">
-            <span class="hint">Alérgico a quê?</span>
-            <input id="alergia_qual" type="text" placeholder="Outro: digite aqui" autocomplete="off" aria-label="Alergia a quê" />
-            <div class="quick" data-for="alergia_qual">
-              <button type="button" data-t="Dipirona">Dipirona</button>
-              <button type="button" data-t="AINE">AINE</button>
-              <button type="button" data-t="penicilina">Penicilina</button>
-              <button type="button" data-t="cefalosporina">Cefalosporina</button>
-              <button type="button" data-t="sulfa">Sulfa</button>
-              <button type="button" data-t="iodo/contraste">Iodo/contraste</button>
-              <button type="button" data-t="látex">Látex</button>
+              <div class="quick" data-for="conduta">
+                <span class="ql">Destino</span>
+                <button type="button" data-t="alta com retorno ambulatorial">Alta + ambulatório</button>
+                <button type="button" data-t="internação para tratamento cirúrgico">Internação p/ cirurgia</button>
+                <button type="button" data-t="jejum">Jejum</button>
+                <button type="button" data-t="aguarda tomografia">Aguarda TC</button>
+                <button type="button" data-t="aguarda avaliação da especialidade">Aguarda avaliação</button>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-    </div>
   </div>
 
   <footer>feito por <b>Tales</b></footer>
@@ -1187,9 +1237,9 @@ const CLASSIFICACOES = [
     ["2 partes (colo cirúrgico)","Um segmento desviado: colo cirúrgico"],
     ["2 partes (tubérculo maior)","Um segmento desviado: tubérculo maior"],
     ["2 partes (tubérculo menor)","Um segmento desviado: tubérculo menor"],
-    ["2 partes (colo anatômico)","Um segmento desviado: colo anatômico — alto risco de necrose"],
+    ["2 partes (colo anatômico)","Um segmento desviado: colo anatômico - alto risco de necrose"],
     ["3 partes","Colo cirúrgico + um dos tubérculos desviados"],
-    ["4 partes","Cabeça isolada dos dois tubérculos e da diáfise — alto risco de necrose"],
+    ["4 partes","Cabeça isolada dos dois tubérculos e da diáfise - alto risco de necrose"],
     ["fratura-luxação","Fratura associada a luxação glenoumeral (anterior ou posterior)"],
     ["head-split","Fratura com divisão ou impacção da superfície articular da cabeça"]
   ]},
@@ -1199,17 +1249,17 @@ const CLASSIFICACOES = [
     ["III","Ruptura AC e CC; desvio superior de 25–100%"],
     ["IV","Clavícula desviada posteriormente, através do trapézio"],
     ["V","Ruptura AC, CC e fáscia deltotrapezoidal; desvio superior de 100–300%"],
-    ["VI","Clavícula desviada inferiormente (subacromial ou subcoracoide) — rara"]
+    ["VI","Clavícula desviada inferiormente (subacromial ou subcoracoide) - rara"]
   ]},
   { n:"Allman", r:"Clavícula", k:"alman clavicula", g:[
     ["I","Terço médio (~80%)"],
-    ["II","Terço lateral (~15%) — subclassificar por Neer"],
+    ["II","Terço lateral (~15%) - subclassificar por Neer"],
     ["III","Terço medial (~5%)"]
   ]},
   { n:"Neer clavícula", r:"Clavícula distal", o:"Neer {c} (clavícula distal)", k:"neer nir clavicula distal lateral", g:[
-    ["I","Lateral aos ligamentos coracoclaviculares — estável"],
-    ["IIA","Medial ao conoide e ao trapezoide — instável"],
-    ["IIB","Entre conoide e trapezoide, conoide roto — instável"],
+    ["I","Lateral aos ligamentos coracoclaviculares - estável"],
+    ["IIA","Medial ao conoide e ao trapezoide - instável"],
+    ["IIB","Entre conoide e trapezoide, conoide roto - instável"],
     ["III","Intra-articular (acromioclavicular)"],
     ["IV","Criança: desenluvamento periosteal"],
     ["V","Cominutiva; ligamentos CC presos a fragmento inferior"]
@@ -1222,8 +1272,8 @@ const CLASSIFICACOES = [
     ["IV","Instabilidade multidirecional (periósteo rompido circunferencialmente)"]
   ]},
   { n:"Milch", r:"Côndilo lateral do úmero (criança)", k:"milch condilo lateral umero cotovelo crianca pediatrica", g:[
-    ["I","Traço lateral à tróclea, pelo capítulo — estável"],
-    ["II","Traço estende-se à tróclea — instável"]
+    ["I","Traço lateral à tróclea, pelo capítulo - estável"],
+    ["II","Traço estende-se à tróclea - instável"]
   ]},
   { n:"Mason", r:"Cabeça do rádio", k:"meison mason johnston cabeca radio cotovelo", g:[
     ["I","Sem desvio ou desvio < 2 mm; sem bloqueio mecânico"],
@@ -1261,11 +1311,11 @@ const CLASSIFICACOES = [
     ["VIII","Radiocárpica e radioulnar distal + estiloide ulnar"]
   ]},
   { n:"Fernández", r:"Rádio distal (mecanismo)", k:"fernandez radio distal punho", g:[
-    ["I","Flexão — metafisária (Colles/Smith)"],
-    ["II","Cisalhamento — articular (Barton, estiloide radial)"],
-    ["III","Compressão — impacção articular (die-punch)"],
-    ["IV","Avulsão — fratura-luxação radiocárpica"],
-    ["V","Alta energia — combinação dos mecanismos"]
+    ["I","Flexão - metafisária (Colles/Smith)"],
+    ["II","Cisalhamento - articular (Barton, estiloide radial)"],
+    ["III","Compressão - impacção articular (die-punch)"],
+    ["IV","Avulsão - fratura-luxação radiocárpica"],
+    ["V","Alta energia - combinação dos mecanismos"]
   ]},
   { n:"Herbert", r:"Escafoide", k:"herbert escafoide punho", g:[
     ["A1","Aguda estável: tubérculo"],
@@ -1282,18 +1332,18 @@ const CLASSIFICACOES = [
   { n:"Mayfield", r:"Instabilidade perilunar", k:"mayfield perilunar semilunar carpo punho luxacao", g:[
     ["I","Lesão escafolunar"],
     ["II","+ luxação capitato-semilunar"],
-    ["III","+ lesão lunopiramidal — luxação perilunar"],
+    ["III","+ lesão lunopiramidal - luxação perilunar"],
     ["IV","Luxação do semilunar"]
   ]},
   { n:"Anderson-D'Alonzo", r:"Odontoide (C2)", k:"anderson dalonzo alonzo odontoide dente c2 coluna cervical", g:[
     ["I","Avulsão da ponta do dente (inserção dos ligamentos alares)"],
-    ["II","Base do dente — maior risco de pseudartrose"],
+    ["II","Base do dente - maior risco de pseudartrose"],
     ["III","Traço que se estende ao corpo de C2"]
   ]},
   { n:"Young-Burgess", r:"Anel pélvico", k:"young burgess pelve bacia apc lc livro aberto", g:[
-    ["APC I","Diástase da sínfise < 2,5 cm; SI anteriores estirados — estável"],
-    ["APC II","Diástase > 2,5 cm; ruptura SI anterior, sacroespinal e sacrotuberal — instável rotacional"],
-    ["APC III","Ruptura completa da sacroilíaca — instável rotacional e vertical"],
+    ["APC I","Diástase da sínfise < 2,5 cm; SI anteriores estirados - estável"],
+    ["APC II","Diástase > 2,5 cm; ruptura SI anterior, sacroespinal e sacrotuberal - instável rotacional"],
+    ["APC III","Ruptura completa da sacroilíaca - instável rotacional e vertical"],
     ["LC I","Fratura dos ramos + compressão do sacro ipsilateral"],
     ["LC II","LC I + fratura da asa ilíaca (crescente) ou lesão SI posterior"],
     ["LC III","LC ipsilateral + livro aberto contralateral (windswept)"],
@@ -1301,26 +1351,26 @@ const CLASSIFICACOES = [
     ["CM","Mecanismo combinado"]
   ]},
   { n:"Tile", r:"Anel pélvico", k:"tail pelve bacia", g:[
-    ["A","Estável — anel posterior íntegro"],
+    ["A","Estável - anel posterior íntegro"],
     ["B","Instável rotacional, estável vertical (B1 livro aberto, B2 LC ipsilateral, B3 bilateral)"],
     ["C","Instável rotacional e vertical (C1 unilateral, C2 bilateral, C3 com acetábulo)"]
   ]},
   { n:"Denis", r:"Sacro", o:"Denis zona {c}", k:"sacro", g:[
-    ["I","Lateral aos forames — déficit neurológico raro"],
-    ["II","Através dos forames — risco de lesão radicular"],
-    ["III","Medial aos forames, acomete o canal — maior risco (esfincteriano)"]
+    ["I","Lateral aos forames - déficit neurológico raro"],
+    ["II","Através dos forames - risco de lesão radicular"],
+    ["III","Medial aos forames, acomete o canal - maior risco (esfincteriano)"]
   ]},
   { n:"Letournel", r:"Acetábulo", k:"letournel judet acetabulo", o:"Letournel: {c}", g:[
-    ["parede posterior","Elementar — a mais comum; associada a luxação posterior"],
+    ["parede posterior","Elementar - a mais comum; associada a luxação posterior"],
     ["coluna posterior","Elementar"],
     ["parede anterior","Elementar"],
     ["coluna anterior","Elementar"],
-    ["transversa","Elementar — atravessa as duas colunas"],
+    ["transversa","Elementar - atravessa as duas colunas"],
     ["coluna posterior + parede posterior","Associada"],
     ["transversa + parede posterior","Associada"],
-    ["em T","Associada — transversa + traço vertical até o forame obturado"],
+    ["em T","Associada - transversa + traço vertical até o forame obturado"],
     ["coluna anterior + hemitransversa posterior","Associada"],
-    ["ambas as colunas","Associada — sem segmento articular ligado ao esqueleto axial (sinal do esporão)"]
+    ["ambas as colunas","Associada - sem segmento articular ligado ao esqueleto axial (sinal do esporão)"]
   ]},
   { n:"Thompson-Epstein", r:"Luxação posterior do quadril", k:"thompson epstein luxacao quadril posterior", g:[
     ["I","Com ou sem fratura mínima"],
@@ -1330,8 +1380,8 @@ const CLASSIFICACOES = [
     ["V","Fratura da cabeça femoral"]
   ]},
   { n:"Pipkin", r:"Cabeça femoral", k:"pipkin cabeca femur quadril", g:[
-    ["I","Abaixo (caudal) da fóvea — fora da área de carga"],
-    ["II","Acima (cefálica) da fóvea — área de carga"],
+    ["I","Abaixo (caudal) da fóvea - fora da área de carga"],
+    ["II","Acima (cefálica) da fóvea - área de carga"],
     ["III","Tipo I ou II + fratura do colo do fêmur"],
     ["IV","Tipo I ou II + fratura do acetábulo"]
   ]},
@@ -1342,35 +1392,35 @@ const CLASSIFICACOES = [
     ["IV","Completa, com desvio total"]
   ]},
   { n:"Pauwels", r:"Colo do fêmur", k:"pauels pawels paulus colo femur quadril", g:[
-    ["I","Traço < 30° com a horizontal — compressão"],
+    ["I","Traço < 30° com a horizontal - compressão"],
     ["II","Traço entre 30° e 50°"],
-    ["III","Traço > 50° — cisalhamento, mais instável"]
+    ["III","Traço > 50° - cisalhamento, mais instável"]
   ]},
   { n:"Delbet", r:"Colo do fêmur (criança)", k:"delbet colo femur crianca pediatrica", g:[
-    ["I","Transepifisária — maior risco de necrose"],
-    ["II","Transcervical — a mais comum"],
+    ["I","Transepifisária - maior risco de necrose"],
+    ["II","Transcervical - a mais comum"],
     ["III","Cervicotrocantérica (basocervical)"],
-    ["IV","Intertrocantérica — melhor prognóstico"]
+    ["IV","Intertrocantérica - melhor prognóstico"]
   ]},
   { n:"Tronzo", r:"Transtrocantérica", k:"tronzo transtrocanterica trocanter femur proximal quadril", g:[
     ["I","Incompleta"],
-    ["II","Completa, sem cominuição — estável"],
-    ["III","Cominuição posterior; esporão do colo telescopado no canal — instável"],
-    ["IV","Cominuição posterior; esporão do colo desviado para fora da diáfise — instável"],
+    ["II","Completa, sem cominuição - estável"],
+    ["III","Cominuição posterior; esporão do colo telescopado no canal - instável"],
+    ["IV","Cominuição posterior; esporão do colo desviado para fora da diáfise - instável"],
     ["V","Traço reverso (obliquidade invertida)"]
   ]},
   { n:"AO/OTA 31A", r:"Transtrocantérica", o:"AO/OTA {c}", k:"ao ota 31a transtrocanterica trocanter femur proximal", g:[
-    ["31A1","Pertrocantérica simples — parede lateral íntegra (> 20,5 mm)"],
-    ["31A2","Pertrocantérica multifragmentária — parede lateral incompetente (≤ 20,5 mm)"],
-    ["31A3","Intertrocantérica — traço reverso ou transverso"]
+    ["31A1","Pertrocantérica simples - parede lateral íntegra (> 20,5 mm)"],
+    ["31A2","Pertrocantérica multifragmentária - parede lateral incompetente (≤ 20,5 mm)"],
+    ["31A3","Intertrocantérica - traço reverso ou transverso"]
   ]},
   { n:"Seinsheimer", r:"Subtrocantérica", k:"seinsheimer subtrocanterica femur proximal", g:[
     ["I","Sem desvio (< 2 mm)"],
-    ["IIA","Duas partes — transversa"],
-    ["IIB","Duas partes — espiral, trocanter menor no fragmento proximal"],
-    ["IIC","Duas partes — espiral, trocanter menor no fragmento distal"],
-    ["IIIA","Três partes — trocanter menor como terceiro fragmento"],
-    ["IIIB","Três partes — fragmento em borboleta"],
+    ["IIA","Duas partes - transversa"],
+    ["IIB","Duas partes - espiral, trocanter menor no fragmento proximal"],
+    ["IIC","Duas partes - espiral, trocanter menor no fragmento distal"],
+    ["IIIA","Três partes - trocanter menor como terceiro fragmento"],
+    ["IIIB","Três partes - fragmento em borboleta"],
     ["IV","Cominutiva (≥ 4 fragmentos)"],
     ["V","Subtrocantérica com extensão intertrocantérica"]
   ]},
@@ -1384,9 +1434,9 @@ const CLASSIFICACOES = [
   { n:"Vancouver", r:"Periprotética do fêmur", k:"vancouver periprotetica protese artroplastia", g:[
     ["AG","Trocanter maior"],
     ["AL","Trocanter menor"],
-    ["B1","Ao redor da haste — haste fixa"],
-    ["B2","Ao redor da haste — haste solta, bom estoque ósseo"],
-    ["B3","Ao redor da haste — haste solta, estoque ósseo ruim"],
+    ["B1","Ao redor da haste - haste fixa"],
+    ["B2","Ao redor da haste - haste solta, bom estoque ósseo"],
+    ["B3","Ao redor da haste - haste solta, estoque ósseo ruim"],
     ["C","Bem distal à ponta da haste"]
   ]},
   { n:"Rorabeck", r:"Periprotética do joelho (fêmur)", k:"rorabeck periprotetica protese joelho artroplastia", g:[
@@ -1402,11 +1452,11 @@ const CLASSIFICACOES = [
   ]},
   { n:"Schatzker", r:"Platô tibial", k:"shatzker chatzker xatzker schatzker chatzquer plato tibial joelho", g:[
     ["I","Cisalhamento (split) puro do platô lateral"],
-    ["II","Cisalhamento + depressão do platô lateral — a mais comum"],
+    ["II","Cisalhamento + depressão do platô lateral - a mais comum"],
     ["III","Depressão pura do platô lateral"],
-    ["IV","Platô medial — atenção a lesão vascular e ligamentar"],
+    ["IV","Platô medial - atenção a lesão vascular e ligamentar"],
     ["V","Bicondilar, com continuidade metáfise-diáfise"],
-    ["VI","Dissociação metáfise-diáfise — alta energia"]
+    ["VI","Dissociação metáfise-diáfise - alta energia"]
   ]},
   { n:"Rüedi-Allgöwer", r:"Pilão tibial", k:"ruedi allgower algower pilao tibial tornozelo", g:[
     ["I","Intra-articular sem desvio significativo"],
@@ -1429,66 +1479,66 @@ const CLASSIFICACOES = [
     ["PRE IV","PRE III + lesão tibiofibular posteroinferior / maléolo posterior"]
   ]},
   { n:"Weber", r:"Tornozelo (Danis-Weber)", k:"weber veber danis tornozelo maleolo fibula", g:[
-    ["A","Fíbula abaixo da sindesmose — sindesmose íntegra"],
-    ["B","No nível da sindesmose — sindesmose pode estar lesada"],
-    ["C","Acima da sindesmose — sindesmose lesada (inclui Maisonneuve)"]
+    ["A","Fíbula abaixo da sindesmose - sindesmose íntegra"],
+    ["B","No nível da sindesmose - sindesmose pode estar lesada"],
+    ["C","Acima da sindesmose - sindesmose lesada (inclui Maisonneuve)"]
   ]},
   { n:"Hawkins", r:"Colo do tálus", k:"hawkins haukins raukins talus astragalo", g:[
-    ["I","Sem desvio — risco de necrose 0–13%"],
-    ["II","Subluxação/luxação subtalar — 20–50%"],
-    ["III","+ luxação tibiotalar — 20–100%"],
-    ["IV","+ luxação talonavicular (Canale-Kelly) — próximo de 100%"]
+    ["I","Sem desvio - risco de necrose 0–13%"],
+    ["II","Subluxação/luxação subtalar - 20–50%"],
+    ["III","+ luxação tibiotalar - 20–100%"],
+    ["IV","+ luxação talonavicular (Canale-Kelly) - próximo de 100%"]
   ]},
   { n:"Sanders", r:"Calcâneo", k:"sanders calcaneo", g:[
     ["I","Sem desvio (< 2 mm), independente do nº de traços"],
     ["II","Duas partes da faceta posterior (IIA, IIB, IIC)"],
     ["III","Três partes, com fragmento central deprimido"],
-    ["IV","Quatro ou mais partes — cominutiva"]
+    ["IV","Quatro ou mais partes - cominutiva"]
   ]},
   { n:"Essex-Lopresti", r:"Calcâneo", o:"Essex-Lopresti: {c}", k:"essex lopresti calcaneo", g:[
     ["tipo língua","Traço secundário sai pela tuberosidade; faceta posterior presa ao fragmento da tuberosidade"],
     ["depressão articular","Traço secundário sai atrás da faceta posterior; faceta deprimida isoladamente"]
   ]},
   { n:"Lawrence-Botte", r:"Base do 5º metatarso", o:"Lawrence-Botte zona {c}", k:"jones lawrence botte quinto metatarso 5 metatarso pe", g:[
-    ["1","Avulsão da tuberosidade — boa consolidação"],
-    ["2","Junção metáfise-diáfise (fratura de Jones) — irrigação precária"],
-    ["3","Diáfise proximal — fratura por estresse"]
+    ["1","Avulsão da tuberosidade - boa consolidação"],
+    ["2","Junção metáfise-diáfise (fratura de Jones) - irrigação precária"],
+    ["3","Diáfise proximal - fratura por estresse"]
   ]},
   { n:"Myerson", r:"Lisfranc (tarsometatársica)", k:"myerson lisfranc tarsometatarsica pe mediope", g:[
     ["A","Incongruência total (homolateral)"],
-    ["B1","Incongruência parcial — medial"],
-    ["B2","Incongruência parcial — lateral"],
-    ["C1","Divergente — parcial"],
-    ["C2","Divergente — total"]
+    ["B1","Incongruência parcial - medial"],
+    ["B2","Incongruência parcial - lateral"],
+    ["C1","Divergente - parcial"],
+    ["C2","Divergente - total"]
   ]},
   { n:"Gustilo-Anderson", r:"Fratura exposta", f:"Exposta", k:"gustilo gustillo anderson exposta aberta", g:[
     ["I","Ferida < 1 cm, limpa, baixa energia"],
     ["II","Ferida 1–10 cm, sem lesão extensa de partes moles"],
     ["IIIA","Lesão extensa de partes moles, cobertura óssea adequada"],
-    ["IIIB","Perda de partes moles com exposição óssea — necessita retalho"],
+    ["IIIB","Perda de partes moles com exposição óssea - necessita retalho"],
     ["IIIC","Lesão arterial que necessita de reparo"]
   ]},
   { n:"Tscherne", r:"Partes moles (fratura fechada)", f:"Fechada", k:"tscherne tcherne cherne partes moles fechada", g:[
     ["C0","Lesão mínima de partes moles, trauma indireto"],
     ["C1","Abrasão ou contusão superficial"],
-    ["C2","Abrasão profunda contaminada, contusão muscular — risco de síndrome compartimental"],
+    ["C2","Abrasão profunda contaminada, contusão muscular - risco de síndrome compartimental"],
     ["C3","Contusão extensa, esmagamento, desenluvamento, lesão vascular ou síndrome compartimental"]
   ]},
-  { n:"AO/OTA diáfise", r:"Qualquer osso longo — diáfise", o:"AO/OTA tipo {c}", k:"ao ota diafise diafisaria osso longo tibia femur umero radio ulna antebraco", g:[
+  { n:"AO/OTA diáfise", r:"Qualquer osso longo - diáfise", o:"AO/OTA tipo {c}", k:"ao ota diafise diafisaria osso longo tibia femur umero radio ulna antebraco", g:[
     ["A","Simples (espiral, oblíqua ou transversa)"],
     ["B","Em cunha"],
     ["C","Multifragmentária / segmentar"]
   ]},
-  { n:"AO/OTA articular", r:"Qualquer osso longo — extremidade", o:"AO/OTA tipo {c}", k:"ao ota articular metafise epifise", g:[
+  { n:"AO/OTA articular", r:"Qualquer osso longo - extremidade", o:"AO/OTA tipo {c}", k:"ao ota articular metafise epifise", g:[
     ["A","Extra-articular"],
     ["B","Articular parcial"],
     ["C","Articular completa"]
   ]},
   { n:"Salter-Harris", r:"Fise (criança)", k:"salter harris fise fisaria crianca pediatrica", g:[
     ["I","Através da fise"],
-    ["II","Fise + metáfise (Thurston-Holland) — a mais comum"],
-    ["III","Fise + epífise — intra-articular"],
-    ["IV","Metáfise, fise e epífise — intra-articular"],
+    ["II","Fise + metáfise (Thurston-Holland) - a mais comum"],
+    ["III","Fise + epífise - intra-articular"],
+    ["IV","Metáfise, fise e epífise - intra-articular"],
     ["V","Compressão da fise"]
   ]}
 ];
@@ -1507,14 +1557,22 @@ const CLASSIFICACOES = [
   const contaveis = ids.filter(id => !detalhes.includes(id));
   const blocos = {
     1: ["nome","idade","numero","sexo","convenio","profissao","funcionalidade"],
-    2: ["data","data_trauma","mecanismo","diagnostico","lado","tipo_fratura","classificacao"],
-    3: ["exame_fisico","neurovascular","lesoes","lesao_previa","exames"],
-    4: ["comorbidades","muc","tabagismo","etilismo","alergia"],
+    2: ["comorbidades","muc","tabagismo","etilismo","alergia"],
+    3: ["data","data_trauma","mecanismo","diagnostico","lado","tipo_fratura","classificacao","exames"],
+    4: ["exame_fisico","neurovascular","lesoes","lesao_previa"],
     5: ["conduta"]
   };
   /* campos de texto livre: passam pela correção de CAPS LOCK */
   const textoLivre = ["nome","profissao","convenio_outro","alergia_qual","mecanismo","diagnostico","classificacao",
     "exame_fisico","neurovascular","exames","lesoes","comorbidades","muc","conduta"];
+  /* o mínimo para a etapa ficar "pronta" na barra de etapas */
+  const ESSENCIAL = {
+    1: ["nome","idade"],
+    2: ["comorbidades","muc","alergia"],
+    3: ["mecanismo","diagnostico"],
+    4: ["exame_fisico","neurovascular"],
+    5: ["conduta"]
+  };
   const NEGA_TUDO = ["comorbidades","muc","tabagismo","etilismo","alergia"];
 
   /* preferências (ficam salvas neste navegador) */
@@ -1730,7 +1788,7 @@ const CLASSIFICACOES = [
     return join([opts.imagens ? "Em seguida mando as imagens." : "", f, opts.agr], " ");
   }
 
-  /* "Masc., 67 anos — Fratura do platô tibial (D), Schatzker VI, fechada" */
+  /* "Masc., 67 anos - Fratura do platô tibial (D), Schatzker VI, fechada" */
   function resumoLinha(d){
     const sx = d.sexo === "Masculino" ? "Masc." : d.sexo === "Feminino" ? "Fem." : "";
     const lado = { Direito:"D", Esquerdo:"E", Bilateral:"bilateral" }[d.lado];
@@ -1738,7 +1796,7 @@ const CLASSIFICACOES = [
     const quadro = join([dx, d.classificacao, d.tipo_fratura ? lowFirst(d.tipo_fratura) : ""], ", ");
     if (!quadro) return "";
     const pac = join([sx, d.idade], ", ");
-    return pac ? `${pac} — ${quadro}` : quadro;
+    return pac ? `${pac} - ${quadro}` : quadro;
   }
 
   function corpoCompleto(d, espacado){
@@ -1827,10 +1885,13 @@ const CLASSIFICACOES = [
 
     Object.keys(blocos).forEach(k => {
       const n = blocos[k].filter(id => val(id)).length, tot = blocos[k].length;
+      const ok = ESSENCIAL[k].every(id => val(id));
       const el = document.querySelector(`[data-tally="${k}"]`);
-      if (el){ el.textContent = tot > 1 ? `${n}/${tot}` : (n ? "✓" : ""); el.classList.toggle("ok", n === tot); }
-      const nav = document.querySelector(`[data-nav="${k}"]`);
-      if (nav){ nav.querySelector("i").textContent = n ? (tot > 1 ? `${n}/${tot}` : "✓") : ""; nav.classList.toggle("ok", n === tot); }
+      if (el){ el.textContent = ok ? "Pronto" : (tot > 1 ? `${n} de ${tot}` : "Vazio"); el.classList.toggle("ok", ok); }
+      document.querySelector(`[data-step="${k}"]`).classList.toggle("ok", ok);
+      document.querySelector(`[data-ss="${k}"]`).textContent = ok ? "Pronto" : (n ? `${n} de ${tot}` : "A preencher");
+      const bar = document.querySelector(`[data-bar="${k}"]`);
+      if (bar) bar.classList.toggle("ok", ok);
     });
     ids.forEach(id => { const el = $(id); if (el && el.type !== "hidden") el.classList.toggle("filled", !!val(id)); });
 
@@ -1843,7 +1904,7 @@ const CLASSIFICACOES = [
       ? "Desligado: sai como digitado"
       : emCapsAgora.length
         ? `${emCapsAgora.length} ${emCapsAgora.length === 1 ? "campo corrigido" : "campos corrigidos"}`
-        : capsLigado ? "Caps Lock ligado — sai corrigido" : "Só a 1ª letra da frase maiúscula";
+        : capsLigado ? "Caps Lock ligado - sai corrigido" : "Só a 1ª letra da frase maiúscula";
 
     /* botões */
     atualizaQuick();
@@ -1864,7 +1925,7 @@ const CLASSIFICACOES = [
   }
 
   /* ── Rascunho: sobrevive a recarregar a aba (ida e volta do WhatsApp).
-     sessionStorage some ao fechar a aba — dado de paciente não fica no aparelho. */
+     sessionStorage some ao fechar a aba - dado de paciente não fica no aparelho. */
   function guardaRascunho(){
     try{
       const r = {};
@@ -2243,6 +2304,22 @@ const CLASSIFICACOES = [
   });
   setInterval(render, 60000);
   render();
+  /* etapa em uso: acende na barra de etapas */
+  document.querySelectorAll(".sec").forEach(sec => sec.addEventListener("focusin", () => {
+    document.querySelectorAll(".step").forEach(st => st.classList.toggle("on", "s" + st.dataset.step === sec.id));
+  }));
+  /* Enter num campo de uma linha pula para o próximo campo de texto */
+  document.addEventListener("keydown", (e) => {
+    const el = e.target;
+    if (e.key !== "Enter" || e.ctrlKey || e.metaKey || e.shiftKey || e.isComposing) return;
+    if (el.tagName !== "INPUT" || el.type !== "text" || el.id === "classificacao") return;
+    const campos = [...document.querySelectorAll('.cards input[type="text"], .cards textarea')].filter(x => x.offsetParent);
+    const prox = campos[campos.indexOf(el) + 1];
+    if (prox){ e.preventDefault(); prox.focus(); }
+  });
+  /* abre já no nome, pronto para digitar */
+  if (!val("nome")) $("nome").focus({ preventScroll:true });
+
   /* ao sair do campo, o texto em CAPS já fica corrigido nele também */
   textoLivre.forEach(id => $(id).addEventListener("blur", () => {
     if (!opts.caps) return;
